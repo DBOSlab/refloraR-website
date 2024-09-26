@@ -71,7 +71,7 @@ If you are an herbarium curator and wish to publish images and data from your co
 :::
 
 ::: mainbox
-::: {style="padding-left: 100px; padding-right: 100px; display: inline-block;"}
+::: {style="padding-left: 50px; padding-right: 100px; display: inline-block;"}
 ::: {layout-ncol="2"}
 ::: {style="text-align: center;"}
 ### [Get Started](/get-started/index.qmd)
