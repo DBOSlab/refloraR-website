@@ -12,4 +12,4 @@
 figures
 articles
 _freeze
-.nojekyll
+*.nojekyll
