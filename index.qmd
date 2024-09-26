@@ -11,7 +11,9 @@ execute:
 ::: {style="padding-left: 150px; padding-right: 25px; display: inline-block;"}
 ::: {layout-ncol="2"}
 ::: {style="text-align: left;"}
-An R package for exploring plant specimen collections from [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora) hosted by [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj). The package interacts with the REFLORA Integrated Publishing Toolkit (IPT) by readily downloading full specimen records for any herbarium in Darwin Core Format. Also, the package has specific functions to summarize information and filter specific information by taxonomic or geographical search.\
+\
+\
+***refloraR*** is An R package for exploring plant specimen collections from [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora) hosted by [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj). The package interacts with the REFLORA Integrated Publishing Toolkit (IPT) by readily downloading full specimen records for any herbarium in Darwin Core Format. Also, the package has specific functions to summarize information and filter specific information by taxonomic or geographical search.\
 \
 
 ## The REFLORA programme
@@ -42,7 +44,6 @@ The mission to build a virtual herbarium to display the images of Brazilian plan
 
 The initial partners of this initiative were the herbaria [**K**](https://www.kew.org) (Royal Botanic Gardens, Kew), [**P**](https://www.mnhn.fr/fr/collection-des-plantes-vasculaires) (Muséum national d’histoire naturelle, Paris), and the [**RB**](https://www.gov.br/jbrj) (JBRJ) herbarium. From 2014 onwards, with the support of [**SiBBr**](https://www.sibbr.gov.br) (Sistema de Informação sobre a Biodiversidade Brasileira) and [**IFN**](https://www.gov.br/florestal/pt-br/assuntos/ifn) (Inventário Florestal Nacional), other European, American, and Brazilian herbaria were included in this initiative, many of which received equipment and training to digitize their plant specimens.
 
-
 ```{r}
 
 for (i in seq_along(summary_df$collectionCode)) {
@@ -59,6 +60,7 @@ There are now 4,602,397 images of specimens available in the REFLORA Virtual Her
 If you are an herbarium curator and wish to publish images and data from your collection in REFLORA Virtual Herbarium, send a request to the contact email **reflora\@jbrj.gov.br**.\
 \
 :::
+
 ::: {style="text-align: center;"}
 ![](figures/refloraR_hex_sticker.png){style="align: right;" width="200"}
 
