@@ -12,7 +12,5 @@
 *.yml
 *.Rproj
 *.Rmd
-figures
-articles
 _freeze
 
