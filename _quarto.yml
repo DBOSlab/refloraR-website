@@ -4,7 +4,7 @@ project:
 
 website:
   title: "refloraR"
-  site-url: https://dboslab.github.io/refloraR-quarto-website/
+  site-url: https://dboslab.github.io/refloraR-website/
   page-navigation: true
   reader-mode: true  
   favicon: "figures/refloraR_hex_sticker.png"
@@ -26,7 +26,7 @@ website:
         href: reference.qmd
     right:
       - icon: github
-        href: https://dboslab.github.io/refloraR-quarto-website/
+        href: https://dboslab.github.io/refloraR-website/
         
   sidebar:
     - id: get-started
