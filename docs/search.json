@@ -45,5 +45,77 @@
       "Get Started",
       "Install"
     ]
+  },
+  {
+    "objectID": "articles/download_reflora_collections.html",
+    "href": "articles/download_reflora_collections.html",
+    "title": "Download REFLORA specimen records",
+    "section": "",
+    "text": "Here in this article, we show how to use the package’s function reflora_summary for summarizing information about all REFLORA-associated collections.",
+    "crumbs": [
+      "Articles",
+      "Download REFLORA specimen records",
+      "Download all specimen records"
+    ]
+  },
+  {
+    "objectID": "articles/download_reflora_collections.html#download-all-specimen-records",
+    "href": "articles/download_reflora_collections.html#download-all-specimen-records",
+    "title": "Download REFLORA specimen records",
+    "section": "Download all specimen records",
+    "text": "Download all specimen records\n\nThe following code can be used to download original specimen records in Darwin Core Format and associated metada for all REFLORA collections.\n\n\nreflora_download(verbose = TRUE,\n                 dir = \"reflora_download\")",
+    "crumbs": [
+      "Articles",
+      "Download REFLORA specimen records",
+      "Download all specimen records"
+    ]
+  },
+  {
+    "objectID": "articles/download_reflora_collections.html#download-specimen-records-for-specific-collections",
+    "href": "articles/download_reflora_collections.html#download-specimen-records-for-specific-collections",
+    "title": "Download REFLORA specimen records",
+    "section": "Download specimen records for specific collections",
+    "text": "Download specimen records for specific collections\n\nBy specifying a vector of herbarium acronyms, the user can download specimens records for just the specific herbarium collection.\n\n\nreflora_download(herbarium = c(\"ALCB\", \"HUEFS\", \"RB\", \"US\", \"K\"),\n                 verbose = TRUE,\n                 dir = \"reflora_download\")",
+    "crumbs": [
+      "Articles",
+      "Download REFLORA specimen records",
+      "Download all specimen records"
+    ]
+  },
+  {
+    "objectID": "articles/summarize_reflora_collections.html",
+    "href": "articles/summarize_reflora_collections.html",
+    "title": "Summarize REFLORA collections",
+    "section": "",
+    "text": "Here in this article, we show how to use the package’s function reflora_summary for summarizing information about all REFLORA-associated collections.",
+    "crumbs": [
+      "Articles",
+      "Summarize REFLORA collections",
+      "Summarize all collections"
+    ]
+  },
+  {
+    "objectID": "articles/summarize_reflora_collections.html#summarize-all-collections",
+    "href": "articles/summarize_reflora_collections.html#summarize-all-collections",
+    "title": "Summarize REFLORA collections",
+    "section": "Summarize all collections",
+    "text": "Summarize all collections\n\nThe following code can be used to extract a summary of all REFLORA-associated collections, including herbarium acronym, curator’s email contact, number of records and a direct link to the original REFLORA Integrated Publishing Toolkit (IPT).\n\n\nsummary_df &lt;- reflora_summary(verbose = TRUE,\n                              save = TRUE,\n                              dir = \"reflora_summary\")",
+    "crumbs": [
+      "Articles",
+      "Summarize REFLORA collections",
+      "Summarize all collections"
+    ]
+  },
+  {
+    "objectID": "articles/summarize_reflora_collections.html#summarize-specific-collections",
+    "href": "articles/summarize_reflora_collections.html#summarize-specific-collections",
+    "title": "Summarize REFLORA collections",
+    "section": "Summarize specific collections",
+    "text": "Summarize specific collections\n\nBy specifying a vector of herbarium acronyms, the user can extract a summary for just the specific herbarium collection.\n\n\nsummary_some_df &lt;- reflora_summary(herbarium = c(\"ALCB\", \"RB\", \"HUEFS\", \"US\", \"K\"),\n                                   verbose = TRUE,\n                                   save = TRUE,\n                                   dir = \"reflora_summary\")",
+    "crumbs": [
+      "Articles",
+      "Summarize REFLORA collections",
+      "Summarize all collections"
+    ]
   }
 ]
