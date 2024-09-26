@@ -2,15 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-.nojekyll
-*.qmd
-*head.html
-*body.html
-*.scss
-*styles.css
 /.quarto/
-*.yml
 *.Rproj
-*.Rmd
 _freeze
 
