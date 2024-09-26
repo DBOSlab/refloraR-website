@@ -60,6 +60,7 @@ website:
 format:
   html:
     toc: true
+    embed-resources: true
     code-copy: true
     code-overflow: wrap
     code-toos: true

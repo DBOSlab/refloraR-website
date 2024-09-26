@@ -2,11 +2,7 @@
 title: "Install"
 format:
   html:
-    theme: default
     toc: true
-execute:
-  eval: true
-  freeze: true
 ---
 
 ## Install the package
