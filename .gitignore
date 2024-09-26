@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.qmd
+*.html
+*.scss
+*styles.css
+/.quarto/
+*.yml
+*.Rproj
+figures
+articles
+_freeze
