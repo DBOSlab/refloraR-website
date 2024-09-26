@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.nojekyll
 *.qmd
 *.html
 *.scss
@@ -9,6 +10,8 @@
 /.quarto/
 *.yml
 *.Rproj
+*.Rmd
 figures
 articles
 _freeze
+
