@@ -11,7 +11,8 @@ execute:
 ::: {style="padding-left: 150px; padding-right: 25px; display: inline-block;"}
 ::: {layout-ncol="2"}
 ::: {style="text-align: left;"}
-An R package for exploring plant specimen collections from [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora) hosted by [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj). The package interacts with the REFLORA Integrated Publishing Toolkit (IPT) by readily downloading full specimen records for any herbarium in Darwin Core Format. Also, the package has specific functions to summarize information and filter specific information by taxonomic or geographical search.
+An R package for exploring plant specimen collections from [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora) hosted by [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj). The package interacts with the REFLORA Integrated Publishing Toolkit (IPT) by readily downloading full specimen records for any herbarium in Darwin Core Format. Also, the package has specific functions to summarize information and filter specific information by taxonomic or geographical search.\
+\
 
 ## The REFLORA programme
 
@@ -40,7 +41,6 @@ summary_df <- reflora_summary(verbose = FALSE,
 The mission to build a virtual herbarium to display the images of Brazilian plants housed in foreign herbaria was presented by the [Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)](https://www.gov.br/cnpq/pt-br) to the Rio de Janeiro Botanical Garden (JBRJ) in December 2010. The objective was to provide the capacity to store and display high-quality data regarding Brazil’s Flora within a public institution. The Reflora Virtual Herbarium is designed to allow taxonomists to perform procedures similar to those they are accustomed to doing within physical collections. On this site, they have access to high-quality images rather than physical specimens, which can be consulted, re-determined, and typified, among other functionalities. Curators also have access to specimen determination reports to help update their physical collections. This innovative system has been available for study and update by a group of over 900 taxonomists involved in the List of Species of the Brazilian Flora and Brazilian Flora 2020 projects.
 
 The initial partners of this initiative were the herbaria [**K**](https://www.kew.org) (Royal Botanic Gardens, Kew), [**P**](https://www.mnhn.fr/fr/collection-des-plantes-vasculaires) (Muséum national d’histoire naturelle, Paris), and the [**RB**](https://www.gov.br/jbrj) (JBRJ) herbarium. From 2014 onwards, with the support of [**SiBBr**](https://www.sibbr.gov.br) (Sistema de Informação sobre a Biodiversidade Brasileira) and [**IFN**](https://www.gov.br/florestal/pt-br/assuntos/ifn) (Inventário Florestal Nacional), other European, American, and Brazilian herbaria were included in this initiative, many of which received equipment and training to digitize their plant specimens.
-
 
 
 ```{r}
