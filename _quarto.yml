@@ -8,6 +8,20 @@ website:
   page-navigation: true
   reader-mode: true  
   favicon: "figures/refloraR_hex_sticker.png"
+  
+  page-footer:
+    center:
+      - text: "About"
+        href: about.qmd
+      - text: "FAQ"
+        href: faq/index.qmd
+      - text: "License"
+        href: LICENSE.md
+    right:
+      - icon: github
+        href: https://github.com/DBOSlab/refloraR
+        aria-label: refloraR GitHub
+  
   navbar:
     search: true
     background: light
@@ -16,17 +30,32 @@ website:
     logo: "figures/refloraR_hex_sticker.png"
     href: index.qmd
     left:
-      - text: Get Started
+      - text: "Overview"
+        href: index.qmd
+      - text: "Get Started"
         href: get-started/index.qmd
-      - text: Articles
+      - text: "Articles"
         href: articles/index.qmd
-      - text: News
+      - text: "News"
         href: packages/refloraR/latest/news.md 
-      - text: Reference
+      - text: "Reference"
         href: reference.qmd
-    right:
+      - text: "Help"
+        menu:
+          - text: "Report a Bug"
+            icon: "bug"
+            href: "https://github.com/DBOSlab/refloraR/issues"
+          - text: "Ask a Question"
+            icon: "chat-right-text"
+            href: "https://github.com/DBOSlab/refloraR/discussions"
+          - text: "FAQ"
+            icon: "question-circle"
+            href: faq/index.qmd
+        
+    tools:
       - icon: github
-        href: https://github.com/DBOSlab/refloraR-website/
+        href: https://github.com/DBOSlab/refloraR
+        text: refloraR GitHub
         
   sidebar:
     - id: get-started

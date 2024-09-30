@@ -4775,11 +4775,6 @@ padding: 5px;
 .document-example .citation {
 color: blue;
 }
-.trademark {
-font-size: 0.6rem;
-display: inline-block;
-margin-left: -3px;
-}
 .search-attribution {
 margin-top: 20px;
 padding-bottom: 20px;
@@ -4858,6 +4853,10 @@ height: 400px;
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../get-started/index.html"> 
 <span class="menu-text">Get Started</span></a>
   </li>  
@@ -4873,16 +4872,32 @@ height: 400px;
     <a class="nav-link" href="../reference.qmd"> 
 <span class="menu-text">Reference</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/DBOSlab/refloraR-website/"> <i class="bi bi-github" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/DBOSlab/refloraR/issues"><i class="bi bi-bug" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="dropdown-text">Report a Bug</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/DBOSlab/refloraR/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../faq/index.html"><i class="bi bi-question-circle" role="img">
+</i> 
+ <span class="dropdown-text">FAQ</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/DBOSlab/refloraR" title="refloraR GitHub" class="quarto-navigation-tool px-1" aria-label="refloraR GitHub"><i class="bi bi-github"></i></a>
   <a href class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -5607,6 +5622,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+       
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+<p>About</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../faq/index.html">
+<p>FAQ</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../LICENSE.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/DBOSlab/refloraR">
+      <i class="bi bi-github" role="img" aria-label="refloraR GitHub">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

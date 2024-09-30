@@ -1,0 +1,41 @@
+---
+title: "Frequently Asked Questions"
+---
+
+### What can I use refloraR for?
+
+***refloraR*** is an open-source scientific and technical publishing system built on Pandoc. You can weave together narrative text and code to produce elegantly formatted output as documents, web pages, blog posts, books and more.
+
+### How do I install refloraR?
+
+Visit the [***refloraR*** - Get Started page](/get-started/index.qmd), which provides installation instructions.
+
+### Is refloraR free to use?
+
+Yes! refloraR is [open source](/LICENSE.md). ***refloraR*** is licensed under the [MIT License](https://opensource.org/license/mit/).
+
+### What output can refloraR generate?
+
+There are many output available in refloraR This includes all of the built in Pandoc formats (e.g. HTML, PDF, MS Word, Revealjs, ePub, etc.) as well as various ways to publish multiple documents (websites, blogs, and books).
+
+### Who are the developers of refloraR?
+
+Development of refloraR is sponsored by [Posit, PBC](https://www.posit.co/). The core team of developers are:
+
+-   Domingos Cardoso ([\@DBOSlab](https://github.com/DBOSlab))
+
+-   Carlos Calderón ([\@caldecid](https://github.com/caldecid))
+
+Here is the [full contributors list](https://github.com/quarto-dev/quarto-cli/graphs/contributors). ***refloraR*** is open source and we welcome contributions in our github repository as well! <https://github.com/DBOSlab/refloraR>.
+
+### Why the name refloraR?
+
+We wanted to use a name that had meaning in the history of publishing and landed on ***refloraR***, which is the format of a book or pamphlet produced from full sheets printed with eight pages of text, four to a side, then folded twice to produce four leaves.
+
+### Where can I report bugs or request features?
+
+Thanks for finding something and sharing with us! You can file an issue in the ***refloraR*** repository <https://github.com/DBOSlab/refloraR/issues>.
+
+### Where can I ask questions and discuss using refloraR with others?
+
+The best place to ask questions and see what questions other people have is in ***refloraR*** discussions (<https://github.com/DBOSlab/refloraR/discussions>).

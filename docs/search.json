@@ -14,17 +14,6 @@
     "text": "The REFLORA Virtual Herbarium\nThe mission to build a virtual herbarium to display the images of Brazilian plants housed in foreign herbaria was presented by the Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) to the Rio de Janeiro Botanical Garden (JBRJ) in December 2010. The objective was to provide the capacity to store and display high-quality data regarding Brazil’s Flora within a public institution. The Reflora Virtual Herbarium is designed to allow taxonomists to perform procedures similar to those they are accustomed to doing within physical collections. On this site, they have access to high-quality images rather than physical specimens, which can be consulted, re-determined, and typified, among other functionalities. Curators also have access to specimen determination reports to help update their physical collections. This innovative system has been available for study and update by a group of over 900 taxonomists involved in the List of Species of the Brazilian Flora and Brazilian Flora 2020 projects.\nThe initial partners of this initiative were the herbaria K (Royal Botanic Gardens, Kew), P (Muséum national d’histoire naturelle, Paris), and the RB (JBRJ) herbarium. From 2014 onwards, with the support of SiBBr (Sistema de Informação sobre a Biodiversidade Brasileira) and IFN (Inventário Florestal Nacional), other European, American, and Brazilian herbaria were included in this initiative, many of which received equipment and training to digitize their plant specimens.\nThere are now 4,602,397 images of specimens available in the REFLORA Virtual Herbarium. Among them, 157,652 are nomenclatural types and 1,985,843 are georeferenced records.\nIf you are an herbarium curator and wish to publish images and data from your collection in REFLORA Virtual Herbarium, send a request to the contact email reflora@jbrj.gov.br."
   },
   {
-    "objectID": "articles/index.html",
-    "href": "articles/index.html",
-    "title": "Articles",
-    "section": "",
-    "text": "Summarize REFLORA collections\n\nSummarize collections\n\n\n\n\nDownload REFLORA specimen records\n\nDownload specimen records",
-    "crumbs": [
-      "Articles",
-      "Overview"
-    ]
-  },
-  {
     "objectID": "get-started/index.html",
     "href": "get-started/index.html",
     "title": "Install",
@@ -117,5 +106,58 @@
       "Summarize REFLORA collections",
       "Summarize all collections"
     ]
+  },
+  {
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "MIT License",
+    "section": "",
+    "text": "MIT License\nCopyright (c) 2024 refloraR authors\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+  },
+  {
+    "objectID": "faq/index.html",
+    "href": "faq/index.html",
+    "title": "Frequently Asked Questions",
+    "section": "",
+    "text": "What can I use refloraR for?\nrefloraR is an open-source scientific and technical publishing system built on Pandoc. You can weave together narrative text and code to produce elegantly formatted output as documents, web pages, blog posts, books and more.\n\n\nHow do I install refloraR?\nVisit the refloraR - Get Started page, which provides installation instructions.\n\n\nIs refloraR free to use?\nYes! refloraR is open source. refloraR is licensed under the MIT License.\n\n\nWhat output can refloraR generate?\nThere are many output available in refloraR This includes all of the built in Pandoc formats (e.g. HTML, PDF, MS Word, Revealjs, ePub, etc.) as well as various ways to publish multiple documents (websites, blogs, and books).\n\n\nWho are the developers of refloraR?\nDevelopment of refloraR is sponsored by Posit, PBC. The core team of developers are:\n\nDomingos Cardoso (@DBOSlab)\nCarlos Calderón (@caldecid)\n\nHere is the full contributors list. refloraR is open source and we welcome contributions in our github repository as well! https://github.com/DBOSlab/refloraR.\n\n\nWhy the name refloraR?\nWe wanted to use a name that had meaning in the history of publishing and landed on refloraR, which is the format of a book or pamphlet produced from full sheets printed with eight pages of text, four to a side, then folded twice to produce four leaves.\n\n\nWhere can I report bugs or request features?\nThanks for finding something and sharing with us! You can file an issue in the refloraR repository https://github.com/DBOSlab/refloraR/issues.\n\n\nWhere can I ask questions and discuss using refloraR with others?\nThe best place to ask questions and see what questions other people have is in refloraR discussions (https://github.com/DBOSlab/refloraR/discussions)."
+  },
+  {
+    "objectID": "articles/index.html",
+    "href": "articles/index.html",
+    "title": "Articles",
+    "section": "",
+    "text": "Summarize REFLORA collections\n\nSummarize collections\n\n\n\n\nDownload REFLORA specimen records\n\nDownload specimen records",
+    "crumbs": [
+      "Articles",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About refloraR",
+    "section": "",
+    "text": "The overarching goal of Quarto is to make the process of creating and collaborating on scientific and technical documents dramatically better. We hope to do this in several dimensions:\n\nCreate a writing and publishing environment with great integrated tools for technical content. We want to make authoring with embedded code, equations, figures, complex diagrams, interactive widgets, citations, cross references, and the myriad other special requirements of scientific discourse straightforward and productive for everyone.\nHelp authors take full advantage of the web as a connected, interactive platform for communications, while still providing the ability to create excellent printed output from the same document source. Researchers shouldn’t need to choose between LaTeX, MS Word, and HTML but rather be able to author documents that target all of them at the same time.\nMake reproducible research and publications the norm rather than the exception. Reproducibility requires that the code and data required to create a manuscript are an integrated part of it. However, this isn’t often straightforward in practice—Quarto aims to make it easier to adopt a reproducible workflow than not.\n\nrefloraR is open source software. We believe that it’s better for everyone if the tools used for research and science are free and open. Reproducibility, widespread sharing of knowledge and techniques, and the leveling of the playing field by eliminating cost barriers are but a few of the shared benefits of free software in science."
+  },
+  {
+    "objectID": "about.html#goals",
+    "href": "about.html#goals",
+    "title": "About refloraR",
+    "section": "",
+    "text": "The overarching goal of Quarto is to make the process of creating and collaborating on scientific and technical documents dramatically better. We hope to do this in several dimensions:\n\nCreate a writing and publishing environment with great integrated tools for technical content. We want to make authoring with embedded code, equations, figures, complex diagrams, interactive widgets, citations, cross references, and the myriad other special requirements of scientific discourse straightforward and productive for everyone.\nHelp authors take full advantage of the web as a connected, interactive platform for communications, while still providing the ability to create excellent printed output from the same document source. Researchers shouldn’t need to choose between LaTeX, MS Word, and HTML but rather be able to author documents that target all of them at the same time.\nMake reproducible research and publications the norm rather than the exception. Reproducibility requires that the code and data required to create a manuscript are an integrated part of it. However, this isn’t often straightforward in practice—Quarto aims to make it easier to adopt a reproducible workflow than not.\n\nrefloraR is open source software. We believe that it’s better for everyone if the tools used for research and science are free and open. Reproducibility, widespread sharing of knowledge and techniques, and the leveling of the playing field by eliminating cost barriers are but a few of the shared benefits of free software in science."
+  },
+  {
+    "objectID": "about.html#project",
+    "href": "about.html#project",
+    "title": "About refloraR",
+    "section": "Project",
+    "text": "Project\nAt the core of Quarto is Pandoc, a powerful and flexible document processing tool. Quarto adds a number of facilities to Pandoc aimed at scientific and technical publishing, including:\n\nEmbedding code and output from Python, R, and JavaScript via integration with Jupyter, Knitr, and Observable.\nA variety of extensions to Pandoc markdown useful for technical writing including cross-references, sub-figures, layout panels, hoverable citations and footnotes, callouts, and more.\n\nDevelopment of refloraR is sponsored by Posit, PBC, where we previously created a similar system (R Markdown) that shared the same goals, but was targeted principally at users of the R language. The same core team works on both Quarto and R Markdown:\n\nDomingos Cardoso (@DBOSlab)\nCarlos Calderón (@caldecid)\n\nWith refloraR, we are hoping to bring these tools to a much wider audience."
+  },
+  {
+    "objectID": "about.html#contribute",
+    "href": "about.html#contribute",
+    "title": "About refloraR",
+    "section": "Contribute",
+    "text": "Contribute\nYou can contribute to refloraR in many ways:\n\nBy opening issues to provide feedback and share ideas.\nBy submitting Pull Request to fix opened issues\nBy submitting Pull Request to suggest new features (it is considered good practice to open an issue for discussion before working on a pull request for a new feature)."
   }
 ]

@@ -76,13 +76,13 @@ If you are an herbarium curator and wish to publish images and data from your co
 ::: {style="text-align: center;"}
 ### [Get Started](/get-started/index.qmd)
 
-**Welcome new users!** Start here to learn how to install and use `refloraR`.
+**Welcome new users!** Start here to learn how to install and use ***refloraR***.
 :::
 
 ::: {style="text-align: center;"}
 ### [Articles](/articles/index.qmd)
 
-"How-to" articles to help you learn how to interact with `refloraR`.
+"How-to" articles to help you learn how to interact with ***refloraR***.
 :::
 :::
 :::
