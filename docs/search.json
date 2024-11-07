@@ -126,7 +126,7 @@
     "href": "articles/index.html",
     "title": "Articles",
     "section": "",
-    "text": "Summarize REFLORA collections\n\nSummarize collections\n\n\n\n\nDownload REFLORA specimen records\n\nDownload specimen records",
+    "text": "Summarize REFLORA collections\n\nSummarize collections\n\n\n\n\nDownload REFLORA specimen records\n\nDownload specimen records\n\n\n\n\n\nFilter REFLORA specimen records\n\nDownload specimen records",
     "crumbs": [
       "Articles",
       "Overview"
@@ -159,5 +159,41 @@
     "title": "About refloraR",
     "section": "Contribute",
     "text": "Contribute\nYou can contribute to refloraR in many ways:\n\nBy opening issues to provide feedback and share ideas.\nBy submitting Pull Request to fix opened issues\nBy submitting Pull Request to suggest new features (it is considered good practice to open an issue for discussion before working on a pull request for a new feature)."
+  },
+  {
+    "objectID": "articles/filter_reflora_occurrences.html",
+    "href": "articles/filter_reflora_occurrences.html",
+    "title": "Using reflora_occurrence",
+    "section": "",
+    "text": "In this document, we’ll demonstrate how to use the `reflora_occurrence` function to retrieve specific taxon records from the REFLORA virtual herbariums.\n\n\nThe `reflora_occurrence` function retrieves occurrence data for specific taxa from the REFLORA database. Below, we’ll use the function with different parameters to illustrate its capabilities.\n\n\n\nTo run the example, ensure that the function and any necessary packages are loaded in your R environment.\n\n# Load necessary packages\nlibrary(dplyr)\nlibrary(stringr)\nlibrary(tidyselect)\nlibrary(magrittr)\nlibrary(devtools)\n\nInstalling the package remotely fromthe Github repository\n\n#installing `refloraR`\ndevtools::install_github(\"DBOSlab/refloraR\")\nlibrary(refloraR)\n\nDefining taxa, herbariums and RecordYear spam\n\n# Define example taxa, herbaria, and RecordYear\nfam_taxa &lt;- c(\"Fabaceae\", \"Ochnaceae\")\nherbaria &lt;- c(\"ALCB\", \"HUEFS\", \"K\", \"RB\")\nyearSpam &lt;- c(\"2011\", \"2014\")\n\nRunning the `reflora_occurrence` function\n\n# Run the reflora_occurrence function with example parameters\nresult_1 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = yearSpam,\n  verbose = TRUE,\n  save = TRUE,\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(result_1[,1:8]))\n\nTrying another example. Exploring the “state” argument\n\n# Define example taxa, herbarium, RecordYear, and state\nfam_taxa &lt;- c(\"Fabaceae\")\nherbaria &lt;- c(\"RB\")\nyear &lt;- c(\"2008\")\nstate &lt;- \"Alagoas\"\n\nRunning the function\n\n# Run the reflora_occurrence function with example parameters\nresult_2 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year,\n  state = state,\n  verbose = TRUE,\n  save = TRUE,\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(result_2[,1:8]))",
+    "crumbs": [
+      "Articles",
+      "Filter REFLORA specimen records",
+      "Function Overview"
+    ]
+  },
+  {
+    "objectID": "articles/filter_reflora_occurrences.html#function-overview",
+    "href": "articles/filter_reflora_occurrences.html#function-overview",
+    "title": "Using reflora_occurrence",
+    "section": "",
+    "text": "The `reflora_occurrence` function retrieves occurrence data for specific taxa from the REFLORA database. Below, we’ll use the function with different parameters to illustrate its capabilities.",
+    "crumbs": [
+      "Articles",
+      "Filter REFLORA specimen records",
+      "Function Overview"
+    ]
+  },
+  {
+    "objectID": "articles/filter_reflora_occurrences.html#example-code",
+    "href": "articles/filter_reflora_occurrences.html#example-code",
+    "title": "Using reflora_occurrence",
+    "section": "",
+    "text": "To run the example, ensure that the function and any necessary packages are loaded in your R environment.\n\n# Load necessary packages\nlibrary(dplyr)\nlibrary(stringr)\nlibrary(tidyselect)\nlibrary(magrittr)\nlibrary(devtools)\n\nInstalling the package remotely fromthe Github repository\n\n#installing `refloraR`\ndevtools::install_github(\"DBOSlab/refloraR\")\nlibrary(refloraR)\n\nDefining taxa, herbariums and RecordYear spam\n\n# Define example taxa, herbaria, and RecordYear\nfam_taxa &lt;- c(\"Fabaceae\", \"Ochnaceae\")\nherbaria &lt;- c(\"ALCB\", \"HUEFS\", \"K\", \"RB\")\nyearSpam &lt;- c(\"2011\", \"2014\")\n\nRunning the `reflora_occurrence` function\n\n# Run the reflora_occurrence function with example parameters\nresult_1 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = yearSpam,\n  verbose = TRUE,\n  save = TRUE,\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(result_1[,1:8]))\n\nTrying another example. Exploring the “state” argument\n\n# Define example taxa, herbarium, RecordYear, and state\nfam_taxa &lt;- c(\"Fabaceae\")\nherbaria &lt;- c(\"RB\")\nyear &lt;- c(\"2008\")\nstate &lt;- \"Alagoas\"\n\nRunning the function\n\n# Run the reflora_occurrence function with example parameters\nresult_2 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year,\n  state = state,\n  verbose = TRUE,\n  save = TRUE,\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(result_2[,1:8]))",
+    "crumbs": [
+      "Articles",
+      "Filter REFLORA specimen records",
+      "Function Overview"
+    ]
   }
 ]

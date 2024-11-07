@@ -84,7 +84,13 @@ website:
           - text: Download all specimen records 
             href: articles/download_reflora_collections.qmd
           - text: Download specimen records for specific collections
-            href: articles/download_reflora_collections.qmd 
+            href: articles/download_reflora_collections.qmd
+        - section: Filter REFLORA specimen records
+          contents:
+          - text: Function Overview 
+            href: articles/filter_reflora_occurrences.qmd
+          - text: Example Code
+            href: articles/filter_reflora_occurrences.qmd 
 
 format:
   html:

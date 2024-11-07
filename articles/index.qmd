@@ -23,4 +23,10 @@ format: html
 
 - [Download specimen records](/articles/download_reflora_collections.qmd)
 :::
+::: {style="display: block;"}
+
+### Filter REFLORA specimen records   
+
+- [Download specimen records](/articles/filter_reflora_occurrences.qmd)
+:::
 :::

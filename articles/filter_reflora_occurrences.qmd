@@ -1,0 +1,93 @@
+---
+title: "Using `reflora_occurrence`"
+author: "Carlos Calderón & Domingos Cardoso"
+format: html
+editor: visual
+---
+
+# Example of Using \`reflora_occurrence\` Function
+
+In this document, we'll demonstrate how to use the \`reflora_occurrence\` function to retrieve specific taxon records from the REFLORA virtual herbariums.
+
+## Function Overview
+
+The \`reflora_occurrence\` function retrieves occurrence data for specific taxa from the REFLORA database. Below, we'll use the function with different parameters to illustrate its capabilities.
+
+## Example Code
+
+To run the example, ensure that the function and any necessary packages are loaded in your R environment.
+
+```{r, message=FALSE, warning=FALSE}
+# Load necessary packages
+library(dplyr)
+library(stringr)
+library(tidyselect)
+library(magrittr)
+library(devtools)
+```
+
+Installing the package remotely fromthe Github repository
+
+```{r, results = "hide", message=FALSE, warning=FALSE}
+#installing `refloraR`
+devtools::install_github("DBOSlab/refloraR")
+library(refloraR)
+```
+
+Defining taxa, herbariums and RecordYear spam
+
+```{r, message=FALSE, warning=FALSE}
+# Define example taxa, herbaria, and RecordYear
+fam_taxa <- c("Fabaceae", "Ochnaceae")
+herbaria <- c("ALCB", "HUEFS", "K", "RB")
+yearSpam <- c("2011", "2014")
+```
+
+Running the \`reflora_occurrence\` function
+
+```{r, message=FALSE, warning=FALSE}
+# Run the reflora_occurrence function with example parameters
+result_1 <- reflora_occurrence(
+  herbarium = herbaria,
+  taxon = fam_taxa,
+  recordYear = yearSpam,
+  verbose = TRUE,
+  save = TRUE,
+  dir = "reflora_occurrence",
+  filename = "reflora_occurrence_search"
+)
+
+# Display the result
+print(head(result_1[,1:8]))
+```
+
+Trying another example. Exploring the "state" argument
+
+```{r, message=FALSE, warning=FALSE}
+
+# Define example taxa, herbarium, RecordYear, and state
+fam_taxa <- c("Fabaceae")
+herbaria <- c("RB")
+year <- c("2008")
+state <- "Alagoas"
+```
+
+Running the function
+
+```{r, message=FALSE, warning=FALSE}
+# Run the reflora_occurrence function with example parameters
+result_2 <- reflora_occurrence(
+  herbarium = herbaria,
+  taxon = fam_taxa,
+  recordYear = year,
+  state = state,
+  verbose = TRUE,
+  save = TRUE,
+  dir = "reflora_occurrence",
+  filename = "reflora_occurrence_search"
+)
+
+# Display the result
+print(head(result_2[,1:8]))
+
+```
