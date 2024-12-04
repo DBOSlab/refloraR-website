@@ -1,19 +1,15 @@
 ---
-title: "Using `reflora_occurrence`"
-author: "Carlos Calderón & Domingos Cardoso"
+title: "Filter REFLORA specimen records"
 format: html
-editor: visual
 ---
 
-# Example of Using \`reflora_occurrence\` Function
-
-In this document, we'll demonstrate how to use the \`reflora_occurrence\` function to retrieve specific taxon records from the REFLORA virtual herbariums.
+In this document we'll demonstrate how to use the \`reflora_occurrence\` function, with different parameters, to retrieve specific taxon records from the REFLORA virtual herbariums.
 
 ## Function Overview
 
-The \`reflora_occurrence\` function retrieves occurrence data for specific taxa from the REFLORA database. Below, we'll use the function with different parameters to illustrate its capabilities.
+The \`reflora_occurrence\` function retrieves specific taxon records from the REFLORA herbariums {[https://ipt.jbrj.gov.br/reflora}{REFLORA](https://ipt.jbrj.gov.br/reflora}{REFLORA) , hosted by the Rio de Janeiro Botanical Garden {[https://www.gov.br/jbrj}](https://www.gov.br/jbrj}{Rio).
 
-## Example Code
+## Installing and loading dependencies
 
 To run the example, ensure that the function and any necessary packages are loaded in your R environment.
 
@@ -26,7 +22,7 @@ library(magrittr)
 library(devtools)
 ```
 
-Installing the package remotely fromthe Github repository
+Installing the package remotely from the Github repository
 
 ```{r, results = "hide", message=FALSE, warning=FALSE}
 #installing `refloraR`
@@ -34,60 +30,163 @@ devtools::install_github("DBOSlab/refloraR")
 library(refloraR)
 ```
 
-Defining taxa, herbariums and RecordYear spam
+## Example 1: Defining taxa and Herbarium
 
 ```{r, message=FALSE, warning=FALSE}
-# Define example taxa, herbaria, and RecordYear
-fam_taxa <- c("Fabaceae", "Ochnaceae")
-herbaria <- c("ALCB", "HUEFS", "K", "RB")
-yearSpam <- c("2011", "2014")
+# Define taxa
+fam_taxa <- c("Fabaceae")
+herbaria <- c("ALCB")
+
 ```
 
-Running the \`reflora_occurrence\` function
+Running the \`reflora_occurrence\` function. We assume that the dwca files, from the \`reflora_download\`, were already downloaded in the "download_reflora" file.
 
 ```{r, message=FALSE, warning=FALSE}
 # Run the reflora_occurrence function with example parameters
-result_1 <- reflora_occurrence(
+example_1 <- reflora_occurrence(
   herbarium = herbaria,
   taxon = fam_taxa,
-  recordYear = yearSpam,
   verbose = TRUE,
   save = TRUE,
+  path = "download_reflora",
   dir = "reflora_occurrence",
   filename = "reflora_occurrence_search"
 )
 
 # Display the result
-print(head(result_1[,1:8]))
+print(head(example_1[,3:8]))
 ```
 
-Trying another example. Exploring the "state" argument
+The function allows as input a vector with several taxa (families, genera and/or species) and herbariums
 
 ```{r, message=FALSE, warning=FALSE}
 
-# Define example taxa, herbarium, RecordYear, and state
-fam_taxa <- c("Fabaceae")
-herbaria <- c("RB")
-year <- c("2008")
-state <- "Alagoas"
+# Define example taxa and herbariums
+fam_taxa <- c("Abarema", "Justicia")
+herbaria <- c("ALCB", "HUEFS", "K")
 ```
 
 Running the function
 
 ```{r, message=FALSE, warning=FALSE}
 # Run the reflora_occurrence function with example parameters
-result_2 <- reflora_occurrence(
+example_1_1 <- reflora_occurrence(
   herbarium = herbaria,
   taxon = fam_taxa,
-  recordYear = year,
-  state = state,
-  verbose = TRUE,
-  save = TRUE,
+  path = "download_reflora",
   dir = "reflora_occurrence",
   filename = "reflora_occurrence_search"
 )
 
 # Display the result
-print(head(result_2[,1:8]))
+print(head(example_1_1[,3:8]))
+```
+
+## Example 2: Defining Record year
+
+```{r, message=FALSE, warning=FALSE}
+fam_taxa <- c("Guapira")
+herbaria <- c("RB")
+year_wanted <- "2011"
+```
+
+Running the function
+
+```{r, message=FALSE, warning=FALSE}
+
+# Run the reflora_occurrence function with example parameters
+example_2 <- reflora_occurrence(
+  herbarium = herbaria,
+  taxon = fam_taxa,
+  recordYear = year_wanted,
+  path = "download_reflora",
+  dir = "reflora_occurrence",
+  filename = "reflora_occurrence_search"
+)
+
+# Display the result
+print(head(example_2[,3:8]))
+```
+
+The function also allows a record year spam
+
+```{r, message=FALSE, warning=FALSE}
+fam_taxa <- c("Nyctaginaceae", "Ochnaceae")
+herbaria <- c("HUCP", "MUFAL")
+years_wanted <- c("2011", "2015")
+```
+
+Running the function
+
+```{r, message=FALSE, warning=FALSE}
+
+# Run the reflora_occurrence function with the recordYear spam
+example_2_1 <- reflora_occurrence(
+  herbarium = herbaria,
+  taxon = fam_taxa,
+  recordYear = years_wanted,
+  path = "download_reflora",
+  dir = "reflora_occurrence",
+  filename = "reflora_occurrence_search"
+)
+
+# Display the result
+print(head(example_2_1[,3:8]))
+```
+
+## Example 3: Defining the Brazilian state
+
+```{r, message=FALSE, warning=FALSE}
+fam_taxa <- c("Acanthaceae")
+herbaria <- c("RB")
+year_wanted <- "2011"
+Br_state <- c("Bahia")
+```
+
+Running the function
+
+```{r, message=FALSE, warning=FALSE}
+
+# Run the reflora_occurrence function with the Brazilian state
+example_3 <- reflora_occurrence(
+  herbarium = herbaria,
+  taxon = fam_taxa,
+  recordYear = year_wanted,
+  state = Br_state,
+  path = "download_reflora",
+  dir = "reflora_occurrence",
+  filename = "reflora_occurrence_search"
+)
+
+# Display the result
+print(head(example_3[,3:8]))
+```
+
+The function also allows as input the Brazilian states' acronyms and a vector with states
+
+```{r, message=FALSE, warning=FALSE}
+fam_taxa <- c("Fabaceae", "Nyctaginaceae")
+herbaria <- c("RB", "PEL")
+year_wanted <- c("2013", "2018")
+Br_acronyms <- c("Bahia", "SP") #BA = Bahia; SP = São Paulo
+```
+
+Running 'reflora_occurrence'
+
+```{r, message=FALSE, warning=FALSE}
+
+# Run the reflora_occurrence function with the recordYear spam
+example_3_1 <- reflora_occurrence(
+  herbarium = herbaria,
+  taxon = fam_taxa,
+  recordYear = year_wanted,
+  state = Br_acronyms,
+  path = "download_reflora",
+  dir = "reflora_occurrence",
+  filename = "reflora_occurrence_search"
+)
+
+# Display the result
+print(head(example_3_1[,3:8]))
 
 ```
