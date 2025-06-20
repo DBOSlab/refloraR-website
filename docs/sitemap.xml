@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dboslab.github.io/refloraR-website/index.html</loc>
-    <lastmod>2024-09-28T09:55:07.532Z</lastmod>
-  </url>
-  <url>
     <loc>https://dboslab.github.io/refloraR-website/get-started/index.html</loc>
     <lastmod>2024-09-26T14:53:23.634Z</lastmod>
   </url>
   <url>
-    <loc>https://dboslab.github.io/refloraR-website/articles/download_reflora_collections.html</loc>
-    <lastmod>2024-09-26T00:54:48.431Z</lastmod>
+    <loc>https://dboslab.github.io/refloraR-website/index.html</loc>
+    <lastmod>2025-06-20T22:56:08.673Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dboslab.github.io/refloraR-website/articles/filter_reflora_records.html</loc>
+    <lastmod>2025-06-20T22:13:08.615Z</lastmod>
   </url>
   <url>
     <loc>https://dboslab.github.io/refloraR-website/articles/summarize_reflora_collections.html</loc>
@@ -26,14 +26,14 @@
   </url>
   <url>
     <loc>https://dboslab.github.io/refloraR-website/articles/index.html</loc>
-    <lastmod>2024-11-07T15:40:04.280Z</lastmod>
+    <lastmod>2025-06-20T22:14:07.349Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dboslab.github.io/refloraR-website/articles/download_reflora_collections.html</loc>
+    <lastmod>2024-09-26T00:54:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://dboslab.github.io/refloraR-website/about.html</loc>
     <lastmod>2024-09-28T09:49:33.451Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dboslab.github.io/refloraR-website/articles/filter_reflora_occurrences.html</loc>
-    <lastmod>2024-12-04T22:03:01.950Z</lastmod>
   </url>
 </urlset>

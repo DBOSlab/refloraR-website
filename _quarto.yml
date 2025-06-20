@@ -78,19 +78,19 @@ website:
           - text: Summarize all collections 
             href: articles/summarize_reflora_collections.qmd
           - text: Summarize specific collections
-            href: articles/summarize_reflora_collections.qmd    
+            href: articles/summarize_reflora_specific_collections.qmd    
         - section: Download REFLORA specimen records
           contents:
           - text: Download all specimen records 
             href: articles/download_reflora_collections.qmd
           - text: Download specimen records for specific collections
-            href: articles/download_reflora_collections.qmd
+            href: articles/download_reflora_specific_collections.qmd
         - section: Filter REFLORA specimen records
           contents:
           - text: Function overview 
-            href: articles/filter_reflora_occurrences.qmd
+            href: articles/filter_reflora_records.qmd
           - text: Example code
-            href: articles/filter_reflora_occurrences.qmd 
+            href: articles/filter_reflora_examples.qmd 
 
 format:
   html:
@@ -98,11 +98,11 @@ format:
     embed-resources: true
     code-copy: true
     code-overflow: wrap
-    code-toos: true
+    code-tools: true
     css: styles.css
     eval: false
     theme:
       light: [spacelab, theme.scss]
       dark: [spacelab, theme-dark.scss]
-    include-in-header: gtm-body.html
-    include-before-body: gtm-head.html
+    include-in-header: gtm-head.html
+    include-before-body: gtm-body.html

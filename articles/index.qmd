@@ -24,6 +24,6 @@ format: html
 ::: {style="display: block;"}
 :::
 ### Filter REFLORA specimen records   
-- [Filter specimen records](/articles/filter_reflora_occurrences.qmd)
+- [Filter specimen records](/articles/filter_reflora_records.qmd)
 :::
 :::

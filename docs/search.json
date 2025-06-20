@@ -1,5 +1,16 @@
 [
   {
+    "objectID": "get-started/index.html#install-the-package",
+    "href": "get-started/index.html#install-the-package",
+    "title": "Install",
+    "section": "Install the package",
+    "text": "Install the package\nYou can install the latest development version of refloraR package from GitHub as follows:\n\n#install.packages(\"devtools\")\ndevtools::install_github(\"DBOSlab/refloraR\")\n\n\n\n\n\n\n\nCaution\n\n\n\nThe steps in this section are only needed if you need to run […]. If you already have a running […], then skip this section.",
+    "crumbs": [
+      "Get Started",
+      "Install"
+    ]
+  },
+  {
     "objectID": "index.html#the-reflora-programme",
     "href": "index.html#the-reflora-programme",
     "title": "refloraR",
@@ -11,64 +22,78 @@
     "href": "index.html#the-reflora-virtual-herbarium",
     "title": "refloraR",
     "section": "The REFLORA Virtual Herbarium",
-    "text": "The REFLORA Virtual Herbarium\nThe mission to build a virtual herbarium to display the images of Brazilian plants housed in foreign herbaria was presented by the Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) to the Rio de Janeiro Botanical Garden (JBRJ) in December 2010. The objective was to provide the capacity to store and display high-quality data regarding Brazil’s Flora within a public institution. The Reflora Virtual Herbarium is designed to allow taxonomists to perform procedures similar to those they are accustomed to doing within physical collections. On this site, they have access to high-quality images rather than physical specimens, which can be consulted, re-determined, and typified, among other functionalities. Curators also have access to specimen determination reports to help update their physical collections. This innovative system has been available for study and update by a group of over 900 taxonomists involved in the List of Species of the Brazilian Flora and Brazilian Flora 2020 projects.\nThe initial partners of this initiative were the herbaria K (Royal Botanic Gardens, Kew), P (Muséum national d’histoire naturelle, Paris), and the RB (JBRJ) herbarium. From 2014 onwards, with the support of SiBBr (Sistema de Informação sobre a Biodiversidade Brasileira) and IFN (Inventário Florestal Nacional), other European, American, and Brazilian herbaria were included in this initiative, many of which received equipment and training to digitize their plant specimens.\nThere are now 4,602,397 images of specimens available in the REFLORA Virtual Herbarium. Among them, 157,652 are nomenclatural types and 1,985,843 are georeferenced records.\nIf you are an herbarium curator and wish to publish images and data from your collection in REFLORA Virtual Herbarium, send a request to the contact email reflora@jbrj.gov.br."
+    "text": "The REFLORA Virtual Herbarium\nThe mission to build a virtual herbarium to display the images of Brazilian plants housed in foreign herbaria was presented by the Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) to the Rio de Janeiro Botanical Garden (JBRJ) in December 2010. The objective was to provide the capacity to store and display high-quality data regarding Brazil’s Flora within a public institution. The Reflora Virtual Herbarium is designed to allow taxonomists to perform procedures similar to those they are accustomed to doing within physical collections. On this site, they have access to high-quality images rather than physical specimens, which can be consulted, re-determined, and typified, among other functionalities. Curators also have access to specimen determination reports to help update their physical collections. This innovative system has been available for study and update by a group of over 900 taxonomists involved in the List of Species of the Brazilian Flora and Brazilian Flora 2020 projects.\nInitial partners of this initiative were the herbaria K (Royal Botanic Gardens, Kew), P (Muséum national d’histoire naturelle, Paris), and the RB (JBRJ) herbarium. From 2014 onwards, with the support of SiBBr (Sistema de Informação sobre a Biodiversidade Brasileira) and IFN (Inventário Florestal Nacional), other European, American, and Brazilian herbaria were included in this initiative, many of which received equipment and training to digitize their plant specimens.\nCurrently, 80 collections are published on the platform:\n\n\n[**ACAM**](https://ipt.jbrj.gov.br/reflora/resource?r=acam) (Universidade Estadual da Paraíba), [**ALCB**](https://ipt.jbrj.gov.br/reflora/resource?r=alcb_herbarium) (Universidade Federal da Bahia), [**ASE**](https://ipt.jbrj.gov.br/reflora/resource?r=ase_herbarium) (Universidade Federal de Sergipe), [**B**](https://ipt.jbrj.gov.br/reflora/resource?r=b_herb) (Berlin Botanical Garden and Botanical Museum), [**BRBA**](https://ipt.jbrj.gov.br/reflora/resource?r=brba) (Universidade Federal do Oeste da Bahia), [**CEN**](https://ipt.jbrj.gov.br/reflora/resource?r=cen) ( Embrapa Recursos Genéticos e Biotecnologia), [**CEPEC**](https://ipt.jbrj.gov.br/reflora/resource?r=cepec_herbarium) (Centro de Pesquisas do Cacau), [**CESJ**](https://ipt.jbrj.gov.br/reflora/resource?r=cesj) (Universidade Federal de Juiz de Fora), [**CGMS**](https://ipt.jbrj.gov.br/reflora/resource?r=cgms) (Universidade Federal de Mato Grosso do Sul), [**COR**](https://ipt.jbrj.gov.br/reflora/resource?r=cor) (Universidade Federal de Mato Grosso do Sul), [**CRI**](https://ipt.jbrj.gov.br/reflora/resource?r=cri) (Universidade do Extremo Sul Catarinense), [**DVPR**](https://ipt.jbrj.gov.br/reflora/resource?r=dvpr) (Universidade Tecnológica Federal do Paraná), [**E**](https://ipt.jbrj.gov.br/reflora/resource?r=e_hv) (Royal Botanic Garden Edinburgh), [**EAC**](https://ipt.jbrj.gov.br/reflora/resource?r=eac_herbarium) (Universidade Federal do Ceará), [**EBC**](https://ipt.jbrj.gov.br/reflora/resource?r=ebc) (Economic Botany Collection), [**ECT**](https://ipt.jbrj.gov.br/reflora/resource?r=ect) (Embrapa Clima Temperado), [**ESA**](https://ipt.jbrj.gov.br/reflora/resource?r=esa_herbarium) (Universidade de São Paulo), [**EVB**](https://ipt.jbrj.gov.br/reflora/resource?r=evb) (Universidade Federal da Integração Latino-Americana), [**FLOR**](https://ipt.jbrj.gov.br/reflora/resource?r=flor_herbarium) (Universidade Federal de Santa Catarina), [**FURB**](https://ipt.jbrj.gov.br/reflora/resource?r=furb_herbarium) (Universidade Regional de Blumenau), [**GH**](https://ipt.jbrj.gov.br/reflora/resource?r=gh_herb) (Harvard University), [**HBR**](https://ipt.jbrj.gov.br/reflora/resource?r=hbr_herbarium) (Universidade Federal de Santa Catarina), [**HCF**](https://ipt.jbrj.gov.br/reflora/resource?r=hcf) (Universidade Tecnológica Federal do Paraná), [**HDCF**](https://ipt.jbrj.gov.br/reflora/resource?r=hdcf_herbarium) (Universidade Federal de Santa Maria), [**HEPH**](https://ipt.jbrj.gov.br/reflora/resource?r=heph) (Jardim Botânico de Brasília), [**HERBAM**](https://ipt.jbrj.gov.br/reflora/resource?r=herbam) (Universidade do Estado de Mato Grosso), [**HRCB**](https://ipt.jbrj.gov.br/reflora/resource?r=hrcb) (Universidade Estadual Paulista), [**HSTM**](https://ipt.jbrj.gov.br/reflora/resource?r=hstm) (Universidade Federal do Oeste do Pará), [**HTO**](https://ipt.jbrj.gov.br/reflora/resource?r=hto) (Universidade Federal do Tocantins), [**HUCP**](https://ipt.jbrj.gov.br/reflora/resource?r=hucp) (Pontífica Universidade Católica do Paraná), [**HUEFS**](https://ipt.jbrj.gov.br/reflora/resource?r=huefs) (Universidade Estadual de Feira de Santana), [**HUEM**](https://ipt.jbrj.gov.br/reflora/resource?r=huem) (Universidade Estadual de Maringá), [**HUEMG**](https://ipt.jbrj.gov.br/reflora/resource?r=huemg) (Universidade do Estado de Minas Gerais), [**HUENF**](https://ipt.jbrj.gov.br/reflora/resource?r=huenf) (Universidade Estadual do Norte Fluminense), [**HUFU**](https://ipt.jbrj.gov.br/reflora/resource?r=hufu_herbarium) (Universidade Federal de Uberlândia), [**HUNI**](https://ipt.jbrj.gov.br/reflora/resource?r=huni) (Universidade Federal do Estado do Rio de Janeiro), [**HURB**](https://ipt.jbrj.gov.br/reflora/resource?r=hurb) (Universidade do Recôncavo da Bahia), [**HVASF**](https://ipt.jbrj.gov.br/reflora/resource?r=hvasf) (Universidade Federal do Vale do São Francisco), [**HVAT**](https://ipt.jbrj.gov.br/reflora/resource?r=hvat) (Universidade do Vale do Taquari), [**IAN**](https://ipt.jbrj.gov.br/reflora/resource?r=ian) (Embrapa Amazônia Oriental), [**IBGE**](https://ipt.jbrj.gov.br/reflora/resource?r=ibge) (Herbário IBGE), [**ICN**](https://ipt.jbrj.gov.br/reflora/resource?r=icn) (Universidade Federal do Rio Grande do Sul), [**JOI**](https://ipt.jbrj.gov.br/reflora/resource?r=joi) (Universidade da Região de Joinville), [**K**](https://ipt.jbrj.gov.br/reflora/resource?r=k_reflora) (Royal Botanic Gardens, Kew), [**LUSC**](https://ipt.jbrj.gov.br/reflora/resource?r=lusc) (Universidade do Estado de Santa Catarina), [**MAC**](https://ipt.jbrj.gov.br/reflora/resource?r=mac) (Instituto do Meio Ambiente do Estado de Alagoas), [**MBM**](https://ipt.jbrj.gov.br/reflora/resource?r=mbm_herbarium) (Museu Botânico Municipal), [**MBML**](https://ipt.jbrj.gov.br/reflora/resource?r=mbml) (Museu de Biologia Mello Leitão), [**MG**](https://ipt.jbrj.gov.br/reflora/resource?r=mg_herbarium) (Museu Paraense Emílio Goeldi), [**MOH**](https://ipt.jbrj.gov.br/reflora/resource?r=moh) ( Missouri Botanical Garden), [**MUFAL**](https://ipt.jbrj.gov.br/reflora/resource?r=mufal) (Universidade Federal de Alagoas), [**NYH**](https://ipt.jbrj.gov.br/reflora/resource?r=nyh) (The New York Botanical Garden), [**P**](https://ipt.jbrj.gov.br/reflora/resource?r=p_reflora) (Muséum national d’Histoire naturelle), [**PC**](https://ipt.jbrj.gov.br/reflora/resource?r=pc_herb) (Cryptogamy Collection at the Muséum national d'Histoire naturelle), [**PEL**](https://ipt.jbrj.gov.br/reflora/resource?r=pel) (Universidade Federal de Pelotas), [**PMSP**](https://ipt.jbrj.gov.br/reflora/resource?r=pmsp) (Prefeitura do Município de São Paulo), [**R**](https://ipt.jbrj.gov.br/reflora/resource?r=r_herbarium) (Museu Nacional), [**RB**](https://ipt.jbrj.gov.br/reflora/resource?r=rb_herbarium) (Instituto de Pesquisas Jardim Botânico do Rio de Janeiro), [**RBR**](https://ipt.jbrj.gov.br/reflora/resource?r=rbr) (Universidade Federal Rural do Rio de Janeiro), [**REAL**](https://ipt.jbrj.gov.br/reflora/resource?r=real) (Universidade Federal da Fronteira Sul), [**RFA**](https://ipt.jbrj.gov.br/reflora/resource?r=rfa) (Universidade Federal do Rio de Janeiro), [**RFFP**](https://ipt.jbrj.gov.br/reflora/resource?r=rffp) (Universidade do Estado do Rio de Janeiro), [**RON**](https://ipt.jbrj.gov.br/reflora/resource?r=ron) (Universidade Federal de Rondônia), [**RSPF**](https://ipt.jbrj.gov.br/reflora/resource?r=rspf) (Universidade de Passo Fundo), [**S**](https://ipt.jbrj.gov.br/reflora/resource?r=s_reflora) (Naturhistoriska Riksmuseet), [**SAMES**](https://ipt.jbrj.gov.br/reflora/resource?r=sames) (Universidade Federal do Espírito Santo), [**SJRP**](https://ipt.jbrj.gov.br/reflora/resource?r=sjrp) (Universidade Estadual Paulista Júlio de Mesquita Filho), [**SLUI**](https://ipt.jbrj.gov.br/reflora/resource?r=slui) (Universidade Estadual do Maranhão), [**SOF**](https://ipt.jbrj.gov.br/reflora/resource?r=sof) (Swiss Orchid Foundation), [**SPF**](https://ipt.jbrj.gov.br/reflora/resource?r=spf_herbarium) (Universidade de são Paulo), [**TEPB**](https://ipt.jbrj.gov.br/reflora/resource?r=tepb) (Universidade Federal do Piauí), [**UB**](https://ipt.jbrj.gov.br/reflora/resource?r=ub_herbarium) (Universidade de Brasília), [**UFG**](https://ipt.jbrj.gov.br/reflora/resource?r=ufg) (Universidade Federal de Goiás), [**UFRN**](https://ipt.jbrj.gov.br/reflora/resource?r=ufrn) (Universidade Federal do Rio Grande do Norte), [**UNIP**](https://ipt.jbrj.gov.br/reflora/resource?r=unip) (Universidade Paulista), [**UNOP**](https://ipt.jbrj.gov.br/reflora/resource?r=unop) (Universidade Estadual do Oeste do Paraná), [**UPCB**](https://ipt.jbrj.gov.br/reflora/resource?r=upcb_herbarium) (Universidade Federal de Paraná), [**US**](https://ipt.jbrj.gov.br/reflora/resource?r=us_reflora) (Smithsonian Institution), [**VIES**](https://ipt.jbrj.gov.br/reflora/resource?r=vies_herbarium) (Universidade Federal do Espírito Santo), [**W**](https://ipt.jbrj.gov.br/reflora/resource?r=w_reflora) (Naturhistorisches Museum Wien).\n\n\nThere are now 4,602,397 images of specimens available in the REFLORA Virtual Herbarium. Among them, 157,652 are nomenclatural types and 1,985,843 are georeferenced records.\nIf you are an herbarium curator and wish to publish images and data from your collection in REFLORA Virtual Herbarium, send a request to the contact email reflora@jbrj.gov.br."
   },
   {
-    "objectID": "get-started/index.html",
-    "href": "get-started/index.html",
-    "title": "Install",
+    "objectID": "articles/filter_reflora_records.html",
+    "href": "articles/filter_reflora_records.html",
+    "title": "Filter REFLORA specimen records",
     "section": "",
-    "text": "You can install the latest development version of refloraR package from GitHub as follows:\n\n#install.packages(\"devtools\")\ndevtools::install_github(\"DBOSlab/refloraR\")\n\n\n\n\n\n\n\nCaution\n\n\n\nThe steps in this section are only needed if you need to run […]. If you already have a running […], then skip this section.",
-    "crumbs": [
-      "Get Started",
-      "Install"
-    ]
-  },
-  {
-    "objectID": "get-started/index.html#install-the-package",
-    "href": "get-started/index.html#install-the-package",
-    "title": "Install",
-    "section": "",
-    "text": "You can install the latest development version of refloraR package from GitHub as follows:\n\n#install.packages(\"devtools\")\ndevtools::install_github(\"DBOSlab/refloraR\")\n\n\n\n\n\n\n\nCaution\n\n\n\nThe steps in this section are only needed if you need to run […]. If you already have a running […], then skip this section.",
-    "crumbs": [
-      "Get Started",
-      "Install"
-    ]
-  },
-  {
-    "objectID": "articles/download_reflora_collections.html",
-    "href": "articles/download_reflora_collections.html",
-    "title": "Download REFLORA specimen records",
-    "section": "",
-    "text": "Here in this article, we show how to use the package’s function reflora_summary for summarizing information about all REFLORA-associated collections.",
+    "text": "In this document we’ll demonstrate how to use the `reflora_records` function, with different parameters, to retrieve specific taxon records from the REFLORA virtual herbariums.",
     "crumbs": [
       "Articles",
-      "Download REFLORA specimen records",
-      "Download all specimen records"
+      "Filter REFLORA specimen records",
+      "Function overview"
     ]
   },
   {
-    "objectID": "articles/download_reflora_collections.html#download-all-specimen-records",
-    "href": "articles/download_reflora_collections.html#download-all-specimen-records",
-    "title": "Download REFLORA specimen records",
-    "section": "Download all specimen records",
-    "text": "Download all specimen records\n\nThe following code can be used to download original specimen records in Darwin Core Format and associated metada for all REFLORA collections.\n\n\nreflora_download(verbose = TRUE,\n                 dir = \"reflora_download\")",
+    "objectID": "articles/filter_reflora_records.html#function-overview",
+    "href": "articles/filter_reflora_records.html#function-overview",
+    "title": "Filter REFLORA specimen records",
+    "section": "Function Overview",
+    "text": "Function Overview\nThe `reflora_records` function retrieves occurrence records for specific taxa from the , hosted by the . This function handles automatic download, parsing, filtering, and optional saving of the occurrence data.",
     "crumbs": [
       "Articles",
-      "Download REFLORA specimen records",
-      "Download all specimen records"
+      "Filter REFLORA specimen records",
+      "Function overview"
     ]
   },
   {
-    "objectID": "articles/download_reflora_collections.html#download-specimen-records-for-specific-collections",
-    "href": "articles/download_reflora_collections.html#download-specimen-records-for-specific-collections",
-    "title": "Download REFLORA specimen records",
-    "section": "Download specimen records for specific collections",
-    "text": "Download specimen records for specific collections\n\nBy specifying a vector of herbarium acronyms, the user can download specimens records for just the specific herbarium collection.\n\n\nreflora_download(herbarium = c(\"ALCB\", \"HUEFS\", \"RB\", \"US\", \"K\"),\n                 verbose = TRUE,\n                 dir = \"reflora_download\")",
+    "objectID": "articles/filter_reflora_records.html#installing-and-loading-dependencies",
+    "href": "articles/filter_reflora_records.html#installing-and-loading-dependencies",
+    "title": "Filter REFLORA specimen records",
+    "section": "Installing and loading dependencies",
+    "text": "Installing and loading dependencies\nInstalling the package remotely from the Github repository\n\n#installing `refloraR`\ndevtools::install_github(\"DBOSlab/refloraR\")\nlibrary(refloraR)",
     "crumbs": [
       "Articles",
-      "Download REFLORA specimen records",
-      "Download all specimen records"
+      "Filter REFLORA specimen records",
+      "Function overview"
+    ]
+  },
+  {
+    "objectID": "articles/filter_reflora_records.html#example-1-defining-taxa-and-herbarium",
+    "href": "articles/filter_reflora_records.html#example-1-defining-taxa-and-herbarium",
+    "title": "Filter REFLORA specimen records",
+    "section": "Example 1: Defining taxa and Herbarium",
+    "text": "Example 1: Defining taxa and Herbarium\n\n# Define taxa\nfam_taxa &lt;- c(\"Fabaceae\")\nherbaria &lt;- c(\"ALCB\")\n\nRunning the `reflora_records` function. We assume that the dwca files, from the `reflora_download`, were already downloaded in the “download_reflora” file.\n\n# Run the reflora_records function with example parameters\nexample_1 &lt;- reflora_records(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  verbose = TRUE,\n  save = TRUE,\n  path = \"download_reflora\",\n  dir = \"reflora_records\",\n  filename = \"reflora_records_search\"\n)\n\n# Display the result\nprint(head(example_1[,3:8]))\n\nThe function allows as input a vector with several taxa (families, genera and/or species) and herbariums\n\n# Define example taxa and herbariums\nfam_taxa &lt;- c(\"Abarema\", \"Justicia\")\nherbaria &lt;- c(\"ALCB\", \"HUEFS\", \"K\")\n\nRunning the function\n\n# Run the reflora_records function with example parameters\nexample_1_1 &lt;- reflora_records(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  path = \"download_reflora\",\n  dir = \"reflora_records\",\n  filename = \"reflora_records_search\"\n)\n\n# Display the result\nprint(head(example_1_1[,3:8]))",
+    "crumbs": [
+      "Articles",
+      "Filter REFLORA specimen records",
+      "Function overview"
+    ]
+  },
+  {
+    "objectID": "articles/filter_reflora_records.html#example-2-defining-record-year",
+    "href": "articles/filter_reflora_records.html#example-2-defining-record-year",
+    "title": "Filter REFLORA specimen records",
+    "section": "Example 2: Defining Record year",
+    "text": "Example 2: Defining Record year\n\nfam_taxa &lt;- c(\"Guapira\")\nherbaria &lt;- c(\"RB\")\nyear_wanted &lt;- \"2011\"\n\nRunning the function\n\n# Run the reflora_records function with example parameters\nexample_2 &lt;- reflora_records(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year_wanted,\n  path = \"download_reflora\",\n  dir = \"reflora_records\",\n  filename = \"reflora_records_search\"\n)\n\n# Display the result\nprint(head(example_2[,3:8]))\n\nThe function also allows a record year spam\n\nfam_taxa &lt;- c(\"Nyctaginaceae\", \"Ochnaceae\")\nherbaria &lt;- c(\"HUCP\", \"MUFAL\")\nyears_wanted &lt;- c(\"2011\", \"2015\")\n\nRunning the function\n\n# Run the reflora_records function with the recordYear spam\nexample_2_1 &lt;- reflora_records(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = years_wanted,\n  path = \"download_reflora\",\n  dir = \"reflora_records\",\n  filename = \"reflora_records_search\"\n)\n\n# Display the result\nprint(head(example_2_1[,3:8]))",
+    "crumbs": [
+      "Articles",
+      "Filter REFLORA specimen records",
+      "Function overview"
+    ]
+  },
+  {
+    "objectID": "articles/filter_reflora_records.html#example-3-defining-the-brazilian-state",
+    "href": "articles/filter_reflora_records.html#example-3-defining-the-brazilian-state",
+    "title": "Filter REFLORA specimen records",
+    "section": "Example 3: Defining the Brazilian state",
+    "text": "Example 3: Defining the Brazilian state\n\nfam_taxa &lt;- c(\"Acanthaceae\")\nherbaria &lt;- c(\"RB\")\nyear_wanted &lt;- \"2011\"\nBr_state &lt;- c(\"Bahia\")\n\nRunning the function\n\n# Run the reflora_records function with the Brazilian state\nexample_3 &lt;- reflora_records(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year_wanted,\n  state = Br_state,\n  path = \"download_reflora\",\n  dir = \"reflora_records\",\n  filename = \"reflora_records_search\"\n)\n\n# Display the result\nprint(head(example_3[,3:8]))\n\nThe function also allows as input the Brazilian states’ acronyms and a vector with states\n\nfam_taxa &lt;- c(\"Fabaceae\", \"Nyctaginaceae\")\nherbaria &lt;- c(\"RB\", \"PEL\")\nyear_wanted &lt;- c(\"2013\", \"2018\")\nBr_acronyms &lt;- c(\"Bahia\", \"SP\") #BA = Bahia; SP = São Paulo\n\nRunning ‘reflora_records’\n\n# Run the reflora_records function with the recordYear spam\nexample_3_1 &lt;- reflora_records(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year_wanted,\n  state = Br_acronyms,\n  path = \"download_reflora\",\n  dir = \"reflora_records\",\n  filename = \"reflora_records_search\"\n)\n\n# Display the result\nprint(head(example_3_1[,3:8]))",
+    "crumbs": [
+      "Articles",
+      "Filter REFLORA specimen records",
+      "Function overview"
     ]
   },
   {
@@ -110,9 +135,9 @@
   {
     "objectID": "LICENSE.html",
     "href": "LICENSE.html",
-    "title": "MIT License",
+    "title": "",
     "section": "",
-    "text": "MIT License\nCopyright (c) 2024 refloraR authors\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    "text": "Code\n\n \n\n\n\n\n\n\nMIT License\nCopyright (c) 2024 refloraR authors\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
   },
   {
     "objectID": "faq/index.html",
@@ -133,18 +158,47 @@
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About refloraR",
+    "objectID": "articles/download_reflora_collections.html",
+    "href": "articles/download_reflora_collections.html",
+    "title": "Download REFLORA specimen records",
     "section": "",
-    "text": "The overarching goal of Quarto is to make the process of creating and collaborating on scientific and technical documents dramatically better. We hope to do this in several dimensions:\n\nCreate a writing and publishing environment with great integrated tools for technical content. We want to make authoring with embedded code, equations, figures, complex diagrams, interactive widgets, citations, cross references, and the myriad other special requirements of scientific discourse straightforward and productive for everyone.\nHelp authors take full advantage of the web as a connected, interactive platform for communications, while still providing the ability to create excellent printed output from the same document source. Researchers shouldn’t need to choose between LaTeX, MS Word, and HTML but rather be able to author documents that target all of them at the same time.\nMake reproducible research and publications the norm rather than the exception. Reproducibility requires that the code and data required to create a manuscript are an integrated part of it. However, this isn’t often straightforward in practice—Quarto aims to make it easier to adopt a reproducible workflow than not.\n\nrefloraR is open source software. We believe that it’s better for everyone if the tools used for research and science are free and open. Reproducibility, widespread sharing of knowledge and techniques, and the leveling of the playing field by eliminating cost barriers are but a few of the shared benefits of free software in science."
+    "text": "Here in this article, we show how to use the package’s function reflora_summary for summarizing information about all REFLORA-associated collections.",
+    "crumbs": [
+      "Articles",
+      "Download REFLORA specimen records",
+      "Download all specimen records"
+    ]
+  },
+  {
+    "objectID": "articles/download_reflora_collections.html#download-all-specimen-records",
+    "href": "articles/download_reflora_collections.html#download-all-specimen-records",
+    "title": "Download REFLORA specimen records",
+    "section": "Download all specimen records",
+    "text": "Download all specimen records\n\nThe following code can be used to download original specimen records in Darwin Core Format and associated metada for all REFLORA collections.\n\n\nreflora_download(verbose = TRUE,\n                 dir = \"reflora_download\")",
+    "crumbs": [
+      "Articles",
+      "Download REFLORA specimen records",
+      "Download all specimen records"
+    ]
+  },
+  {
+    "objectID": "articles/download_reflora_collections.html#download-specimen-records-for-specific-collections",
+    "href": "articles/download_reflora_collections.html#download-specimen-records-for-specific-collections",
+    "title": "Download REFLORA specimen records",
+    "section": "Download specimen records for specific collections",
+    "text": "Download specimen records for specific collections\n\nBy specifying a vector of herbarium acronyms, the user can download specimens records for just the specific herbarium collection.\n\n\nreflora_download(herbarium = c(\"ALCB\", \"HUEFS\", \"RB\", \"US\", \"K\"),\n                 verbose = TRUE,\n                 dir = \"reflora_download\")",
+    "crumbs": [
+      "Articles",
+      "Download REFLORA specimen records",
+      "Download all specimen records"
+    ]
   },
   {
     "objectID": "about.html#goals",
     "href": "about.html#goals",
     "title": "About refloraR",
-    "section": "",
-    "text": "The overarching goal of Quarto is to make the process of creating and collaborating on scientific and technical documents dramatically better. We hope to do this in several dimensions:\n\nCreate a writing and publishing environment with great integrated tools for technical content. We want to make authoring with embedded code, equations, figures, complex diagrams, interactive widgets, citations, cross references, and the myriad other special requirements of scientific discourse straightforward and productive for everyone.\nHelp authors take full advantage of the web as a connected, interactive platform for communications, while still providing the ability to create excellent printed output from the same document source. Researchers shouldn’t need to choose between LaTeX, MS Word, and HTML but rather be able to author documents that target all of them at the same time.\nMake reproducible research and publications the norm rather than the exception. Reproducibility requires that the code and data required to create a manuscript are an integrated part of it. However, this isn’t often straightforward in practice—Quarto aims to make it easier to adopt a reproducible workflow than not.\n\nrefloraR is open source software. We believe that it’s better for everyone if the tools used for research and science are free and open. Reproducibility, widespread sharing of knowledge and techniques, and the leveling of the playing field by eliminating cost barriers are but a few of the shared benefits of free software in science."
+    "section": "Goals",
+    "text": "Goals\nThe overarching goal of Quarto is to make the process of creating and collaborating on scientific and technical documents dramatically better. We hope to do this in several dimensions:\n\nCreate a writing and publishing environment with great integrated tools for technical content. We want to make authoring with embedded code, equations, figures, complex diagrams, interactive widgets, citations, cross references, and the myriad other special requirements of scientific discourse straightforward and productive for everyone.\nHelp authors take full advantage of the web as a connected, interactive platform for communications, while still providing the ability to create excellent printed output from the same document source. Researchers shouldn’t need to choose between LaTeX, MS Word, and HTML but rather be able to author documents that target all of them at the same time.\nMake reproducible research and publications the norm rather than the exception. Reproducibility requires that the code and data required to create a manuscript are an integrated part of it. However, this isn’t often straightforward in practice—Quarto aims to make it easier to adopt a reproducible workflow than not.\n\nrefloraR is open source software. We believe that it’s better for everyone if the tools used for research and science are free and open. Reproducibility, widespread sharing of knowledge and techniques, and the leveling of the playing field by eliminating cost barriers are but a few of the shared benefits of free software in science."
   },
   {
     "objectID": "about.html#project",
@@ -159,89 +213,5 @@
     "title": "About refloraR",
     "section": "Contribute",
     "text": "Contribute\nYou can contribute to refloraR in many ways:\n\nBy opening issues to provide feedback and share ideas.\nBy submitting Pull Request to fix opened issues\nBy submitting Pull Request to suggest new features (it is considered good practice to open an issue for discussion before working on a pull request for a new feature)."
-  },
-  {
-    "objectID": "articles/filter_reflora_occurrences.html",
-    "href": "articles/filter_reflora_occurrences.html",
-    "title": "Filter REFLORA specimen records",
-    "section": "",
-    "text": "In this document we’ll demonstrate how to use the `reflora_occurrence` function, with different parameters, to retrieve specific taxon records from the REFLORA virtual herbariums.",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA specimen records",
-      "Function overview"
-    ]
-  },
-  {
-    "objectID": "articles/filter_reflora_occurrences.html#function-overview",
-    "href": "articles/filter_reflora_occurrences.html#function-overview",
-    "title": "Filter REFLORA specimen records",
-    "section": "Function Overview",
-    "text": "Function Overview\nThe `reflora_occurrence` function retrieves specific taxon records from the REFLORA herbariums {https://ipt.jbrj.gov.br/reflora}{REFLORA , hosted by the Rio de Janeiro Botanical Garden {https://www.gov.br/jbrj}.",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA specimen records",
-      "Function overview"
-    ]
-  },
-  {
-    "objectID": "articles/filter_reflora_occurrences.html#example-code",
-    "href": "articles/filter_reflora_occurrences.html#example-code",
-    "title": "Using reflora_occurrence",
-    "section": "",
-    "text": "To run the example, ensure that the function and any necessary packages are loaded in your R environment.\n\n# Load necessary packages\nlibrary(dplyr)\nlibrary(stringr)\nlibrary(tidyselect)\nlibrary(magrittr)\nlibrary(devtools)\n\nInstalling the package remotely fromthe Github repository\n\n#installing `refloraR`\ndevtools::install_github(\"DBOSlab/refloraR\")\nlibrary(refloraR)\n\nDefining taxa, herbariums and RecordYear spam\n\n# Define example taxa, herbaria, and RecordYear\nfam_taxa &lt;- c(\"Fabaceae\", \"Ochnaceae\")\nherbaria &lt;- c(\"ALCB\", \"HUEFS\", \"K\", \"RB\")\nyearSpam &lt;- c(\"2011\", \"2014\")\n\nRunning the `reflora_occurrence` function\n\n# Run the reflora_occurrence function with example parameters\nresult_1 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = yearSpam,\n  verbose = TRUE,\n  save = TRUE,\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(result_1[,1:8]))\n\nTrying another example. Exploring the “state” argument\n\n# Define example taxa, herbarium, RecordYear, and state\nfam_taxa &lt;- c(\"Fabaceae\")\nherbaria &lt;- c(\"RB\")\nyear &lt;- c(\"2008\")\nstate &lt;- \"Alagoas\"\n\nRunning the function\n\n# Run the reflora_occurrence function with example parameters\nresult_2 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year,\n  state = state,\n  verbose = TRUE,\n  save = TRUE,\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(result_2[,1:8]))",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA specimen records",
-      "Function Overview"
-    ]
-  },
-  {
-    "objectID": "articles/filter_reflora_occurrences.html#installing-and-loading-dependencies",
-    "href": "articles/filter_reflora_occurrences.html#installing-and-loading-dependencies",
-    "title": "Filter REFLORA specimen records",
-    "section": "Installing and loading dependencies",
-    "text": "Installing and loading dependencies\nTo run the example, ensure that the function and any necessary packages are loaded in your R environment.\n\n# Load necessary packages\nlibrary(dplyr)\nlibrary(stringr)\nlibrary(tidyselect)\nlibrary(magrittr)\nlibrary(devtools)\n\nInstalling the package remotely from the Github repository\n\n#installing `refloraR`\ndevtools::install_github(\"DBOSlab/refloraR\")\nlibrary(refloraR)",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA specimen records",
-      "Function overview"
-    ]
-  },
-  {
-    "objectID": "articles/filter_reflora_occurrences.html#example-1-defining-taxa-and-herbarium",
-    "href": "articles/filter_reflora_occurrences.html#example-1-defining-taxa-and-herbarium",
-    "title": "Filter REFLORA specimen records",
-    "section": "Example 1: Defining taxa and Herbarium",
-    "text": "Example 1: Defining taxa and Herbarium\n\n# Define taxa\nfam_taxa &lt;- c(\"Fabaceae\")\nherbaria &lt;- c(\"ALCB\")\n\nRunning the `reflora_occurrence` function. We assume that the dwca files, from the `reflora_download`, were already downloaded in the “download_reflora” file.\n\n# Run the reflora_occurrence function with example parameters\nexample_1 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  verbose = TRUE,\n  save = TRUE,\n  path = \"download_reflora\",\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(example_1[,3:8]))\n\nThe function allows as input a vector with several taxa (families, genera and/or species) and herbariums\n\n# Define example taxa and herbariums\nfam_taxa &lt;- c(\"Abarema\", \"Justicia\")\nherbaria &lt;- c(\"ALCB\", \"HUEFS\", \"K\")\n\nRunning the function\n\n# Run the reflora_occurrence function with example parameters\nexample_1_1 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  path = \"download_reflora\",\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(example_1_1[,3:8]))",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA specimen records",
-      "Function overview"
-    ]
-  },
-  {
-    "objectID": "articles/filter_reflora_occurrences.html#example-2-defining-record-year",
-    "href": "articles/filter_reflora_occurrences.html#example-2-defining-record-year",
-    "title": "Filter REFLORA specimen records",
-    "section": "Example 2: Defining Record year",
-    "text": "Example 2: Defining Record year\n\nfam_taxa &lt;- c(\"Guapira\")\nherbaria &lt;- c(\"RB\")\nyear_wanted &lt;- \"2011\"\n\nRunning the function\n\n# Run the reflora_occurrence function with example parameters\nexample_2 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year_wanted,\n  path = \"download_reflora\",\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(example_2[,3:8]))\n\nThe function also allows a record year spam\n\nfam_taxa &lt;- c(\"Nyctaginaceae\", \"Ochnaceae\")\nherbaria &lt;- c(\"HUCP\", \"MUFAL\")\nyears_wanted &lt;- c(\"2011\", \"2015\")\n\nRunning the function\n\n# Run the reflora_occurrence function with the recordYear spam\nexample_2_1 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = years_wanted,\n  path = \"download_reflora\",\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(example_2_1[,3:8]))",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA specimen records",
-      "Function overview"
-    ]
-  },
-  {
-    "objectID": "articles/filter_reflora_occurrences.html#example-3-defining-the-brazilian-state",
-    "href": "articles/filter_reflora_occurrences.html#example-3-defining-the-brazilian-state",
-    "title": "Filter REFLORA specimen records",
-    "section": "Example 3: Defining the Brazilian state",
-    "text": "Example 3: Defining the Brazilian state\n\nfam_taxa &lt;- c(\"Acanthaceae\")\nherbaria &lt;- c(\"RB\")\nyear_wanted &lt;- \"2011\"\nBr_state &lt;- c(\"Bahia\")\n\nRunning the function\n\n# Run the reflora_occurrence function with the Brazilian state\nexample_3 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year_wanted,\n  state = Br_state,\n  path = \"download_reflora\",\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(example_3[,3:8]))\n\nThe function also allows as input the Brazilian states’ acronyms and a vector with states\n\nfam_taxa &lt;- c(\"Fabaceae\", \"Nyctaginaceae\")\nherbaria &lt;- c(\"RB\", \"PEL\")\nyear_wanted &lt;- c(\"2013\", \"2018\")\nBr_acronyms &lt;- c(\"Bahia\", \"SP\") #BA = Bahia; SP = São Paulo\n\nRunning ‘reflora_occurrence’\n\n# Run the reflora_occurrence function with the recordYear spam\nexample_3_1 &lt;- reflora_occurrence(\n  herbarium = herbaria,\n  taxon = fam_taxa,\n  recordYear = year_wanted,\n  state = Br_acronyms,\n  path = \"download_reflora\",\n  dir = \"reflora_occurrence\",\n  filename = \"reflora_occurrence_search\"\n)\n\n# Display the result\nprint(head(example_3_1[,3:8]))",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA specimen records",
-      "Function overview"
-    ]
   }
 ]
