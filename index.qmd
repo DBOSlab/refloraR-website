@@ -65,6 +65,9 @@ summary_df <- reflora_summary(verbose = FALSE,
     <a href="https://floradobrasil.jbrj.gov.br/reflora/herbarioVirtual/ConsultaPublicoHVUC/ConsultaPublicoHVUC.do?idTestemunho=50940" target="_blank">
       <img src="figures/ruellia_rb.jpg" class="carousel-img fade-img" alt="ruellia" />
     </a>
+    <a href="https://floradobrasil.jbrj.gov.br/reflora/herbarioVirtual/ConsultaPublicoHVUC/ConsultaPublicoHVUC.do?idTestemunho=3668646" target="_blank">
+      <img src="figures/staelia_ny.jpg" class="carousel-img fade-img" alt="staelia" />
+    </a>
   </div>
 </div>
 
