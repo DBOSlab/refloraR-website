@@ -8,12 +8,12 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "figures/reflorar_hex_sticker.png",
+  fig.path = "figures/",
   out.width = "100%"
 )
 ```
 
-# refloraR <img src="figures/reflorar_hex_sticker.png" align="right" alt="" width="120" />
+# refloraR <img src="figures/reflorar_hex_sticker.png" align="right" width="120" />
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/DBOSlab/refloraR/graph/badge.svg)](https://app.codecov.io/gh/DBOSlab/refloraR)
