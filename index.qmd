@@ -216,7 +216,7 @@ If you are an herbarium curator and wish to publish images and data from your co
 ::: {style="text-align: center;"}
 ### [Get Started](/get-started/index.qmd)
 
-**Welcome new users!** Start here to learn how to install ***refloraR***.
+Welcome new users! Start learning how to install ***refloraR***.
 :::
 
 ::: {style="text-align: center;"}
