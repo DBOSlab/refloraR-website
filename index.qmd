@@ -27,7 +27,7 @@ summary_df <- reflora_summary(verbose = FALSE,
 
 <!-- Seamless horizontal carousel from right to left and loops infinitely -->
 ```{=html}
-<div style="position: relative; overflow: hidden; width: 100%; margin-bottom: 30px;">
+<div style="position: relative; overflow: visible; width: 100%; margin-bottom: 30px;">
   <div class="carousel-track">
     <a href="https://floradobrasil.jbrj.gov.br/reflora/herbarioVirtual/ConsultaPublicoHVUC/ConsultaPublicoHVUC.do?idTestemunho=5990667" target="_blank">
       <img src="figures/paubrasilia_rb.jpg" class="carousel-img fade-img" alt="paubrasilia" />
@@ -99,8 +99,10 @@ summary_df <- reflora_summary(verbose = FALSE,
   height: 120px;
   border-radius: 4px;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease-in-out;
   cursor: pointer;
+  position: relative;
+  z-index: 0;
 }
 
 .fade-img {
@@ -108,7 +110,12 @@ summary_df <- reflora_summary(verbose = FALSE,
 }
 
 .carousel-img:hover {
-  transform: scale(1.3);
+  transform: scale(1.5);
+  z-index: 10;
+}
+
+.carousel-track a {
+  position: relative;
 }
 </style>
 ```
