@@ -1,0 +1,145 @@
+---
+format:
+  html:
+    toc: true
+    toc-depth: 3
+resources:
+  - authors/images/
+---
+
+<style>
+  body {
+    background-image: url('/figures/reflora_bg.png');
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top center;
+    position: relative;
+    z-index: 0;
+  }
+
+  .background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* white with 80% opacity */
+    z-index: -1;
+  }
+</style>
+
+## The `refloraR` Developers
+
+```{=html}
+<div class="authors-group">
+  <div class="author-card">
+    <img src="images/domingos.jpg" alt="Domingos Cardoso" class="author-photo" />
+    <div class="author-info">
+      <h3 class="author-name">Domingos Cardoso</h3>
+      <p><a href="mailto:domingoscardoso@jbrj.gov.br">Email</a> | <a href="https://orcid.org/0000-0001-7072-2656" target="_blank">ORCID</a> | <a href="https://lattes.cnpq.br/" target="_blank">Lattes</a></p>
+      <p>Botanist and bioinformatist leading the RefloraR initiative, and specialist in legume taxonomy and evolution.</p>
+    </div>
+  </div>
+
+  <div class="author-card">
+    <img src="images/carlos.jpg" alt="Carlos Calderón" class="author-photo" />
+    <div class="author-info">
+      <h3 class="author-name">Carlos Calderón</h3>
+      <p><a href="mailto:caldecid@gmail.com">Email</a> | <a href="https://orcid.org/0000-0002-3897-4615" target="_blank">ORCID</a> | <a href="https://lattes.cnpq.br/" target="_blank">Lattes</a></p>
+      <p>Bioinformatist contributor to the RefloraR initiative and data workflows supporting biodiversity platforms.</p>
+    </div>
+  </div>
+</div>
+```
+
+## The REFLORA Team
+
+```{=html}
+<div class="authors-group">
+  <div class="author-card">
+    <img src="images/rafaela.jpg" alt="Rafaela Campostrini Forzza" class="author-photo" />
+    <div class="author-info">
+      <h3 class="author-name">Rafaela Campostrini Forzza</h3>
+      <p><a href="mailto:rafaela@jbrj.gov.br">Email</a> | <a href="https://lattes.cnpq.br/" target="_blank">Lattes</a></p>
+      <p>Senior taxonomist and coordinator of the Reflora initiative in Brazil.</p>
+    </div>
+  </div>
+  
+  <div class="author-card">
+    <img src="images/paula.jpg" alt="Paula Leitman" class="author-photo" />
+    <div class="author-info">
+      <h3 class="author-name">Paula Leitman</h3>
+      <p><a href="mailto:leitman@jbrj.gov.br">Email</a> | <a href="https://lattes.cnpq.br/" target="_blank">Lattes</a></p>
+      <p>Flora data specialist and editor of Brazilian plant checklists.</p>
+    </div>
+  </div>
+
+  <div class="author-card">
+    <img src="images/fabiana.jpg" alt="Fabiana Filardi" class="author-photo" />
+    <div class="author-info">
+      <h3 class="author-name">Fabiana Filardi</h3>
+      <p><a href="mailto:fabiana@jbrj.gov.br">Email</a> | <a href="https://lattes.cnpq.br/" target="_blank">Lattes</a></p>
+      <p>Expert in biodiversity data integration and Reflora team member.</p>
+    </div>
+  </div>
+
+  <div class="author-card">
+    <img src="images/anaflavia.jpg" alt="Ana Flávia Versiane" class="author-photo" />
+    <div class="author-info">
+      <h3 class="author-name">Ana Flávia Versiane</h3>
+      <p><a href="mailto:anaflavia@jbrj.gov.br">Email</a> | <a href="https://lattes.cnpq.br/" target="_blank">Lattes</a></p>
+      <p>Research associate contributing to Reflora systematics and data curation.</p>
+    </div>
+  </div>
+</div>
+```
+
+<style>
+.authors-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 2rem;
+}
+
+.author-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 260px;
+  transition: transform 0.3s ease;
+}
+
+.author-card:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.author-photo {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.author-info {
+  text-align: center;
+}
+
+.author-info p a {
+  margin: 0 6px;
+  color: #007bff;
+  font-size: 1.1rem;
+}
+
+.author-name {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+</style>
+

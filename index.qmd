@@ -128,7 +128,7 @@ summary_df <- reflora_summary(verbose = FALSE,
 ::: {style="text-align: left;"}
 
 \
-***refloraR*** is An R package for exploring plant specimen collections from [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora) hosted by [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj). The package interacts with the REFLORA Integrated Publishing Toolkit (IPT) by readily downloading full specimen records for any herbarium in Darwin Core Format. Also, the package has specific functions to summarize information and filter specific information by taxonomic or geographical search.\
+`refloraR` is An R package for exploring plant specimen collections from [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora) hosted by [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj). The package interacts with the REFLORA Integrated Publishing Toolkit (IPT) by readily downloading full specimen records for any herbarium in Darwin Core Format. Also, the package has specific functions to summarize information and filter specific information by taxonomic or geographical search.\
 \
 
 ## The REFLORA programme
@@ -216,13 +216,13 @@ If you are an herbarium curator and wish to publish images and data from your co
 ::: {style="text-align: center;"}
 ### [Get Started](/get-started/index.qmd)
 
-Welcome new users! Start learning how to install ***refloraR***.
+Welcome new users! Start learning how to install `refloraR`
 :::
 
 ::: {style="text-align: center;"}
 ### [Articles](/articles/index.qmd)
 
-"How-to" articles to help you learn how to use ***refloraR***.
+"How-to" articles to help you learn how to use `refloraR`
 :::
 :::
 :::

@@ -39,9 +39,11 @@ website:
       - text: "Articles"
         href: articles/index.qmd
       - text: "News"
-        href: packages/refloraR/latest/news.md 
+        href: news/index.qmd 
       - text: "Reference"
-        href: reference.qmd
+        href: reference/index.qmd
+      - text: "Authors"
+        href: authors/index.qmd
       - text: "Help"
         menu:
           - text: "Report a Bug"
@@ -59,15 +61,7 @@ website:
         href: https://github.com/DBOSlab/refloraR
         text: refloraR GitHub
         
-  sidebar:
-    - id: get-started
-      title: Get Started
-      collapse-level: 2
-      style: "floating"
-      align: left
-      contents:
-        - href: get-started/index.qmd
-                
+  sidebar:                
     - id: articles
       title: Articles
       collapse-level: 3
@@ -79,14 +73,18 @@ website:
           contents:
           - text: Summarize herbarium collections 
             href: articles/summarize_reflora_collections.qmd  
-        - section: Download REFLORA specimen records
+        - section: Download and parse REFLORA records
           contents:
           - text: Download specimen records 
             href: articles/download_reflora_collections.qmd
-        - section: Filter REFLORA specimen records
+          - text: Parse REFLORA Darwin Core Archives 
+            href: articles/parse_reflora_dwca.qmd
+        - section: Filter REFLORA records
           contents:
-          - text: Filter specimen records 
+          - text: Retrieve taxon-specific specimens 
             href: articles/filter_reflora_records.qmd
+          - text: Filter indeterminate specimens 
+            href: articles/filter_indeterminate_reflora_specimens.qmd
 
 format:
   html:

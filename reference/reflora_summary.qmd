@@ -1,0 +1,100 @@
+---
+title: "reflora_summary"
+description: "Documentation for `reflora_summary()` from the refloraR package."
+toc: true
+toc-depth: 3
+---
+ 
+```{r}
+#| eval: false
+refloraR::reflora_summary()
+```
+
+ **Description**
+ \description
+{
+
+
+Summarize current available plant specimen records at
+
+\href
+
+{
+https://ipt.jbrj.gov.br/reflora/
+}
+
+{
+REFLORA Virtual Herbarium
+}
+
+
+hosted by the 
+\href
+
+{
+https://www.gov.br/jbrj/pt-br
+}
+
+{
+Rio de Janeiro Botanical Garden
+}
+.
+
+} 
+
+ **Details**
+  
+
+ **Arguments**
+
+| Argument | Description |
+|----------|-------------|
+| \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as  \code { NULL } | \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as  \code { NULL } |
+| \item  { verbose }  { Logical, if  \code { FALSE } | \item  { verbose }  { Logical, if  \code { FALSE } |
+| \item  { save }  { Logical, if  \code { TRUE } | \item  { save }  { Logical, if  \code { TRUE } |
+| \item  { dir }  { Pathway to the computer's directory, where the table-formatted
+ summary will be saved. The default is to create a directory named
+   \code { reflora_summary } | \item  { dir }  { Pathway to the computer's directory, where the table-formatted
+ summary will be saved. The default is to create a directory named
+   \code { reflora_summary } | 
+
+ **Value**
+ \value
+{
+
+
+A dataframe summarizing current available plant specimen records in
+
+REFLORA Virtual Herbarium.
+
+} 
+
+ **Examples**
+```r
+ \examples
+{
+
+
+\dontrun
+{
+
+
+
+
+reflora_summary(herbarium = c("ALCB", "HUEFS", "K", "RB"),
+
+                verbose = TRUE,
+
+                save = TRUE,
+
+                dir = "reflora_summary")
+
+}
+
+
+
+
+} 
+```

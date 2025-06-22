@@ -1,0 +1,95 @@
+---
+title: "reflora_download"
+description: "Documentation for `reflora_download()` from the refloraR package."
+toc: true
+toc-depth: 3
+---
+ 
+```{r}
+#| eval: false
+refloraR::reflora_download()
+```
+
+ **Description**
+ \description
+{
+
+
+Download plant specimen records in Darwin Core Format from any
+
+herbarium collection at 
+\href
+
+{
+https://ipt.jbrj.gov.br/reflora/
+}
+
+{
+REFLORA Virtual Herbarium
+}
+
+
+hosted by the 
+\href
+
+{
+https://www.gov.br/jbrj/pt-br
+}
+
+{
+Rio de Janeiro Botanical Garden
+}
+.
+
+} 
+
+ **Details**
+  
+
+ **Arguments**
+
+| Argument | Description |
+|----------|-------------|
+| \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as NULL to download records for all REFLORA herbaria. } | \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as NULL to download records for all REFLORA herbaria. } |
+| \item  { repatriated }  { Logical. If  \code { FALSE } | \item  { repatriated }  { Logical. If  \code { FALSE } |
+| \item  { verbose }  { Logical, if  \code { FALSE } | \item  { verbose }  { Logical, if  \code { FALSE } |
+| \item  { dir }  { Pathway to the computer's directory, where the file will be saved.
+ The default is to create a directory named  \code { reflora_download } | \item  { dir }  { Pathway to the computer's directory, where the file will be saved.
+ The default is to create a directory named  \code { reflora_download } | 
+
+ **Value**
+ \value
+{
+
+
+Folder with DwC-A files for an specific or all REFLORA-associated herbaria.
+
+} 
+
+ **Examples**
+```r
+ \examples
+{
+
+
+\dontrun
+{
+
+
+
+
+reflora_download(herbarium = c("ALCB", "HUEFS", "K", "RB"),
+
+                 verbose = TRUE,
+
+                 dir = "reflora_download")
+
+}
+
+
+
+
+} 
+```

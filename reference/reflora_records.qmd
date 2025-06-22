@@ -1,0 +1,155 @@
+---
+title: "reflora_records"
+description: "Documentation for `reflora_records()` from the refloraR package."
+toc: true
+toc-depth: 3
+---
+ 
+```{r}
+#| eval: false
+refloraR::reflora_records()
+```
+
+ **Description**
+ \description
+{
+
+
+Retrieve occurrence records for specific taxa from the
+
+\href
+
+{
+https://ipt.jbrj.gov.br/reflora/
+}
+
+{
+REFLORA Virtual Herbarium
+}
+,
+
+hosted bythe 
+\href
+
+{
+https://www.gov.br/jbrj/pt-br
+}
+
+{
+Rio de Janeiro Botanical Garden
+}
+.
+
+This function handles automatic download, parsing, filtering, and optional
+
+saving of the occurrence data.
+
+} 
+
+ **Details**
+ \details
+{
+
+
+This function processes Darwin Core Archive (DwC-A) files from REFLORA. You
+
+may supply a specific path to previously downloaded files using `path`, or let
+
+the function handle the download automatically. Filters can be applied by taxon
+
+name, herbarium code, state, and year. The `reorder` argument allows you to
+
+customize the structure of the returned data. Use `verbose = TRUE` to see
+
+status updates. Use `save = TRUE` to save results to disk as a CSV file in the
+
+specified directory.
+
+} 
+
+ **Arguments**
+
+| Argument | Description |
+|----------|-------------|
+| \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as  \code { NULL } | \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as  \code { NULL } |
+| \item  { repatriated }  { Logical. If  \code { FALSE } | \item  { repatriated }  { Logical. If  \code { FALSE } |
+| \item  { taxon }  { A vector with the required taxon. It can be one or a vector of
+ multiple scientific names at family, genus or species level. } | \item  { taxon }  { A vector with the required taxon. It can be one or a vector of
+ multiple scientific names at family, genus or species level. } |
+| \item  { state }  { A vector with the required Brazilian state(s) (full name or acronym). } | \item  { state }  { A vector with the required Brazilian state(s) (full name or acronym). } |
+| \item  { recordYear }  { A vector with the required record year or year range. For example,
+ \code { "1992" } | \item  { recordYear }  { A vector with the required record year or year range. For example,
+ \code { "1992" } |
+| \item  { indets }  { Logical, if  \code { FALSE } | \item  { indets }  { Logical, if  \code { FALSE } |
+| \item  { reorder }  { Provide a vector with any of  \code { c("herbarium", "taxa", "collector", "area", "year") } | \item  { reorder }  { Provide a vector with any of  \code { c("herbarium", "taxa", "collector", "area", "year") } |
+| \item  { path }  { Optional; a pathway to the computer's directory, where the REFLORA-downloaded
+ dwca folders are. If you do not provide a path, the function will download the
+ most updated version of the REFLORA dwca files. } | \item  { path }  { Optional; a pathway to the computer's directory, where the REFLORA-downloaded
+ dwca folders are. If you do not provide a path, the function will download the
+ most updated version of the REFLORA dwca files. } |
+| \item  { updates }  { Logical, if  \code { FALSE } | \item  { updates }  { Logical, if  \code { FALSE } |
+| \item  { verbose }  { Logical, if  \code { FALSE } | \item  { verbose }  { Logical, if  \code { FALSE } |
+| \item  { save }  { Logical, if  \code { TRUE } | \item  { save }  { Logical, if  \code { TRUE } |
+| \item  { dir }  { Pathway to the computer's directory, where the table-formatted
+ summary will be saved. The default is to create a directory named
+   \code { reflora_records } | \item  { dir }  { Pathway to the computer's directory, where the table-formatted
+ summary will be saved. The default is to create a directory named
+   \code { reflora_records } |
+| \item  { filename }  { Name of the output file to be saved. The default is to create
+ a file entitled  \code { reflora_records_search.csv } | \item  { filename }  { Name of the output file to be saved. The default is to create
+ a file entitled  \code { reflora_records_search.csv } | 
+
+ **Value**
+ \value
+{
+
+
+A `data.frame` containing occurrence records for the selected taxon
+
+and criteria from the chosen REFLORA herbaria. If `save = TRUE`, the function
+
+will write the results to a CSV file inside the `dir` directory, and also
+
+generate or append a `log.txt` file that summarizes the download session
+
+including total records and breakdowns by herbarium, family, genus, country,
+
+and state.
+
+} 
+
+ **Examples**
+```r
+ \examples
+{
+
+
+\dontrun
+{
+
+
+
+
+fam_taxa <- c("Fabaceae", "Ochnaceae")
+
+reflora_records(herbarium = c("ALCB", "HUEFS", "K", "RB"),
+
+                taxon = fam_taxa,
+
+                verbose = TRUE,
+
+                save = TRUE,
+
+                dir = "reflora_records",
+
+                filename = "reflora_records_search")
+
+}
+
+
+
+
+} 
+```

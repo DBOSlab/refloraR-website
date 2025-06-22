@@ -3,28 +3,73 @@ title: "Download REFLORA specimen records"
 format: html
 ---
 
-Here in this article, we show how to use the package's function `reflora_summary` for summarizing information about all REFLORA-associated collections.\
-\
+Here we present a complete guide to the `reflora_download()` function of the `refloraR` package. This function allows users to retrieve plant specimen records in Darwin Core Format from the REFLORA Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden.
 
-## Download all specimen records
+## Function Overview
 
-\
-The following code can be used to download original specimen records in Darwin Core Format and associated metada for all REFLORA collections.\
-\
+The `reflora_download()` function downloads specimen data for all or specific REFLORA-associated herbarium collections. It offers flexibility through several arguments.
 
-``` r
-reflora_download(verbose = TRUE,
-                 dir = "reflora_download")
+## Arguments
+
+| Argument    | Description |
+|-------------|-------------|
+| `herbarium` | A character vector of herbarium acronyms (e.g., `"RB"`, `"K"`). Use `NULL` to download all collections. |
+| `repatriated` | Logical. If `FALSE`, repatriated herbaria will be skipped. Use `reflora_summary()` to identify them. |
+| `verbose`   | Logical. If `TRUE`, messages describing download progress will be shown. |
+| `dir`       | Directory path to save the files. Default is `"reflora_download"`. |
+
+## Download All REFLORA Specimen Records
+
+Use the function with default settings to download all REFLORA data.
+
+```r
+reflora_download(
+  verbose = TRUE, 
+  dir = "reflora_download"
+)
 ```
 
-## Download specimen records for specific collections
+## Download Specimens from Selected Collections
 
-\
-By specifying a vector of herbarium acronyms, the user can download specimens records for just the specific herbarium collection.\
-\
+Specify collection codes with the `herbarium` argument:
 
-``` r
-reflora_download(herbarium = c("ALCB", "HUEFS", "RB", "US", "K"),
-                 verbose = TRUE,
-                 dir = "reflora_download")
+```r
+reflora_download(
+  herbarium = c("ALCB", "HUEFS", "RB", "US", "K"),
+  verbose = TRUE,
+  dir = "reflora_download"
+)
 ```
+
+## Skipping Repatriated Collections
+
+To exclude collections marked as repatriated:
+
+```r
+reflora_download(
+  repatriated = FALSE,
+  verbose = TRUE,
+  dir = "reflora_download"
+)
+```
+
+## Example: Custom Directory Without Verbose Messages
+
+```r
+reflora_download(
+  herbarium = "RB",
+  verbose = FALSE,
+  dir = "custom_directory"
+)
+```
+
+## Additional Tips
+
+- Use `reflora_summary()` to inspect which collections are available and whether they are repatriated.
+- Ensure internet access is available when running `reflora_download()`.
+- Review the contents of the downloaded folder to verify `occurrence.txt` and metadata presence.
+
+## See Also
+
+- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Get a summary of REFLORA collections
+

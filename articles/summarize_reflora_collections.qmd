@@ -3,28 +3,76 @@ title: "Summarize REFLORA collections"
 format: html
 ---
 
-Here in this article, we show how to use the package's function `reflora_summary` for summarizing information about all REFLORA-associated collections.\
-\
+Here we present a complete guide to the `reflora_summary()` function of the `refloraR` package. This function provides summary statistics for plant specimen records available in the REFLORA Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden and published via the [Integrated Publishing Toolkit (IPT)](https://ipt.jbrj.gov.br/reflora).
 
-## Summarize all collections
-\
-The following code can be used to extract a summary of all REFLORA-associated collections, including herbarium acronym, curator's email contact, number of records and a direct link to the original REFLORA Integrated Publishing Toolkit ([IPT](https://ipt.jbrj.gov.br/reflora)).\
-\
+## Function Overview
 
-``` r
-summary_df <- reflora_summary(verbose = TRUE,
-                              save = TRUE,
-                              dir = "reflora_summary")
+The `reflora_summary()` function retrieves summary information for one or more REFLORA-associated herbarium collections. It allows users to filter collections and optionally save the summary as a CSV file. It also provides metadata such as the number of records, publication version and date, and a direct link to each herbarium's IPT page.
+
+## Arguments
+
+| Argument    | Description |
+|-------------|-------------|
+| `herbarium` | A character vector of herbarium acronyms (e.g., `"RB"`, `"K"`). Use `NULL` to summarize all collections. |
+| `verbose`   | Logical. If `TRUE`, messages describing summary progress will be shown. |
+| `save`      | Logical. If `TRUE`, the summary will be saved as a CSV file. |
+| `dir`       | Directory path to save the file. Default is `"reflora_summary"`. |
+
+## Summarize All REFLORA Collections
+
+Use the function with default settings to get a summary of all collections, including the herbarium acronym, curator's contact, record count, and a direct IPT link:
+
+```r
+summary_df <- reflora_summary(
+  verbose = TRUE,
+  save = TRUE,
+  dir = "reflora_summary"
+)
 ```
 
-## Summarize specific collections
-\
-By specifying a vector of herbarium acronyms, the user can extract a summary for just the specific herbarium collection.\
-\
+## Summarize Specific Collections
 
-``` r
-summary_some_df <- reflora_summary(herbarium = c("ALCB", "RB", "HUEFS", "US", "K"),
-                                   verbose = TRUE,
-                                   save = TRUE,
-                                   dir = "reflora_summary")
+Specify one or more herbaria with the `herbarium` argument:
+
+```r
+summary_some_df <- reflora_summary(
+  herbarium = c("ALCB", "HUEFS", "K", "RB"),
+  verbose = TRUE,
+  save = TRUE,
+  dir = "reflora_summary"
+)
 ```
+
+## Save Summary to Custom Directory
+
+You can customize the output directory for the summary file:
+
+```r
+reflora_summary(
+  herbarium = "RB",
+  verbose = TRUE,
+  save = TRUE,
+  dir = "custom_summary"
+)
+```
+
+## Disable Verbose Output
+
+Suppress progress messages with `verbose = FALSE`:
+
+```r
+reflora_summary(
+  verbose = FALSE
+)
+```
+
+## Additional Tips
+
+- The summary includes fields such as collection code, record count, repatriation status, contact information, and a link to the IPT entry.
+- Use this summary to filter or preview collections before downloading or parsing records.
+- If `save = TRUE`, the function will automatically store the results in CSV format.
+
+## See Also
+
+- [`reflora_download()`](/articles/download_reflora_collections.qmd): Download REFLORA specimen records
+- [`reflora_parse()`](/articles/parse_reflora_dwca.qmd): Parse and clean downloaded records

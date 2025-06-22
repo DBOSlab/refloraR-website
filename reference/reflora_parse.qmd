@@ -1,0 +1,101 @@
+---
+title: "reflora_parse"
+description: "Documentation for `reflora_parse()` from the refloraR package."
+toc: true
+toc-depth: 3
+---
+ 
+```{r}
+#| eval: false
+refloraR::reflora_parse()
+```
+
+ **Description**
+ \description
+{
+
+
+Read Darwin Core Archive (DwC-A) files from any downloaded dwca
+
+folder at 
+\href
+
+{
+https://ipt.jbrj.gov.br/reflora/
+}
+
+{
+REFLORA Virtual Herbarium
+}
+
+
+hosted by the 
+\href
+
+{
+https://www.gov.br/jbrj/pt-br
+}
+
+{
+Rio de Janeiro Botanical Garden
+}
+.
+
+} 
+
+ **Details**
+  
+
+ **Arguments**
+
+| Argument | Description |
+|----------|-------------|
+| \item  { path }  { Pathway to the computer's directory, where the REFLORA-downloaded
+ dwca folders are. } | \item  { path }  { Pathway to the computer's directory, where the REFLORA-downloaded
+ dwca folders are. } |
+| \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as  \code { NULL } | \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
+ uppercase letters or leave it as  \code { NULL } |
+| \item  { repatriated }  { Logical. If  \code { FALSE } | \item  { repatriated }  { Logical. If  \code { FALSE } |
+| \item  { verbose }  { Logical, if  \code { FALSE } | \item  { verbose }  { Logical, if  \code { FALSE } | 
+
+ **Value**
+ \value
+{
+
+
+A list of dwca files, including data and associated metada.
+
+} 
+
+ **Examples**
+```r
+ \examples
+{
+
+
+\dontrun
+{
+
+
+
+
+reflora_download(herbarium = c("ALCB", "HUEFS", "K", "RB"),
+
+                 verbose = TRUE,
+
+                 dir = "reflora_download")
+
+
+
+dwca <- reflora_parse(path = "reflora_download",
+
+                      verbose = TRUE)
+
+}
+
+
+
+
+} 
+```

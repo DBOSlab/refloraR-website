@@ -1,181 +1,176 @@
 ---
 title: "Filter REFLORA specimen records"
 format: html
+execute:
+  echo: false
+  eval: true
+  freeze: auto
+  cache: false
+  warning: false
+  message: false
+  include: true
+  inline: true
 ---
 
-In this document we'll demonstrate how to use the \`reflora_records\` function, with different parameters, to retrieve specific taxon records from the REFLORA virtual herbariums.
-
-## Function Overview
-
-The \`reflora_records\` function retrieves occurrence records for specific taxa from the \href{https://ipt.jbrj.gov.br/reflora/}{REFLORA Virtual Herbarium}, hosted by the \href{https://www.gov.br/jbrj/pt-br}{Rio de Janeiro Botanical Garden}. This function handles automatic download, parsing, filtering, and optional saving of the occurrence data.
-
-## Installing and loading dependencies
-
-Installing the package remotely from the Github repository
-
-```{r, results = "hide", message=FALSE, warning=FALSE}
-#installing `refloraR`
-devtools::install_github("DBOSlab/refloraR")
+```{r setup, include=FALSE}
 library(refloraR)
 ```
 
-## Example 1: Defining taxa and Herbarium
+This guide demonstrates how to use the `reflora_records()` function in the `refloraR` package to retrieve specimen occurrence records for specific taxa from the REFLORA Virtual Herbarium, hosted by the Rio de Janeiro Botanical Garden.
 
-```{r, message=FALSE, warning=FALSE}
-# Define taxa
-fam_taxa <- c("Fabaceae")
-herbaria <- c("ALCB")
+## Function Overview
 
-```
+The `reflora_records()` function retrieves filtered plant specimen records from REFLORA collections based on taxon, herbarium, location, and date criteria. It handles downloading, parsing, filtering, and optionally saving the occurrence data.
 
-Running the \`reflora_records\` function. We assume that the dwca files, from the \`reflora_download\`, were already downloaded in the "download_reflora" file.
+This tool is ideal for floristic, taxonomic, or biogeographic research, especially when working with large datasets for a particular plant group.
 
-```{r, message=FALSE, warning=FALSE}
-# Run the reflora_records function with example parameters
-example_1 <- reflora_records(
-  herbarium = herbaria,
-  taxon = fam_taxa,
+## Arguments
+
+| Argument      | Description |
+|---------------|-------------|
+| `herbarium`   | Vector of herbarium codes (e.g., `"RB"`, `"SP"`). Use `NULL` for all collections. |
+| `repatriated` | Logical. If `FALSE`, skips repatriated herbaria. |
+| `taxon`       | One or multiple family, genus, or species names to filter by. |
+| `state`       | Vector of Brazilian states (e.g., `"BA"`, `"SP"`). |
+| `recordYear`  | A specific year (e.g., `"2001"`) or range (e.g., `c("1990", "2024")`). |
+| `indets`      | If `FALSE`, filters out records not identified to species level. |
+| `reorder`     | Controls column order of the final result (e.g., by herbarium, taxon, year). |
+| `path`        | Optional directory containing existing REFLORA DwC-A files. |
+| `updates`     | If `TRUE`, checks for updated versions of data in the IPT. |
+| `verbose`     | If `TRUE`, shows progress messages. |
+| `save`        | If `TRUE`, saves results as CSV and log files. |
+| `dir`         | Folder where output will be saved. |
+| `filename`    | Name of the resulting CSV and log files. |
+
+## Basic Use Case
+
+```r
+reflora_records(
+  taxon = c("Fabaceae", "Ochnaceae"),
   verbose = TRUE,
   save = TRUE,
-  path = "download_reflora",
   dir = "reflora_records",
-  filename = "reflora_records_search"
+  filename = "fabaceae_ochnaceae_records"
 )
-
-# Display the result
-print(head(example_1[,3:8]))
 ```
 
-The function allows as input a vector with several taxa (families, genera and/or species) and herbariums
+## Filter by Herbarium and Year Range
 
-```{r, message=FALSE, warning=FALSE}
-
-# Define example taxa and herbariums
-fam_taxa <- c("Abarema", "Justicia")
-herbaria <- c("ALCB", "HUEFS", "K")
-```
-
-Running the function
-
-```{r, message=FALSE, warning=FALSE}
-# Run the reflora_records function with example parameters
-example_1_1 <- reflora_records(
-  herbarium = herbaria,
-  taxon = fam_taxa,
-  path = "download_reflora",
-  dir = "reflora_records",
-  filename = "reflora_records_search"
+```r
+reflora_records(
+  taxon = "Fabaceae",
+  herbarium = c("RB", "K"),
+  recordYear = c("1995", "2023"),
+  verbose = TRUE,
+  save = FALSE
 )
-
-# Display the result
-print(head(example_1_1[,3:8]))
 ```
 
-## Example 2: Defining Record year
+## Filter by State and Remove Indeterminate Records
 
-```{r, message=FALSE, warning=FALSE}
-fam_taxa <- c("Guapira")
-herbaria <- c("RB")
-year_wanted <- "2011"
-```
-
-Running the function
-
-```{r, message=FALSE, warning=FALSE}
-
-# Run the reflora_records function with example parameters
-example_2 <- reflora_records(
-  herbarium = herbaria,
-  taxon = fam_taxa,
-  recordYear = year_wanted,
-  path = "download_reflora",
-  dir = "reflora_records",
-  filename = "reflora_records_search"
+```r
+reflora_records(
+  taxon = "Malpighiaceae",
+  state = c("BA", "PE"),
+  indets = FALSE,
+  save = TRUE,
+  dir = "malpighiaceae_ba_pe"
 )
-
-# Display the result
-print(head(example_2[,3:8]))
 ```
 
-The function also allows a record year spam
+## Using a Pre-Downloaded Dataset
 
-```{r, message=FALSE, warning=FALSE}
-fam_taxa <- c("Nyctaginaceae", "Ochnaceae")
-herbaria <- c("HUCP", "MUFAL")
-years_wanted <- c("2011", "2015")
-```
-
-Running the function
-
-```{r, message=FALSE, warning=FALSE}
-
-# Run the reflora_records function with the recordYear spam
-example_2_1 <- reflora_records(
-  herbarium = herbaria,
-  taxon = fam_taxa,
-  recordYear = years_wanted,
-  path = "download_reflora",
-  dir = "reflora_records",
-  filename = "reflora_records_search"
+```r
+reflora_records(
+  path = "reflora_download",
+  taxon = "Myrtaceae",
+  updates = FALSE,
+  save = FALSE
 )
-
-# Display the result
-print(head(example_2_1[,3:8]))
 ```
 
-## Example 3: Defining the Brazilian state
+## Visualizing Specimens by Year
 
-```{r, message=FALSE, warning=FALSE}
-fam_taxa <- c("Acanthaceae")
-herbaria <- c("RB")
-year_wanted <- "2011"
-Br_state <- c("Bahia")
+```r
+library(dplyr)
+library(ggplot2)
+
+records <- reflora_records(taxon = "Fabaceae", 
+                          herbarium = "RB", 
+                          recordYear = c("2000", "2025"), 
+                          save = FALSE)
+
+records %>%
+  count(year) %>%
+  ggplot(aes(x = year, y = n)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Fabaceae Records by Year (RB Herbarium)",
+       x = "",
+       y = "Number of Records")
 ```
 
-Running the function
+```{r}
+#| echo: false
+library(dplyr)
+library(ggplot2)
 
-```{r, message=FALSE, warning=FALSE}
+records <- reflora_records(taxon = "Fabaceae", 
+                           herbarium = "RB", 
+                           recordYear = c("2000", "2025"),
+                           verbose = FALSE,
+                           save = FALSE)
 
-# Run the reflora_records function with the Brazilian state
-example_3 <- reflora_records(
-  herbarium = herbaria,
-  taxon = fam_taxa,
-  recordYear = year_wanted,
-  state = Br_state,
-  path = "download_reflora",
-  dir = "reflora_records",
-  filename = "reflora_records_search"
-)
-
-# Display the result
-print(head(example_3[,3:8]))
+records %>%
+  count(year) %>%
+  ggplot(aes(x = year, y = n)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Fabaceae Records by Year (RB Herbarium)",
+       x = "",
+       y = "Number of Records") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 ```
 
-The function also allows as input the Brazilian states' acronyms and a vector with states
+## Mapping Records with Leaflet
 
-```{r, message=FALSE, warning=FALSE}
-fam_taxa <- c("Fabaceae", "Nyctaginaceae")
-herbaria <- c("RB", "PEL")
-year_wanted <- c("2013", "2018")
-Br_acronyms <- c("Bahia", "SP") #BA = Bahia; SP = São Paulo
+```r
+library(leaflet)
+
+records <- reflora_records(taxon = "Fabaceae", 
+                           herbarium = "RB", 
+                           recordYear = c("2000", "2025"),
+                           verbose = FALSE,
+                           save = FALSE)
+
+leaflet(data = records) %>%
+  addTiles() %>%
+  addCircleMarkers(~decimalLongitude, ~decimalLatitude,
+                   popup = ~paste0("<strong>", family, ":</strong> ", taxonName),
+                   radius = 3,
+                   fillOpacity = 0.6)
 ```
 
-Running 'reflora_records'
+This interactive map helps visualize the spatial distribution of the retrieved records for a specific taxon and herbarium.
 
-```{r, message=FALSE, warning=FALSE}
-
-# Run the reflora_records function with the recordYear spam
-example_3_1 <- reflora_records(
-  herbarium = herbaria,
-  taxon = fam_taxa,
-  recordYear = year_wanted,
-  state = Br_acronyms,
-  path = "download_reflora",
-  dir = "reflora_records",
-  filename = "reflora_records_search"
-)
-
-# Display the result
-print(head(example_3_1[,3:8]))
-
+```{r}
+#| echo: false
+library(leaflet)
+leaflet(data = records) %>%
+  addTiles() %>%
+  addCircleMarkers(~decimalLongitude, ~decimalLatitude,
+                   popup = ~paste0("<strong>", family, ":</strong> ", taxonName),
+                   radius = 3,
+                   fillOpacity = 0.6)
 ```
+
+## Tips
+
+- Use `recordYear = c("YYYY", "YYYY")` to analyze records over a time span.
+- Use `reflora_summary()` beforehand to check herbarium availability.
+- Set `save = TRUE` for reproducible outputs and logs.
+
+## See Also
+
+- [`reflora_download()`](/articles/download_reflora_collections.qmd): Download REFLORA specimen records
+- [`reflora_parse()`](/articles/parse_reflora_dwca.qmd): Parse REFLORA archive files
+- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Summarize REFLORA collections
+- [`reflora_indets()`](/articles/filter_indeterminate_reflora_specimens.qmd): Extract indeterminate records
