@@ -130,38 +130,6 @@ records %>%
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 ```
 
-## Mapping Records with Leaflet
-
-```r
-library(leaflet)
-
-records <- reflora_records(taxon = "Fabaceae", 
-                           herbarium = "RB", 
-                           recordYear = c("2000", "2025"),
-                           verbose = FALSE,
-                           save = FALSE)
-
-leaflet(data = records) %>%
-  addTiles() %>%
-  addCircleMarkers(~decimalLongitude, ~decimalLatitude,
-                   popup = ~paste0("<strong>", family, ":</strong> ", taxonName),
-                   radius = 3,
-                   fillOpacity = 0.6)
-```
-
-This interactive map helps visualize the spatial distribution of the retrieved records for a specific taxon and herbarium.
-
-```{r}
-#| echo: false
-library(leaflet)
-leaflet(data = records) %>%
-  addTiles() %>%
-  addCircleMarkers(~decimalLongitude, ~decimalLatitude,
-                   popup = ~paste0("<strong>", family, ":</strong> ", taxonName),
-                   radius = 3,
-                   fillOpacity = 0.6)
-```
-
 ## Tips
 
 - Use `recordYear = c("YYYY", "YYYY")` to analyze records over a time span.

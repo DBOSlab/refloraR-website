@@ -579,18 +579,6 @@
     ]
   },
   {
-    "objectID": "articles/filter_reflora_records.html#mapping-records-with-leaflet",
-    "href": "articles/filter_reflora_records.html#mapping-records-with-leaflet",
-    "title": "Filter REFLORA specimen records",
-    "section": "Mapping Records with Leaflet",
-    "text": "Mapping Records with Leaflet\nlibrary(leaflet)\n\nrecords &lt;- reflora_records(taxon = \"Fabaceae\", \n                           herbarium = \"RB\", \n                           recordYear = c(\"2000\", \"2025\"),\n                           verbose = FALSE,\n                           save = FALSE)\n\nleaflet(data = records) %&gt;%\n  addTiles() %&gt;%\n  addCircleMarkers(~decimalLongitude, ~decimalLatitude,\n                   popup = ~paste0(\"&lt;strong&gt;\", family, \":&lt;/strong&gt; \", taxonName),\n                   radius = 3,\n                   fillOpacity = 0.6)\nThis interactive map helps visualize the spatial distribution of the retrieved records for a specific taxon and herbarium.",
-    "crumbs": [
-      "Articles",
-      "Filter REFLORA records",
-      "Retrieve taxon-specific specimens"
-    ]
-  },
-  {
     "objectID": "articles/filter_reflora_records.html#tips",
     "href": "articles/filter_reflora_records.html#tips",
     "title": "Filter REFLORA specimen records",
