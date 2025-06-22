@@ -56,25 +56,53 @@
     "text": "refloraR::reflora_records()\n\nDescription {\nRetrieve occurrence records for specific taxa from the\n\\href\n{ https://ipt.jbrj.gov.br/reflora/ }\n{ REFLORA Virtual Herbarium } ,\nhosted bythe \\href\n{ https://www.gov.br/jbrj/pt-br }\n{ Rio de Janeiro Botanical Garden } .\nThis function handles automatic download, parsing, filtering, and optional\nsaving of the occurrence data.\n}\nDetails {\nThis function processes Darwin Core Archive (DwC-A) files from REFLORA. You\nmay supply a specific path to previously downloaded files using path, or let\nthe function handle the download automatically. Filters can be applied by taxon\nname, herbarium code, state, and year. The reorder argument allows you to\ncustomize the structure of the returned data. Use verbose = TRUE to see\nstatus updates. Use save = TRUE to save results to disk as a CSV file in the\nspecified directory.\n}\nArguments\n\n\n\n\n\n\n\nArgument\nDescription\n\n\n\n\n\n\n\n\nuppercase letters or leave it as \n\n\n\nuppercase letters or leave it as \n\n\n\n\n\n\n\n\n\n\n\nmultiple scientific names at family, genus or species level. }\n\n\n\nmultiple scientific names at family, genus or species level. }\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndwca folders are. If you do not provide a path, the function will download the most updated version of the REFLORA dwca files. } |\n{ path } { Optional; a pathway to the computer’s directory, where the REFLORA-downloaded dwca folders are. If you do not provide a path, the function will download the most updated version of the REFLORA dwca files. } | |\n{ updates } { Logical, if |\n{ updates } { Logical, if | |\n{ verbose } { Logical, if |\n{ verbose } { Logical, if | |\n{ save } { Logical, if |\n{ save } { Logical, if | |\n{ dir } { Pathway to the computer’s directory, where the table-formatted summary will be saved. The default is to create a directory named |\n{ dir } { Pathway to the computer’s directory, where the table-formatted summary will be saved. The default is to create a directory named | |\n{ filename } { Name of the output file to be saved. The default is to create a file entitled |\n{ filename } { Name of the output file to be saved. The default is to create a file entitled |\nValue {\nA data.frame containing occurrence records for the selected taxon\nand criteria from the chosen REFLORA herbaria. If save = TRUE, the function\nwill write the results to a CSV file inside the dir directory, and also\ngenerate or append a log.txt file that summarizes the download session\nincluding total records and breakdowns by herbarium, family, genus, country,\nand state.\n}\nExamples\n \\examples\n{\n\n\n\\dontrun\n{\n\n\n\n\nfam_taxa &lt;- c(\"Fabaceae\", \"Ochnaceae\")\n\nreflora_records(herbarium = c(\"ALCB\", \"HUEFS\", \"K\", \"RB\"),\n\n                taxon = fam_taxa,\n\n                verbose = TRUE,\n\n                save = TRUE,\n\n                dir = \"reflora_records\",\n\n                filename = \"reflora_records_search\")\n\n}\n\n\n\n\n}"
   },
   {
-    "objectID": "about.html#goals",
-    "href": "about.html#goals",
+    "objectID": "about.html#overview",
+    "href": "about.html#overview",
     "title": "About refloraR",
-    "section": "Goals",
-    "text": "Goals\nThe overarching goal of Quarto is to make the process of creating and collaborating on scientific and technical documents dramatically better. We hope to do this in several dimensions:\n\nCreate a writing and publishing environment with great integrated tools for technical content. We want to make authoring with embedded code, equations, figures, complex diagrams, interactive widgets, citations, cross references, and the myriad other special requirements of scientific discourse straightforward and productive for everyone.\nHelp authors take full advantage of the web as a connected, interactive platform for communications, while still providing the ability to create excellent printed output from the same document source. Researchers shouldn’t need to choose between LaTeX, MS Word, and HTML but rather be able to author documents that target all of them at the same time.\nMake reproducible research and publications the norm rather than the exception. Reproducibility requires that the code and data required to create a manuscript are an integrated part of it. However, this isn’t often straightforward in practice—Quarto aims to make it easier to adopt a reproducible workflow than not.\n\nrefloraR is open source software. We believe that it’s better for everyone if the tools used for research and science are free and open. Reproducibility, widespread sharing of knowledge and techniques, and the leveling of the playing field by eliminating cost barriers are but a few of the shared benefits of free software in science."
+    "section": "Overview",
+    "text": "Overview\nrefloraR is an R package for exploring plant specimen collections from the REFLORA Virtual Herbarium, hosted by the Rio de Janeiro Botanical Garden. The package interacts with the REFLORA Integrated Publishing Toolkit (IPT) by readily downloading full specimen records in Darwin Core Format. It also provides functions to summarize and filter data by taxonomic or geographical criteria."
   },
   {
-    "objectID": "about.html#project",
-    "href": "about.html#project",
+    "objectID": "about.html#the-reflora-programme",
+    "href": "about.html#the-reflora-programme",
     "title": "About refloraR",
-    "section": "Project",
-    "text": "Project\nAt the core of Quarto is Pandoc, a powerful and flexible document processing tool. Quarto adds a number of facilities to Pandoc aimed at scientific and technical publishing, including:\n\nEmbedding code and output from Python, R, and JavaScript via integration with Jupyter, Knitr, and Observable.\nA variety of extensions to Pandoc markdown useful for technical writing including cross-references, sub-figures, layout panels, hoverable citations and footnotes, callouts, and more.\n\nDevelopment of refloraR is sponsored by Posit, PBC, where we previously created a similar system (R Markdown) that shared the same goals, but was targeted principally at users of the R language. The same core team works on both Quarto and R Markdown:\n\nDomingos Cardoso (@DBOSlab)\nCarlos Calderón (@caldecid)\n\nWith refloraR, we are hoping to bring these tools to a much wider audience."
+    "section": "The REFLORA Programme",
+    "text": "The REFLORA Programme\nBrazil holds the richest plant diversity in the world (BFG 2022). Historically, many plant specimens were sent to European herbaria during the 18th–19th centuries. These collections formed the basis for many species descriptions and the monumental Flora brasiliensis (Martius, Eichler & Urban, 1840–1906).\nLaunched in 2010, the REFLORA/CNPq Programme aimed to digitize and repatriate information on Brazilian plant specimens stored abroad. In 2014, the programme expanded in partnership with SiBBr and IFN. The data are published via the REFLORA Virtual Herbarium.\nDeveloped by the JBRJ and COPPE/UFRJ, the platform supports taxonomic validation and collaboration via the Flora e Funga do Brasil initiative."
+  },
+  {
+    "objectID": "about.html#the-reflora-virtual-herbarium",
+    "href": "about.html#the-reflora-virtual-herbarium",
+    "title": "About refloraR",
+    "section": "The REFLORA Virtual Herbarium",
+    "text": "The REFLORA Virtual Herbarium\nThe Reflora Virtual Herbarium was commissioned by CNPq to JBRJ in 2010 to provide centralized, high-resolution, publicly accessible data on Brazilian specimens. It replicates key functions of physical herbarium curation. Curators can re-determine and typify specimens, while taxonomists contribute to species validation. Over 900 taxonomists have contributed to the platform.\nEarly partners included herbaria K, P, and RB, with later support from SiBBr and IFN. The initiative continues to digitize Brazilian and international collections."
+  },
+  {
+    "objectID": "about.html#package-description",
+    "href": "about.html#package-description",
+    "title": "About refloraR",
+    "section": "Package Description",
+    "text": "Package Description\nPackage: refloraR\nType: R Package\nVersion: 1.0.0\nAuthors: Domingos Cardoso (@DBOSlab ORCID) and Carlos Calderón (@caldecid ORCID)\nMaintainer: Domingos Cardoso (domingoscardoso@jbrj.gov.br)\n\nFeatures\n\nRetrieve specimen records by taxonomic/geographic filters\nSummarize collections and data availability\nSupports Darwin Core Archive (DwC-A) standards\nFully integrates with tidyverse workflows\nIncludes data visualization and mapping support"
   },
   {
     "objectID": "about.html#contribute",
     "href": "about.html#contribute",
     "title": "About refloraR",
     "section": "Contribute",
-    "text": "Contribute\nYou can contribute to refloraR in many ways:\n\nBy opening issues to provide feedback and share ideas.\nBy submitting Pull Request to fix opened issues\nBy submitting Pull Request to suggest new features (it is considered good practice to open an issue for discussion before working on a pull request for a new feature)."
+    "text": "Contribute\nYou can contribute to refloraR by:\n\nOpening issues for feedback or bug reports\nSubmitting pull requests for fixes or enhancements\nSuggesting or developing new features (please open an issue for discussion first)"
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About refloraR",
+    "section": "License",
+    "text": "License\nrefloraR is open source software. Open tools empower science through reproducibility, accessibility, and equitable knowledge sharing."
+  },
+  {
+    "objectID": "about.html#acknowledgements",
+    "href": "about.html#acknowledgements",
+    "title": "About refloraR",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nDevelopment of refloraR is led by the Rio de Janeiro Botanical Garden (JBRJ), in collaboration with the biodiversity and informatics communities. We also gratefully acknowledge the financial support provided by CNPq - Conselho Nacional de Desenvolvimento Científico e Tecnológico, Brazil’s National Council for Scientific and Technological Development, and FINEP - Financiadora de Estudos e Projetos, Brazil’s Funding Authority for Studies and Projects."
   },
   {
     "objectID": "articles/filter_indeterminate_reflora_specimens.html",
@@ -365,14 +393,14 @@
     "href": "authors/index.html#the-reflorar-developers",
     "title": "",
     "section": "The refloraR Developers",
-    "text": "The refloraR Developers\n\n  \n    \n    \n      Domingos Cardoso\n      Email | ORCID | Lattes\n      Botanist and bioinformatist leading the RefloraR initiative, and specialist in legume taxonomy and evolution.\n    \n  \n\n  \n    \n    \n      Carlos Calderón\n      Email | ORCID | Lattes\n      Bioinformatist contributor to the RefloraR initiative and data workflows supporting biodiversity platforms."
+    "text": "The refloraR Developers\n\n\n  \n    \n    \n      Domingos Cardoso\n      \n        \n        \n        \n      \n      Taxonomist and bioinformatician leading the refloraR package, responsible for designing and coding functions as well as developing the project website\n    \n  \n  \n  \n    \n    \n      Carlos Calderón\n      \n        \n        \n        \n      \n      Bioinformatician contributing to the refloraR package, with a focus on designing and implementing function workflows"
   },
   {
     "objectID": "authors/index.html#the-reflora-team",
     "href": "authors/index.html#the-reflora-team",
     "title": "",
     "section": "The REFLORA Team",
-    "text": "The REFLORA Team\n\n  \n    \n    \n      Rafaela Campostrini Forzza\n      Email | Lattes\n      Senior taxonomist and coordinator of the Reflora initiative in Brazil.\n    \n  \n  \n  \n    \n    \n      Paula Leitman\n      Email | Lattes\n      Flora data specialist and editor of Brazilian plant checklists.\n    \n  \n\n  \n    \n    \n      Fabiana Filardi\n      Email | Lattes\n      Expert in biodiversity data integration and Reflora team member.\n    \n  \n\n  \n    \n    \n      Ana Flávia Versiane\n      Email | Lattes\n      Research associate contributing to Reflora systematics and data curation."
+    "text": "The REFLORA Team\n\n\n  \n    \n    \n      Rafaela Forzza\n      \n        \n        \n        \n      \n      Senior taxonomist and coordinator of the REFLORA initiative in Brazil\n    \n  \n\n  \n    \n    \n      Paula Leitman\n      \n        \n        \n        \n      \n      Expert in biodiversity data integration and REFLORA team member\n    \n  \n\n  \n    \n    \n      Fabiana Filardi\n      \n        \n        \n        \n      \n      Expert in biodiversity data integration and REFLORA team member\n    \n  \n\n  \n    \n    \n      Flávia Versiane\n      \n        \n        \n        \n      \n      Research associate contributing to REFLORA data curation"
   },
   {
     "objectID": "articles/summarize_reflora_collections.html",
