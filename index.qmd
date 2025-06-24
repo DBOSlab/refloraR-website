@@ -25,6 +25,29 @@ summary_df <- reflora_summary(verbose = FALSE,
                               dir = "reflora_summary")
 ```
 
+<style>
+  .floating-logos {
+    position: fixed;
+    top: 60px;
+    right: 450px;
+    width: 165px;
+    opacity: 0.85;
+    z-index: 1;
+  }
+
+  .floating-logos img {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 4px;
+  }
+</style>
+
+<div class="floating-logos">
+  <img src='/figures/reflorar_hex_sticker.png' alt='refloraR hex sticker'>
+  <img src='/figures/jbrj_marca.jpg' alt='JBRJ logo'>
+</div>
+
 <!-- Seamless horizontal carousel from right to left and loops infinitely -->
 ```{=html}
 <div style="position: relative; overflow: visible; width: 100%; margin-bottom: 30px;">
@@ -201,10 +224,6 @@ If you are an herbarium curator and wish to publish images and data from your co
 \
 :::
 ::: {style="display: flex; gap: 16px; justify-content: center; align-items: center;"}
-![](figures/reflorar_hex_sticker.png){style="align: right;" width="180"}
-
-![](figures/jbrj_marca.jpg){style="align: right;" width="180"}
-
 :::
 :::
 :::
