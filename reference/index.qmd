@@ -16,30 +16,27 @@ format:
     position: relative;
     z-index: 0;
   }
-
   .background-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     z-index: -1;
   }
 </style>
 
-## reflora_download
-- [reflora_download](/reference/reflora_download.qmd)
+## refloraR
 
-## reflora_summary
-- [reflora_summary](/reference/reflora_summary.qmd)
+- [`reflora_download()`](/reference/reflora_download.qmd)
 
-## reflora_parse
-- [reflora_parse](/reference/reflora_parse.qmd)
+- [`reflora_indets()`](/reference/reflora_indets.qmd)
 
-## reflora_indets
-- [reflora_indets](/reference/reflora_indets.qmd)
+- [`reflora_parse()`](/reference/reflora_parse.qmd)
 
-## reflora_records
-- [reflora_records](/reference/reflora_records.qmd)
+- [`reflora_records()`](/reference/reflora_records.qmd)
+
+- [`reflora_summary()`](/reference/reflora_summary.qmd)
+
 

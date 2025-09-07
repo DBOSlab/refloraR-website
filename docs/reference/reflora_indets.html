@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Documentation for reflora_indets() from the refloraR package.">
+<meta name="description" content="Retrieve indeterminate specimens from REFLORA collections">
 
 <title>reflora_indets – refloraR</title>
 <style>
@@ -4916,8 +4916,18 @@ height: 400px;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#value" id="toc-value" class="nav-link" data-scroll-target="#value">Value</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -4932,7 +4942,7 @@ height: 400px;
 
 <div>
   <div class="description">
-    Documentation for <code>reflora_indets()</code> from the refloraR package.
+    Retrieve indeterminate specimens from REFLORA collections
   </div>
 </div>
 
@@ -4952,34 +4962,20 @@ height: 400px;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>refloraR<span class="sc">::</span><span class="fu">reflora_indets</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Description</strong> {</p>
-<p>Retrieves occurrence records for indeterminate specimens (e.g., identified</p>
-<p>only to family or genus level) from the</p>
-<p>\href</p>
-<p>{ https://ipt.jbrj.gov.br/reflora/ }</p>
-<p>{ REFLORA Virtual Herbarium }</p>
-<p>hosted by the \href</p>
-<p>{ https://www.gov.br/jbrj/pt-br }</p>
-<p>{ Rio de Janeiro Botanical Garden } .</p>
-<p>The function automatically downloads and parses Darwin Core Archive (DwC-A)</p>
-<p>files, applies optional filters by taxon, herbarium, state, and year, and</p>
-<p>exports the results if desired.</p>
-<p>}</p>
-<p><strong>Details</strong> {</p>
-<p>This function supports downloading and processing Darwin Core Archive (DwC-A)</p>
-<p>files directly from the REFLORA repository. It allows for flexible filtering</p>
-<p>by taxon, herbarium, locality (Brazilian states), and collection year(s). The</p>
-<p><code>level</code> parameter enables filtering for indeterminate records such as those</p>
-<p>identified only to FAMILY or GENUS rank. The function uses helper functions</p>
-<p>like <code>.arg_check_herbarium()</code> and <code>.filter_occur_df()</code> to validate inputs and</p>
-<p>refine the occurrence records. If <code>path</code> is not provided, the function will</p>
-<p>automatically manage downloading and storing fresh DwC-A archives.</p>
-<p>}</p>
-<p><strong>Arguments</strong></p>
+<section id="description" class="level3">
+<h3 class="anchored" data-anchor-id="description">Description</h3>
+<p>Retrieves occurrence records for indeterminate specimens (e.g., identified only to family or genus level) from the <a href="https://ipt.jbrj.gov.br/reflora/">REFLORA Virtual Herbarium</a> hosted by the <a href="https://www.gov.br/jbrj/pt-br">Rio de Janeiro Botanical Garden</a>. The function automatically downloads and parses Darwin Core Archive (DwC-A) files, applies optional filters by taxon, herbarium, state, and year, and exports the results if desired. All returned records include direct links to specimen images (column <code>&#39;bibliographicCitation&#39;</code>) and, when available, high-resolution download URLs (column <code>&#39;associatedMedia&#39;</code>).</p>
+</section>
+<section id="details" class="level3">
+<h3 class="anchored" data-anchor-id="details">Details</h3>
+<p>This function supports downloading and processing Darwin Core Archive (DwC-A) files directly from the REFLORA repository. It allows for flexible filtering by taxon, herbarium, locality (Brazilian states), and collection year(s). The <code>level</code> parameter enables filtering for indeterminate records such as those identified only to <code>&#39;FAMILY&#39;</code> or <code>&#39;GENUS&#39;</code> rank. The function uses helper functions like <code>.arg_check_herbarium()</code> and <code>.filter_occur_df()</code> to validate inputs and refine the occurrence records. If <code>path</code> is not provided, the function will automatically manage downloading and storing fresh DwC-A archives.</p>
+</section>
+<section id="arguments" class="level3">
+<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 43%">
-<col style="width: 56%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -4989,88 +4985,83 @@ height: 400px;
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
+<td>level</td>
+<td>Character vector. Filter by taxonomic level. Accepted values: <code>&quot;FAMILY&quot;</code>, <code>&quot;GENUS&quot;</code>, or both. Defaults to <code>NULL</code> to include all indeterminate ranks.</td>
+</tr>
+<tr class="even">
+<td>herbarium</td>
+<td>Character vector. Herbarium codes (e.g., <code>&quot;RB&quot;</code>, <code>&quot;SP&quot;</code>) in uppercase. Use <code>NULL</code> to include all herbaria.</td>
+</tr>
+<tr class="odd">
+<td>repatriated</td>
+<td>Logical. If <code>FALSE</code>, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is <code>TRUE</code>. Use <code>reflora_summary()</code> to check which collections are repatriated.</td>
+</tr>
+<tr class="even">
+<td>taxon</td>
+<td>Character vector. Specific taxon names to filter by (e.g., <code>&quot;Fabaceae&quot;</code>).</td>
+</tr>
+<tr class="odd">
+<td>state</td>
+<td>Character vector. Brazilian state full name or abbreviations (e.g., <code>&quot;BA&quot;</code>, <code>&quot;SP&quot;</code>) to filter by locality.</td>
+</tr>
+<tr class="even">
+<td>recordYear</td>
+<td>Character or numeric vector. A single year (e.g., <code>&quot;2001&quot;</code>) or a range (e.g., <code>c(&quot;2000&quot;, &quot;2022&quot;)</code>).</td>
+</tr>
+<tr class="odd">
+<td>reorder</td>
+<td>Character vector. Reorder output by columns. Defaults to: <code>c(&quot;herbarium&quot;, &quot;taxa&quot;, &quot;collector&quot;, &quot;area&quot;, &quot;year&quot;)</code>.</td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td>Character. Path to existing REFLORA dwca files. If <code>NULL</code>, downloads fresh data.</td>
+</tr>
+<tr class="odd">
+<td>updates</td>
+<td>Logical. If <code>TRUE</code> (default), checks for updated DwC-A files from REFLORA.</td>
+</tr>
+<tr class="even">
+<td>verbose</td>
+<td>Logical. If <code>TRUE</code> (default), prints progress messages to the console.</td>
+</tr>
+<tr class="odd">
+<td>save</td>
+<td>Logical. If <code>TRUE</code> (default), saves the results to a CSV file.</td>
+</tr>
+<tr class="even">
+<td>dir</td>
+<td>Character. Directory path to save output files. Default: <code>&quot;reflora_indets&quot;</code>.</td>
+</tr>
+<tr class="odd">
+<td>filename</td>
+<td>Character. Name of the output file (without extension). Default: <code>&quot;reflora_indets_search&quot;</code>.</td>
 </tr>
 </tbody>
 </table>
-<code>&quot;FAMILY&quot;</code>, <code>&quot;GENUS&quot;</code>, or both. Defaults to <code>NULL</code> to include all indeterminate ranks. } |
-{ level } { Character vector. Filter by taxonomic level. Accepted values: <code>&quot;FAMILY&quot;</code>, <code>&quot;GENUS&quot;</code>, or both. Defaults to <code>NULL</code> to include all indeterminate ranks. } | |
-{ herbarium } { Character vector. Herbarium codes (e.g., <code>&quot;RB&quot;</code>, <code>&quot;SP&quot;</code>) in uppercase. Use <code>NULL</code> to include all herbaria. } |
-{ herbarium } { Character vector. Herbarium codes (e.g., <code>&quot;RB&quot;</code>, <code>&quot;SP&quot;</code>) in uppercase. Use <code>NULL</code> to include all herbaria. } | |
-{ repatriated } { Logical. If |
-{ repatriated } { Logical. If | |
-{ taxon } { Character vector. Specific taxon names to filter by (e.g., <code>&quot;Fabaceae&quot;</code>). } |
-{ taxon } { Character vector. Specific taxon names to filter by (e.g., <code>&quot;Fabaceae&quot;</code>). } | |
-{ state } { Character vector. Brazilian state full name or abbreviations (e.g., <code>&quot;BA&quot;</code>, <code>&quot;SP&quot;</code>) to filter by locality. } |
-{ state } { Character vector. Brazilian state full name or abbreviations (e.g., <code>&quot;BA&quot;</code>, <code>&quot;SP&quot;</code>) to filter by locality. } | |
-{ recordYear } { Character or numeric vector. A single year (e.g., <code>&quot;2001&quot;</code>) or a range (e.g., <code>c(&quot;2000&quot;, &quot;2022&quot;)</code>). } |
-{ recordYear } { Character or numeric vector. A single year (e.g., <code>&quot;2001&quot;</code>) or a range (e.g., <code>c(&quot;2000&quot;, &quot;2022&quot;)</code>). } | |
-{ reorder } { Character vector. Reorder output by columns. Defaults to: <code>c(&quot;herbarium&quot;, &quot;taxa&quot;, &quot;collector&quot;, &quot;area&quot;, &quot;year&quot;)</code>. } |
-{ reorder } { Character vector. Reorder output by columns. Defaults to: <code>c(&quot;herbarium&quot;, &quot;taxa&quot;, &quot;collector&quot;, &quot;area&quot;, &quot;year&quot;)</code>. } | |
-{ path } { Character. Path to existing REFLORA dwca files. If <code>NULL</code>, downloads fresh data. } |
-{ path } { Character. Path to existing REFLORA dwca files. If <code>NULL</code>, downloads fresh data. } | |
-{ updates } { Logical. If <code>TRUE</code> (default), checks for updated DwC-A files from REFLORA. } |
-{ updates } { Logical. If <code>TRUE</code> (default), checks for updated DwC-A files from REFLORA. } | |
-{ verbose } { Logical. If <code>TRUE</code> (default), prints progress messages to the console. } |
-{ verbose } { Logical. If <code>TRUE</code> (default), prints progress messages to the console. } | |
-{ save } { Logical. If <code>TRUE</code> (default), saves the results to a CSV file. } |
-{ save } { Logical. If <code>TRUE</code> (default), saves the results to a CSV file. } | |
-{ dir } { Character. Directory path to save output files. Default: <code>&quot;reflora_indets&quot;</code>. } |
-{ dir } { Character. Directory path to save output files. Default: <code>&quot;reflora_indets&quot;</code>. } | |
-{ filename } { Character. Name of the output file (without extension). Default: <code>&quot;reflora_indets_search&quot;</code>. } |
-<p>{ filename } { Character. Name of the output file (without extension). Default: <code>&quot;reflora_indets_search&quot;</code>. } |</p>
-<p><strong>Value</strong> {</p>
-<p>A <code>data.frame</code> containing filtered specimen records for the selected</p>
-<p>indeterminate specimens and criteria. If <code>save = TRUE</code>, a CSV file with the</p>
-<p>results will be written to the specified <code>dir</code>, and a <code>log.txt</code> file will be</p>
-<p>created or appended in the same directory summarizing the download session and</p>
-<p>key statistics (total records, breakdowns by herbarium, family, genus, country,</p>
-<p>and state).</p>
-<p>}</p>
-<p><strong>Examples</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> \examples</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>\dontrun</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>{</span>
+</section>
+<section id="value" class="level3">
+<h3 class="anchored" data-anchor-id="value">Value</h3>
+<p>A <code>data.frame</code> containing filtered specimen records for the selected indeterminate specimens and criteria. If <code>save = TRUE</code>, a CSV file with the results will be written to the specified <code>dir</code>, and a <code>log.txt</code> file will be created or appended in the same directory summarizing the download session and key statistics (total records, breakdowns by herbarium, family, genus, country, and state).</p>
+</section>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve indeterminate records for Fabaceae and Ochnaceae from all herbaria</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="fu">c</span>(<span class="st">&quot;Fabaceae&quot;</span>, <span class="st">&quot;Ochnaceae&quot;</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="st">&quot;FAMILY&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">save =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">dir =</span> <span class="st">&quot;reflora_indets&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename =</span> <span class="st">&quot;fabaceae_ochnaceae_records&quot;</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve indeterminate records for Fabaceae and Ochnaceae from all herbaria</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="fu">c</span>(<span class="st">&quot;Fabaceae&quot;</span>, <span class="st">&quot;Ochnaceae&quot;</span>),</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="st">&quot;FAMILY&quot;</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">save =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">dir =</span> <span class="st">&quot;reflora_indets&quot;</span>,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename =</span> <span class="st">&quot;fabaceae_ochnaceae_records&quot;</span>)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by specific herbarium and state</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="st">&quot;Fabaceae&quot;</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>               <span class="at">herbarium =</span> <span class="st">&quot;RB&quot;</span>,</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>               <span class="at">state =</span> <span class="fu">c</span>(<span class="st">&quot;BA&quot;</span>, <span class="st">&quot;MG&quot;</span>),</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>               <span class="at">recordYear =</span> <span class="fu">c</span>(<span class="st">&quot;1990&quot;</span>, <span class="st">&quot;2022&quot;</span>))</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by specific herbarium and state</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="st">&quot;Fabaceae&quot;</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">herbarium =</span> <span class="st">&quot;RB&quot;</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">state =</span> <span class="fu">c</span>(<span class="st">&quot;BA&quot;</span>, <span class="st">&quot;MG&quot;</span>),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">recordYear =</span> <span class="fu">c</span>(<span class="st">&quot;1990&quot;</span>, <span class="st">&quot;2022&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -5689,182 +5680,85 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
 <div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;reflora_indets&quot;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> &quot;Documentation for `reflora_indets()` from the refloraR package.&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &#39;reflora_indets&#39;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> &#39;Retrieve indeterminate specimens from REFLORA collections&#39;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">toc-depth:</span><span class="co"> 3</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>refloraR<span class="sc">::</span><span class="fu">reflora_indets</span>()</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a> **Description**</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a> \description</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>Retrieves occurrence records for indeterminate specimens (e.g., identified</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>only to family or genus level) from the</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>\href</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>https://ipt.jbrj.gov.br/reflora/</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>refloraR<span class="sc">::</span><span class="fu">reflora_indets</span>()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">### Description</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>Retrieves occurrence records for indeterminate specimens (e.g., identified</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>only to family or genus level) from the</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">REFLORA Virtual Herbarium</span><span class="co">](https://ipt.jbrj.gov.br/reflora/)</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>hosted by the <span class="co">[</span><span class="ot">Rio de Janeiro Botanical Garden</span><span class="co">](https://www.gov.br/jbrj/pt-br)</span>.</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>The function automatically downloads and parses Darwin Core Archive (DwC-A)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>files, applies optional filters by taxon, herbarium, state, and year, and</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>exports the results if desired. All returned records include direct links to</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>specimen images (column <span class="in">`&#39;bibliographicCitation&#39;`</span>) and, when available, high-resolution</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>download URLs (column <span class="in">`&#39;associatedMedia&#39;`</span>).</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">### Details</span></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>REFLORA Virtual Herbarium</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>hosted by the </span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>\href</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>https://www.gov.br/jbrj/pt-br</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>Rio de Janeiro Botanical Garden</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>.</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>The function automatically downloads and parses Darwin Core Archive (DwC-A)</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>files, applies optional filters by taxon, herbarium, state, and year, and</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>exports the results if desired.</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a> **Details**</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a> \details</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>This function supports downloading and processing Darwin Core Archive (DwC-A)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>files directly from the REFLORA repository. It allows for flexible filtering</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>by taxon, herbarium, locality (Brazilian states), and collection year(s). The</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="in">`level`</span> parameter enables filtering for indeterminate records such as those</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>identified only to <span class="in">`&#39;FAMILY&#39;`</span> or <span class="in">`&#39;GENUS&#39;`</span> rank. The function uses</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>helper functions like <span class="in">`.arg_check_herbarium()`</span> and <span class="in">`.filter_occur_df()`</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>to validate inputs and refine the occurrence records. If <span class="in">`path`</span> is not</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>provided, the function will automatically manage downloading and storing fresh DwC-A archives.</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arguments</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>| Argument | Description |</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>|---|---|</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>| level | Character vector. Filter by taxonomic level. Accepted values: <span class="in">`&quot;FAMILY&quot;`</span>, <span class="in">`&quot;GENUS&quot;`</span>, or both. Defaults to <span class="in">`NULL`</span> to include all indeterminate ranks. |</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>| herbarium | Character vector. Herbarium codes (e.g., <span class="in">`&quot;RB&quot;`</span>, <span class="in">`&quot;SP&quot;`</span>) in uppercase. Use <span class="in">`NULL`</span> to include all herbaria. |</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>| repatriated | Logical. If <span class="in">`FALSE`</span>, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is <span class="in">`TRUE`</span>. Use <span class="in">`reflora_summary()`</span> to check which collections are repatriated. |</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>| taxon | Character vector. Specific taxon names to filter by (e.g., <span class="in">`&quot;Fabaceae&quot;`</span>). |</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>| state | Character vector. Brazilian state full name or abbreviations (e.g., <span class="in">`&quot;BA&quot;`</span>, <span class="in">`&quot;SP&quot;`</span>) to filter by locality. |</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>| recordYear | Character or numeric vector. A single year (e.g., <span class="in">`&quot;2001&quot;`</span>) or a range (e.g., <span class="in">`c(&quot;2000&quot;, &quot;2022&quot;)`</span>). |</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>| reorder | Character vector. Reorder output by columns. Defaults to: <span class="in">`c(&quot;herbarium&quot;, &quot;taxa&quot;, &quot;collector&quot;, &quot;area&quot;, &quot;year&quot;)`</span>. |</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>| path | Character. Path to existing REFLORA dwca files. If <span class="in">`NULL`</span>, downloads fresh data. |</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>| updates | Logical. If <span class="in">`TRUE`</span> (default), checks for updated DwC-A files from REFLORA. |</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>| verbose | Logical. If <span class="in">`TRUE`</span> (default), prints progress messages to the console. |</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>| save | Logical. If <span class="in">`TRUE`</span> (default), saves the results to a CSV file. |</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>| dir | Character. Directory path to save output files. Default: <span class="in">`&quot;reflora_indets&quot;`</span>. |</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>| filename | Character. Name of the output file (without extension). Default: <span class="in">`&quot;reflora_indets_search&quot;`</span>. |</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Value</span></span>
 <span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>This function supports downloading and processing Darwin Core Archive (DwC-A)</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>files directly from the REFLORA repository. It allows for flexible filtering</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>by taxon, herbarium, locality (Brazilian states), and collection year(s). The</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>A <span class="in">`data.frame`</span> containing filtered specimen records for the selected</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>indeterminate specimens and criteria. If <span class="in">`save = TRUE`</span>, a CSV file with the</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>results will be written to the specified <span class="in">`dir`</span>, and a <span class="in">`log.txt`</span> file will be</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>created or appended in the same directory summarizing the download session and</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>key statistics (total records, breakdowns by herbarium, family, genus, country,</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>and state).</span>
 <span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="in">`level`</span> parameter enables filtering for indeterminate records such as those</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### Examples</span></span>
 <span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>identified only to FAMILY or GENUS rank. The function uses helper functions</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>like <span class="in">`.arg_check_herbarium()`</span> and <span class="in">`.filter_occur_df()`</span> to validate inputs and</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>refine the occurrence records. If <span class="in">`path`</span> is not provided, the function will</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>automatically manage downloading and storing fresh DwC-A archives.</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve indeterminate records for Fabaceae and Ochnaceae from all herbaria</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="fu">c</span>(<span class="st">&quot;Fabaceae&quot;</span>, <span class="st">&quot;Ochnaceae&quot;</span>),</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="st">&quot;FAMILY&quot;</span>,</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>               <span class="at">save =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>               <span class="at">dir =</span> <span class="st">&quot;reflora_indets&quot;</span>,</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename =</span> <span class="st">&quot;fabaceae_ochnaceae_records&quot;</span>)</span>
 <span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a> **Arguments**</span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>| Argument | Description |</span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>|----------|-------------|</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>| \item  { level }  { Character vector. Filter by taxonomic level. Accepted values:</span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a> <span class="in">`&quot;FAMILY&quot;`</span>, <span class="in">`&quot;GENUS&quot;`</span>, or both. Defaults to <span class="in">`NULL`</span> to include all</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a> indeterminate ranks. } | \item  { level }  { Character vector. Filter by taxonomic level. Accepted values:</span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a> <span class="in">`&quot;FAMILY&quot;`</span>, <span class="in">`&quot;GENUS&quot;`</span>, or both. Defaults to <span class="in">`NULL`</span> to include all</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a> indeterminate ranks. } |</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>| \item  { herbarium }  { Character vector. Herbarium codes (e.g., <span class="in">`&quot;RB&quot;`</span>, <span class="in">`&quot;SP&quot;`</span>) in</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a> uppercase. Use <span class="in">`NULL`</span> to include all herbaria. } | \item  { herbarium }  { Character vector. Herbarium codes (e.g., <span class="in">`&quot;RB&quot;`</span>, <span class="in">`&quot;SP&quot;`</span>) in</span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a> uppercase. Use <span class="in">`NULL`</span> to include all herbaria. } |</span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>| \item  { repatriated }  { Logical. If  \code { FALSE } | \item  { repatriated }  { Logical. If  \code { FALSE } |</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>| \item  { taxon }  { Character vector. Specific taxon names to filter by</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a> (e.g., <span class="in">`&quot;Fabaceae&quot;`</span>). } | \item  { taxon }  { Character vector. Specific taxon names to filter by</span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a> (e.g., <span class="in">`&quot;Fabaceae&quot;`</span>). } |</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>| \item  { state }  { Character vector. Brazilian state full name or abbreviations</span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a> (e.g., <span class="in">`&quot;BA&quot;`</span>, <span class="in">`&quot;SP&quot;`</span>) to filter by locality. } | \item  { state }  { Character vector. Brazilian state full name or abbreviations</span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a> (e.g., <span class="in">`&quot;BA&quot;`</span>, <span class="in">`&quot;SP&quot;`</span>) to filter by locality. } |</span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>| \item  { recordYear }  { Character or numeric vector. A single year (e.g., <span class="in">`&quot;2001&quot;`</span>)</span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a> or a range (e.g., <span class="in">`c(&quot;2000&quot;, &quot;2022&quot;)`</span>). } | \item  { recordYear }  { Character or numeric vector. A single year (e.g., <span class="in">`&quot;2001&quot;`</span>)</span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a> or a range (e.g., <span class="in">`c(&quot;2000&quot;, &quot;2022&quot;)`</span>). } |</span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>| \item  { reorder }  { Character vector. Reorder output by columns. Defaults to:</span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a> <span class="in">`c(&quot;herbarium&quot;, &quot;taxa&quot;, &quot;collector&quot;, &quot;area&quot;, &quot;year&quot;)`</span>. } | \item  { reorder }  { Character vector. Reorder output by columns. Defaults to:</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a> <span class="in">`c(&quot;herbarium&quot;, &quot;taxa&quot;, &quot;collector&quot;, &quot;area&quot;, &quot;year&quot;)`</span>. } |</span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>| \item  { path }  { Character. Path to existing REFLORA dwca files. If <span class="in">`NULL`</span>,</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a> downloads fresh data. } | \item  { path }  { Character. Path to existing REFLORA dwca files. If <span class="in">`NULL`</span>,</span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a> downloads fresh data. } |</span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>| \item  { updates }  { Logical. If <span class="in">`TRUE`</span> (default), checks for updated DwC-A files</span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a> from REFLORA. } | \item  { updates }  { Logical. If <span class="in">`TRUE`</span> (default), checks for updated DwC-A files</span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a> from REFLORA. } |</span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>| \item  { verbose }  { Logical. If <span class="in">`TRUE`</span> (default), prints progress messages to the</span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a> console. } | \item  { verbose }  { Logical. If <span class="in">`TRUE`</span> (default), prints progress messages to the</span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a> console. } |</span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>| \item  { save }  { Logical. If <span class="in">`TRUE`</span> (default), saves the results to a CSV file. } | \item  { save }  { Logical. If <span class="in">`TRUE`</span> (default), saves the results to a CSV file. } |</span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>| \item  { dir }  { Character. Directory path to save output files. Default:</span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a> <span class="in">`&quot;reflora_indets&quot;`</span>. } | \item  { dir }  { Character. Directory path to save output files. Default:</span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a> <span class="in">`&quot;reflora_indets&quot;`</span>. } |</span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>| \item  { filename }  { Character. Name of the output file (without extension).</span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a> Default: <span class="in">`&quot;reflora_indets_search&quot;`</span>. } | \item  { filename }  { Character. Name of the output file (without extension).</span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a> Default: <span class="in">`&quot;reflora_indets_search&quot;`</span>. } | </span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a> **Value**</span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a> \value</span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>A <span class="in">`data.frame`</span> containing filtered specimen records for the selected</span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>indeterminate specimens and criteria. If <span class="in">`save = TRUE`</span>, a CSV file with the</span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>results will be written to the specified <span class="in">`dir`</span>, and a <span class="in">`log.txt`</span> file will be</span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>created or appended in the same directory summarizing the download session and</span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>key statistics (total records, breakdowns by herbarium, family, genus, country,</span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>and state).</span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a> **Examples**</span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a> \examples</span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>\dontrun</span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve indeterminate records for Fabaceae and Ochnaceae from all herbaria</span></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="fu">c</span>(<span class="st">&quot;Fabaceae&quot;</span>, <span class="st">&quot;Ochnaceae&quot;</span>),</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="st">&quot;FAMILY&quot;</span>,</span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>               <span class="at">save =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>               <span class="at">dir =</span> <span class="st">&quot;reflora_indets&quot;</span>,</span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename =</span> <span class="st">&quot;fabaceae_ochnaceae_records&quot;</span>)</span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by specific herbarium and state</span></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="st">&quot;Fabaceae&quot;</span>,</span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>               <span class="at">herbarium =</span> <span class="st">&quot;RB&quot;</span>,</span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>               <span class="at">state =</span> <span class="fu">c</span>(<span class="st">&quot;BA&quot;</span>, <span class="st">&quot;MG&quot;</span>),</span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>               <span class="at">recordYear =</span> <span class="fu">c</span>(<span class="st">&quot;1990&quot;</span>, <span class="st">&quot;2022&quot;</span>))</span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by specific herbarium and state</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_indets</span>(<span class="at">taxon =</span> <span class="st">&quot;Fabaceae&quot;</span>,</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>               <span class="at">herbarium =</span> <span class="st">&quot;RB&quot;</span>,</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>               <span class="at">state =</span> <span class="fu">c</span>(<span class="st">&quot;BA&quot;</span>, <span class="st">&quot;MG&quot;</span>),</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>               <span class="at">recordYear =</span> <span class="fu">c</span>(<span class="st">&quot;1990&quot;</span>, <span class="st">&quot;2022&quot;</span>))</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

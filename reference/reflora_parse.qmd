@@ -1,101 +1,44 @@
 ---
-title: "reflora_parse"
-description: "Documentation for `reflora_parse()` from the refloraR package."
+title: 'reflora_parse'
+description: 'Parse Darwin Core Archive files'
 toc: true
 toc-depth: 3
 ---
- 
+
+
 ```{r}
 #| eval: false
 refloraR::reflora_parse()
 ```
 
- **Description**
- \description
-{
-
+### Description
 
 Read Darwin Core Archive (DwC-A) files from any downloaded dwca
+folder at [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora/)
+hosted by the [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj/pt-br).
 
-folder at 
-\href
-
-{
-https://ipt.jbrj.gov.br/reflora/
-}
-
-{
-REFLORA Virtual Herbarium
-}
-
-
-hosted by the 
-\href
-
-{
-https://www.gov.br/jbrj/pt-br
-}
-
-{
-Rio de Janeiro Botanical Garden
-}
-.
-
-} 
-
- **Details**
-  
-
- **Arguments**
+### Arguments
 
 | Argument | Description |
-|----------|-------------|
-| \item  { path }  { Pathway to the computer's directory, where the REFLORA-downloaded
- dwca folders are. } | \item  { path }  { Pathway to the computer's directory, where the REFLORA-downloaded
- dwca folders are. } |
-| \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
- uppercase letters or leave it as  \code { NULL } | \item  { herbarium }  { A vector of specific herbarium acronyms (collection code) in
- uppercase letters or leave it as  \code { NULL } |
-| \item  { repatriated }  { Logical. If  \code { FALSE } | \item  { repatriated }  { Logical. If  \code { FALSE } |
-| \item  { verbose }  { Logical, if  \code { FALSE } | \item  { verbose }  { Logical, if  \code { FALSE } | 
+|---|---|
+| path | Pathway to the computer's directory, where the REFLORA-downloaded dwca folders are. |
+| herbarium | A vector of specific herbarium acronyms (collection code) in uppercase letters or leave it as `NULL` to parse specimen records for all herbarim dcwa folders in the defined path directory. |
+| repatriated | Logical. If `FALSE`, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. |
+| verbose | Logical, if `FALSE`, a message showing steps when summarizing specimen records will not be printed in the console in full. |
 
- **Value**
- \value
-{
-
+### Value
 
 A list of dwca files, including data and associated metada.
 
-} 
+### Examples
 
- **Examples**
 ```r
- \examples
-{
-
-
-\dontrun
-{
-
-
-
-
 reflora_download(herbarium = c("ALCB", "HUEFS", "K", "RB"),
-
                  verbose = TRUE,
-
                  dir = "reflora_download")
 
-
-
 dwca <- reflora_parse(path = "reflora_download",
-
                       verbose = TRUE)
-
-}
-
-
-
-
-} 
 ```
+
+
