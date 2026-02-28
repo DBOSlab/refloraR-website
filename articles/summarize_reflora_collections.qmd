@@ -3,7 +3,9 @@ title: "Summarize REFLORA collections"
 format: html
 ---
 
-Here we present a complete guide to the `reflora_summary()` function of the `refloraR` package. This function provides summary statistics for plant specimen records available in the REFLORA Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden and published via the [Integrated Publishing Toolkit (IPT)](https://ipt.jbrj.gov.br/reflora).
+Here we present a practical guide to the `reflora_summary()` function of the `refloraR` package. This function provides summary statistics for plant specimen records available in the REFLORA Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden and published via the [Integrated Publishing Toolkit (IPT)](https://ipt.jbrj.gov.br/reflora).
+
+REFLORA aggregates collections from both Brazilian and international herbaria that hold Brazilian specimens. In this context, “digital repatriation” refers to making high-resolution images and associated specimen metadata openly accessible through a Brazilian public infrastructure (HVR/IPT), even when the physical specimens remain curated in the holding herbarium. The reflora_summary() output includes a repatriation status field to help users identify these digitally repatriated collections.
 
 ## Function Overview
 
@@ -17,6 +19,18 @@ The `reflora_summary()` function retrieves summary information for one or more R
 | `verbose`   | Logical. If `TRUE`, messages describing summary progress will be shown. |
 | `save`      | Logical. If `TRUE`, the summary will be saved as a CSV file. |
 | `dir`       | Directory path to save the file. Default is `"reflora_summary"`. |
+
+## Output columns
+
+`reflora_summary()` returns one row per collection and includes, among others, the following fields:
+
+- **collection_code / herbarium**: Herbarium acronym (e.g., RB, K) identifying the collection.
+- **records**: Number of specimen records currently published for the collection in the REFLORA IPT.
+- **version**: The IPT resource release/version identifier for the currently published dataset (useful for reproducibility and citation).
+- **publication_date**: Date when the current version was published/updated in the IPT.
+- **ipt_link**: Direct link to the collection’s IPT resource page.
+- **repatriation_status**: Indicates whether the collection is **digitally repatriated** (Brazilian specimens digitized from a foreign herbarium and served through REFLORA) versus a non-repatriated collection.
+- **contact / curator**: Contact information provided in the IPT metadata for the collection.
 
 ## Summarize All REFLORA Collections
 
@@ -68,9 +82,10 @@ reflora_summary(
 
 ## Additional Tips
 
-- The summary includes fields such as collection code, record count, repatriation status, contact information, and a link to the IPT entry.
-- Use this summary to filter or preview collections before downloading or parsing records.
-- If `save = TRUE`, the function will automatically store the results in CSV format.
+- The summary is designed as a discovery step: it helps you identify which collections are available, how many records they contain, and where they are published in the IPT.
+- Use `repatriation_status` to distinguish digitally repatriated collections (Brazilian specimens imaged/served via REFLORA from foreign herbaria) from other published collections.
+- Use `version` and `publication_date` to document exactly which IPT release you used, improving reproducibility when you later download or parse records.
+- If `save = TRUE`, the summary is written to disk as a CSV file for offline inspection and reporting.
 
 ## See Also
 

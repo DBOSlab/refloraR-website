@@ -40,7 +40,7 @@ provided, the function will automatically manage downloading and storing fresh D
 |---|---|
 | level | Character vector. Filter by taxonomic level. Accepted values: `"FAMILY"`, `"GENUS"`, or both. Defaults to `NULL` to include all indeterminate ranks. |
 | herbarium | Character vector. Herbarium codes (e.g., `"RB"`, `"SP"`) in uppercase. Use `NULL` to include all herbaria. |
-| repatriated | Logical. If `FALSE`, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. |
+| repatriated | Logical. If `FALSE`, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. REFLORA aggregates collections from both Brazilian and international herbaria that hold Brazilian specimens. In this context, “digital repatriation” refers to making high-resolution images and associated specimen metadata openly accessible through a Brazilian public infrastructure (HVR/IPT), even when the physical specimens remain curated in the holding herbarium. |
 | taxon | Character vector. Specific taxon names to filter by (e.g., `"Fabaceae"`). |
 | state | Character vector. Brazilian state full name or abbreviations (e.g., `"BA"`, `"SP"`) to filter by locality. |
 | recordYear | Character or numeric vector. A single year (e.g., `"2001"`) or a range (e.g., `c("2000", "2022")`). |
@@ -54,12 +54,26 @@ provided, the function will automatically manage downloading and storing fresh D
 
 ### Value
 
-A `data.frame` containing filtered specimen records for the selected
-indeterminate specimens and criteria. If `save = TRUE`, a CSV file with the
-results will be written to the specified `dir`, and a `log.txt` file will be
-created or appended in the same directory summarizing the download session and
-key statistics (total records, breakdowns by herbarium, family, genus, country,
-and state).
+A `data.frame` containing occurrence records for indeterminate
+specimens retrieved from the selected REFLORA herbaria. Records are filtered
+according to the user-specified arguments (e.g., `level`, `taxon`,
+`state`, `recordYear`, `herbarium`, and `repatriated`).
+By default, higher-rank indeterminate taxa (e.g., `"FAMILY"`,
+`"GENUS"`, `"SUBFAMILY"`, `"TRIBE"`, `"DIVISION"`,
+`"ORDER"`, `"CLASS"`) are included unless a specific
+`level` is provided.
+
+The returned data frame includes specimen metadata and direct links to
+images via the `bibliographicCitation` (specimen page URL) and
+`associatedMedia` (high-resolution image URL(s), when available)
+columns. Columns containing only `NA` values are removed before
+returning the object.
+
+If `save = TRUE`, the function also writes the results to a CSV file
+in the specified `dir` directory (creating it if necessary) and
+generates or appends a `log.txt` file summarizing the session,
+including total records and breakdowns by herbarium, family, genus,
+country, and state.
 
 ### Examples
 

@@ -36,7 +36,7 @@ specified directory.
 | Argument | Description |
 |---|---|
 | herbarium | A vector of specific herbarium acronyms (collection code) in uppercase letters or leave it as `NULL` to summarize specimen records for all REFLORA-hosted herbaria. |
-| repatriated | Logical. If `FALSE`, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. |
+| repatriated | Logical. If `FALSE`, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. REFLORA aggregates collections from both Brazilian and international herbaria that hold Brazilian specimens. In this context, “digital repatriation” refers to making high-resolution images and associated specimen metadata openly accessible through a Brazilian public infrastructure (HVR/IPT), even when the physical specimens remain curated in the holding herbarium. |
 | taxon | A vector with the required taxon. It can be one or a vector of multiple scientific names at family, genus or species level. |
 | state | A vector with the required Brazilian state(s) (full name or acronym). |
 | recordYear | A vector with the required record year or year range. For example, `"1992"` or `c("1992", "2024")` |
@@ -51,12 +51,17 @@ specified directory.
 
 ### Value
 
-A `data.frame` containing occurrence records for the selected taxon
-and criteria from the chosen REFLORA herbaria. If `save = TRUE`, the function
-will write the results to a CSV file inside the `dir` directory, and also
-generate or append a `log.txt` file that summarizes the download session
-including total records and breakdowns by herbarium, family, genus, country,
-and state.
+A `data.frame` containing occurrence records from the selected
+REFLORA herbaria, filtered according to the user-specified arguments
+(e.g., `taxon`, `state`, `recordYear`, `indets`,
+`herbarium`, and `repatriated`). Columns containing only
+`NA` values are removed before returning the object.
+
+If `save = TRUE`, the function also writes the results to a CSV file
+in the specified `dir` directory (creating it if necessary) and
+generates or appends a `log.txt` file summarizing the download session,
+including the total number of records and breakdowns by herbarium, family,
+genus, country, and state.
 
 ### Examples
 
