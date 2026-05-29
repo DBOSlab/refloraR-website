@@ -74,7 +74,7 @@ resources:
 </div>
 ```
 
-## The REFLORA Team
+## The Reflora Team
 
 ```{=html}
 <div class="authors-group">
@@ -88,7 +88,7 @@ resources:
         <a class="icon-link" href="https://orcid.org/0000-0002-7035-9313" target="_blank"><img src="/authors/images/orcid.png" alt="ORCID"/></a>
         <a class="icon-link" href="http://lattes.cnpq.br/6249814039461102" target="_blank"><img src="/authors/images/lattes.png" alt="Lattes"/></a>
       </p>
-      <p>Senior taxonomist and coordinator of the REFLORA initiative in Brazil</p>
+      <p>Senior taxonomist and coordinator of the Reflora initiative in Brazil</p>
     </div>
   </div>
 
@@ -101,7 +101,7 @@ resources:
         <a class="icon-link" href="https://orcid.org/0000-0002-2997-3784" target="_blank"><img src="/authors/images/orcid.png" alt="ORCID"/></a>
         <a class="icon-link" href="http://lattes.cnpq.br/6097135982786067" target="_blank"><img src="/authors/images/lattes.png" alt="Lattes"/></a>
       </p>
-      <p>Expert in biodiversity data integration and REFLORA team member</p>
+      <p>Expert in biodiversity data integration and Reflora team member</p>
     </div>
   </div>
 
@@ -114,7 +114,7 @@ resources:
         <a class="icon-link" href="https://orcid.org/0000-0002-0372-4325" target="_blank"><img src="/authors/images/orcid.png" alt="ORCID"/></a>
         <a class="icon-link" href="http://lattes.cnpq.br/5902829568480499" target="_blank"><img src="/authors/images/lattes.png" alt="Lattes"/></a>
       </p>
-      <p>Expert in biodiversity data integration and REFLORA team member</p>
+      <p>Expert in biodiversity data integration and Reflora team member</p>
     </div>
   </div>
 
@@ -127,7 +127,7 @@ resources:
         <a class="icon-link" href="https://orcid.org/0000-0001-9634-0365" target="_blank"><img src="/authors/images/orcid.png" alt="ORCID"/></a>
         <a class="icon-link" href="http://lattes.cnpq.br/1843612090689191" target="_blank"><img src="/authors/images/lattes.png" alt="Lattes"/></a>
       </p>
-      <p>Research associate contributing to REFLORA data curation</p>
+      <p>Research associate contributing to Reflora data curation</p>
     </div>
   </div>
   

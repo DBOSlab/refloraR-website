@@ -1,5 +1,5 @@
 ---
-title: "Filter REFLORA specimen records"
+title: "Filter Reflora specimen records"
 format: html
 execute:
   echo: false
@@ -16,11 +16,11 @@ execute:
 library(refloraR)
 ```
 
-This guide demonstrates how to use the `reflora_records()` function in the `refloraR` package to retrieve specimen occurrence records for specific taxa from the REFLORA Virtual Herbarium, hosted by the Rio de Janeiro Botanical Garden.
+This guide demonstrates how to use the `reflora_records()` function in the `refloraR` package to retrieve specimen occurrence records for specific taxa from the Reflora Virtual Herbarium, hosted by the Rio de Janeiro Botanical Garden.
 
 ## Function Overview
 
-The `reflora_records()` function retrieves filtered plant specimen records from REFLORA collections based on taxon, herbarium, location, and date criteria. It handles downloading, parsing, filtering, and optionally saving the occurrence data.
+The `reflora_records()` function retrieves filtered plant specimen records from Reflora collections based on taxon, herbarium, location, and date criteria. It handles downloading, parsing, filtering, and optionally saving the occurrence data.
 
 This tool is ideal for floristic, taxonomic, or biogeographic research, especially when working with large datasets for a particular plant group.
 
@@ -35,7 +35,7 @@ This tool is ideal for floristic, taxonomic, or biogeographic research, especial
 | `recordYear`  | A specific year (e.g., `"2001"`) or range (e.g., `c("1990", "2024")`). |
 | `indets`      | If `FALSE`, filters out records not identified to species level. |
 | `reorder`     | Controls column order of the final result (e.g., by herbarium, taxon, year). |
-| `path`        | Optional directory containing existing REFLORA DwC-A files. |
+| `path`        | Optional directory containing existing Reflora DwC-A files. |
 | `updates`     | If `TRUE`, checks for updated versions of data in the IPT. |
 | `verbose`     | If `TRUE`, shows progress messages. |
 | `save`        | If `TRUE`, saves results as CSV and log files. |
@@ -96,9 +96,9 @@ library(dplyr)
 library(ggplot2)
 
 records <- reflora_records(taxon = "Fabaceae", 
-                          herbarium = "RB", 
-                          recordYear = c("2000", "2025"), 
-                          save = FALSE)
+                           herbarium = "RB", 
+                           recordYear = c("2000", "2025"), 
+                           save = FALSE)
 
 records %>%
   count(year) %>%

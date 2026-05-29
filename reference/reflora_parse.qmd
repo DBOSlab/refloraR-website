@@ -14,16 +14,16 @@ refloraR::reflora_parse()
 ### Description
 
 Read Darwin Core Archive (DwC-A) files from any downloaded dwca
-folder at [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora/)
+folder at [Reflora Virtual Herbarium](https://ipt.jbrj.gov.br/reflora/)
 hosted by the [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj/pt-br).
 
 ### Arguments
 
 | Argument | Description |
 |---|---|
-| path | Pathway to the computer's directory, where the REFLORA-downloaded dwca folders are. |
+| path | Pathway to the computer's directory, where the Reflora-downloaded dwca folders are. |
 | herbarium | A vector of specific herbarium acronyms (collection code) in uppercase letters or leave it as `NULL` to parse specimen records for all herbarim dcwa folders in the defined path directory. |
-| repatriated | Logical. If `FALSE`, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. REFLORA aggregates collections from both Brazilian and international herbaria that hold Brazilian specimens. In this context, “digital repatriation” refers to making high-resolution images and associated specimen metadata openly accessible through a Brazilian public infrastructure (HVR/IPT). |
+| repatriated | Logical. If `FALSE`, skips downloading records from Reflora-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. Reflora aggregates collections from both Brazilian and international herbaria that hold Brazilian specimens. In this context, “digital repatriation” refers to making high-resolution images and associated specimen metadata openly accessible through a Brazilian public infrastructure (HVR/IPT). |
 | verbose | Logical, if `FALSE`, a message showing steps when summarizing specimen records will not be printed in the console in full. |
 
 ### Value

@@ -1,5 +1,5 @@
 ---
-title: "Parse REFLORA Darwin Core Archives"
+title: "Parse Reflora Darwin Core Archives"
 format: html
 ---
 
@@ -7,7 +7,7 @@ This guide demonstrates how to use the `reflora_parse()` function from the `refl
 
 ## Function Overview
 
-The `reflora_parse()` function reads DwC-A data for all or specified REFLORA herbarium collections. It also cleans and formats the specimen data.
+The `reflora_parse()` function reads DwC-A data for all or specified Reflora herbarium collections. It also cleans and formats the specimen data.
 
 ## Arguments
 
@@ -80,6 +80,6 @@ head(dwca[["ALCB"]][["data"]][["occurrence.txt"]])
 
 ## See Also
 
-- [`reflora_download()`](/articles/download_reflora_collections.qmd): Download REFLORA specimen records
-- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Inspect REFLORA collections
+- [`reflora_download()`](/articles/download_reflora_collections.qmd): Download Reflora specimen records
+- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Inspect Reflora collections
 

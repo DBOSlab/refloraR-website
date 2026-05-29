@@ -16,13 +16,13 @@ execute:
 library(refloraR)
 ```
 
-This guide explains how to use the `reflora_indets()` function in the `refloraR` package to retrieve occurrence records of indeterminate specimens (e.g., identified only to family or genus level) from the REFLORA Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden.
+This guide explains how to use the `reflora_indets()` function in the `refloraR` package to retrieve occurrence records of indeterminate specimens (e.g., identified only to family or genus level) from the Reflora Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden.
 
 ## Function Overview
 
-`reflora_indets()` is designed to identify and extract plant specimen records from REFLORA collections that are not determined to species level. It allows filtering by herbarium, taxon, locality (Brazilian state), year, and taxonomic rank.
+`reflora_indets()` is designed to identify and extract plant specimen records from Reflora collections that are not determined to species level. It allows filtering by herbarium, taxon, locality (Brazilian state), year, and taxonomic rank.
 
-This function is especially useful for identifying possible Linnean shortfalls by summarizing the amount of undetermined taxa across different herbaria or within a particular plant family. It helps researchers pinpoint data gaps in plant identification within REFLORA.
+This function is especially useful for identifying possible Linnean shortfalls by summarizing the amount of undetermined taxa across different herbaria or within a particular plant family. It helps researchers pinpoint data gaps in plant identification within Reflora
 
 ## Arguments
 
@@ -35,8 +35,8 @@ This function is especially useful for identifying possible Linnean shortfalls b
 | `state`       | Brazilian state abbreviations to filter locality. |
 | `recordYear`  | Year or range of years for filtering (e.g., `"2001"`, `c("2000", "2022")`). |
 | `reorder`     | Reorder columns in the final output. Default is by herbarium, taxa, etc. |
-| `path`        | **Directory containing previously downloaded REFLORA data.** If provided, avoids re-downloading and allows offline or reproducible analyses. Especially important when analyzing a frozen dataset or shared repository. |
-| `updates`     | Logical. If `TRUE`, updates DwC-A archives from REFLORA if versions are outdated. |
+| `path`        | **Directory containing previously downloaded Reflora data.** If provided, avoids re-downloading and allows offline or reproducible analyses. Especially important when analyzing a frozen dataset or shared repository. |
+| `updates`     | Logical. If `TRUE`, updates DwC-A archives from Reflora if versions are outdated. |
 | `verbose`     | Logical. If `TRUE`, prints progress messages. |
 | `save`        | Logical. If `TRUE`, saves the result as a CSV file. |
 | `dir`         | Directory to store CSV output. |
@@ -77,7 +77,7 @@ reflora_indets(
 
 ## Analyzing a Specific Dataset
 
-You can reuse previously downloaded REFLORA data by setting the `path` argument:
+You can reuse previously downloaded Reflora data by setting the `path` argument:
 
 ```r
 reflora_indets(
@@ -88,7 +88,7 @@ reflora_indets(
 ```
 
 ### Why Use `path`?
-- It allows working **offline** with already downloaded REFLORA archives.
+- It allows working **offline** with already downloaded Reflora archives.
 - It avoids **redundant downloads**, speeding up analysis.
 - It improves **reproducibility** by analyzing a specific static dataset.
 - Set `updates = FALSE` to avoid modifying your local data.
@@ -147,7 +147,7 @@ results %>%
 
 ## See Also
 
-- [`reflora_download()`](/articles/download_reflora_collections.qmd): Download REFLORA specimen records
-- [`reflora_parse()`](/articles/parse_reflora_dwca.qmd): Parse REFLORA archive files
-- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Summarize REFLORA collections
+- [`reflora_download()`](/articles/download_reflora_collections.qmd): Download Reflora specimen records
+- [`reflora_parse()`](/articles/parse_reflora_dwca.qmd): Parse Reflora archive files
+- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Summarize Reflora collections
 

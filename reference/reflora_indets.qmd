@@ -1,6 +1,6 @@
 ---
 title: 'reflora_indets'
-description: 'Retrieve indeterminate specimens from REFLORA collections'
+description: 'Retrieve indeterminate specimens from Reflora collections'
 toc: true
 toc-depth: 3
 ---
@@ -15,7 +15,7 @@ refloraR::reflora_indets()
 
 Retrieves occurrence records for indeterminate specimens (e.g., identified
 only to family or genus level) from the
-[REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora/)
+[Reflora Virtual Herbarium](https://ipt.jbrj.gov.br/reflora/)
 hosted by the [Rio de Janeiro Botanical Garden](https://www.gov.br/jbrj/pt-br).
 The function automatically downloads and parses Darwin Core Archive (DwC-A)
 files, applies optional filters by taxon, herbarium, state, and year, and
@@ -26,7 +26,7 @@ download URLs (column `'associatedMedia'`).
 ### Details
 
 This function supports downloading and processing Darwin Core Archive (DwC-A)
-files directly from the REFLORA repository. It allows for flexible filtering
+files directly from the Reflora repository. It allows for flexible filtering
 by taxon, herbarium, locality (Brazilian states), and collection year(s). The
 `level` parameter enables filtering for indeterminate records such as those
 identified only to `'FAMILY'` or `'GENUS'` rank. The function uses
@@ -40,13 +40,13 @@ provided, the function will automatically manage downloading and storing fresh D
 |---|---|
 | level | Character vector. Filter by taxonomic level. Accepted values: `"FAMILY"`, `"GENUS"`, or both. Defaults to `NULL` to include all indeterminate ranks. |
 | herbarium | Character vector. Herbarium codes (e.g., `"RB"`, `"SP"`) in uppercase. Use `NULL` to include all herbaria. |
-| repatriated | Logical. If `FALSE`, skips downloading records from REFLORA-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. REFLORA aggregates collections from both Brazilian and international herbaria that hold Brazilian specimens. In this context, “digital repatriation” refers to making high-resolution images and associated specimen metadata openly accessible through a Brazilian public infrastructure (HVR/IPT), even when the physical specimens remain curated in the holding herbarium. |
+| repatriated | Logical. If `FALSE`, skips downloading records from Reflora-associated herbaria that have been repatriated. Default is `TRUE`. Use `reflora_summary()` to check which collections are repatriated. Reflora aggregates collections from both Brazilian and international herbaria that hold Brazilian specimens. In this context, “digital repatriation” refers to making high-resolution images and associated specimen metadata openly accessible through a Brazilian public infrastructure (HVR/IPT), even when the physical specimens remain curated in the holding herbarium. |
 | taxon | Character vector. Specific taxon names to filter by (e.g., `"Fabaceae"`). |
 | state | Character vector. Brazilian state full name or abbreviations (e.g., `"BA"`, `"SP"`) to filter by locality. |
 | recordYear | Character or numeric vector. A single year (e.g., `"2001"`) or a range (e.g., `c("2000", "2022")`). |
 | reorder | Character vector. Reorder output by columns. Defaults to: `c("herbarium", "taxa", "collector", "area", "year")`. |
-| path | Character. Path to existing REFLORA dwca files. If `NULL`, downloads fresh data. |
-| updates | Logical. If `TRUE` (default), checks for updated DwC-A files from REFLORA. |
+| path | Character. Path to existing Reflora dwca files. If `NULL`, downloads fresh data. |
+| updates | Logical. If `TRUE` (default), checks for updated DwC-A files from Reflora. |
 | verbose | Logical. If `TRUE` (default), prints progress messages to the console. |
 | save | Logical. If `TRUE` (default), saves the results to a CSV file. |
 | dir | Character. Directory path to save output files. Default: `"reflora_indets"`. |
@@ -55,7 +55,7 @@ provided, the function will automatically manage downloading and storing fresh D
 ### Value
 
 A `data.frame` containing occurrence records for indeterminate
-specimens retrieved from the selected REFLORA herbaria. Records are filtered
+specimens retrieved from the selected Reflora herbaria. Records are filtered
 according to the user-specified arguments (e.g., `level`, `taxon`,
 `state`, `recordYear`, `herbarium`, and `repatriated`).
 By default, higher-rank indeterminate taxa (e.g., `"FAMILY"`,

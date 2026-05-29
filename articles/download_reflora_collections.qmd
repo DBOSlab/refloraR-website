@@ -1,13 +1,13 @@
 ---
-title: "Download REFLORA specimen records"
+title: "Download Reflora specimen records"
 format: html
 ---
 
-Here we present a complete guide to the `reflora_download()` function of the `refloraR` package. This function allows users to retrieve plant specimen records in Darwin Core Format from the REFLORA Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden.
+Here we present a complete guide to the `reflora_download()` function of the `refloraR` package. This function allows users to retrieve plant specimen records in Darwin Core Format from the Reflora Virtual Herbarium hosted by the Rio de Janeiro Botanical Garden.
 
 ## Function Overview
 
-The `reflora_download()` function downloads specimen data for all or specific REFLORA-associated herbarium collections. It offers flexibility through several arguments.
+The `reflora_download()` function downloads specimen data for all or specific Reflora-associated herbarium collections. It offers flexibility through several arguments.
 
 ## Arguments
 
@@ -18,9 +18,9 @@ The `reflora_download()` function downloads specimen data for all or specific RE
 | `verbose`   | Logical. If `TRUE`, messages describing download progress will be shown. |
 | `dir`       | Directory path to save the files. Default is `"reflora_download"`. |
 
-## Download All REFLORA Specimen Records
+## Download All Reflora Specimen Records
 
-Use the function with default settings to download all REFLORA data.
+Use the function with default settings to download all Reflora data.
 
 ```r
 reflora_download(
@@ -71,5 +71,5 @@ reflora_download(
 
 ## See Also
 
-- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Get a summary of REFLORA collections
+- [`reflora_summary()`](/articles/summarize_reflora_collections.qmd): Get a summary of Reflora collections
 

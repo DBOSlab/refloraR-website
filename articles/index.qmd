@@ -27,18 +27,18 @@ format: html
 
 ::: {layout-ncol="2"}
 ::: {style="display: block;"}
-### Summarize REFLORA collections
+### Summarize Reflora collections
 - [Summarize collections](/articles/summarize_reflora_collections.qmd)  
 
 ::: {style="display: block;"}
 :::
-### Download and parse REFLORA records   
+### Download and parse Reflora records   
 - [Download specimen records](/articles/download_reflora_collections.qmd)
-- [Parse REFLORA Darwin Core Archives](/articles/parse_reflora_dwca.qmd)
+- [Parse Reflora Darwin Core Archives](/articles/parse_reflora_dwca.qmd)
 
 ::: {style="display: block;"}
 :::
-### Filter REFLORA records   
+### Filter Reflora records   
 - [Retrieve taxon-specific specimens](/articles/filter_reflora_records.qmd)
 - [Filter indeterminate specimens](/articles/filter_indeterminate_reflora_specimens.qmd)
 :::

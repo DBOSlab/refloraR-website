@@ -69,17 +69,17 @@ website:
       contents:
         - text: Overview
           href: articles/index.qmd
-        - section: Summarize REFLORA collections
+        - section: Summarize Reflora collections
           contents:
           - text: Summarize herbarium collections 
             href: articles/summarize_reflora_collections.qmd  
-        - section: Download and parse REFLORA records
+        - section: Download and parse Reflora records
           contents:
           - text: Download specimen records 
             href: articles/download_reflora_collections.qmd
-          - text: Parse REFLORA Darwin Core Archives 
+          - text: Parse Reflora Darwin Core Archives 
             href: articles/parse_reflora_dwca.qmd
-        - section: Filter REFLORA records
+        - section: Filter Reflora records
           contents:
           - text: Retrieve taxon-specific specimens 
             href: articles/filter_reflora_records.qmd

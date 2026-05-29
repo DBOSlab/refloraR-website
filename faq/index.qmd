@@ -29,7 +29,7 @@ format:
 
 ### What can I use refloraR for?
 
-The `refloraR` package allows researchers and taxonomists to download, filter, and analyze plant specimen data from the [REFLORA Virtual Herbarium](https://ipt.jbrj.gov.br/reflora). With dedicated functions, users can access large datasets in Darwin Core Format, explore taxonomic and geographic distributions, and summarize collections efficiently.
+The `refloraR` package allows researchers and taxonomists to download, filter, and analyze plant specimen data from the [Reflora Virtual Herbarium](https://ipt.jbrj.gov.br/reflora). With dedicated functions, users can access large datasets in Darwin Core Format, explore taxonomic and geographic distributions, and summarize collections efficiently.
 
 ### How do I install refloraR?
 
@@ -64,14 +64,14 @@ Submit issues on GitHub: [refloraR Issues](https://github.com/DBOSlab/refloraR/i
 
 Join our community via [GitHub Discussions](https://github.com/DBOSlab/refloraR/discussions) to ask questions, suggest ideas, or help others.
 
-### What is the REFLORA Virtual Herbarium?
+### What is the Reflora Virtual Herbarium?
 
-The REFLORA Virtual Herbarium is a digital repository for Brazilian plant specimens, particularly those collected in Brazil but historically stored in foreign herbaria. Through high-resolution imaging and curation tools, it enables researchers to view, determine, and typify specimens remotely.
+The Reflora Virtual Herbarium is a digital repository for Brazilian plant specimens, particularly those collected in Brazil but historically stored in foreign herbaria. Through high-resolution imaging and curation tools, it enables researchers to view, determine, and typify specimens remotely.
 
-### How does refloraR relate to REFLORA?
+### How does refloraR relate to Reflora?
 
-The `refloraR` package acts as a programmatic interface to query, retrieve, and explore data from REFLORA Virtual Herbarium and its partner collections. It enhances access, encourages reproducibility, and supports large-scale taxonomic and biogeographic studies.
+The `refloraR` package acts as a programmatic interface to query, retrieve, and explore data from Reflora Virtual Herbarium and its partner collections. It enhances access, encourages reproducibility, and supports large-scale taxonomic and biogeographic studies.
 
-### Can my herbarium join the REFLORA Virtual Herbarium?
+### Can my herbarium join the Reflora Virtual Herbarium?
 
 Yes. Herbarium curators can contact **reflora@jbrj.gov.br** to initiate data and image contributions. Participating herbaria receive support to digitize and publish their collections.
