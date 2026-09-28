@@ -1,6 +1,6 @@
 ---
 title: 'reflora_summary'
-description: 'Resumir registros atuais de espécimes vegetais no Herbário Virtual Reflora'
+description: 'Resumir registros de espécimes vegetais por meio do IPT do Herbário Virtual Reflora'
 toc: true
 toc-depth: 3
 ---
@@ -24,6 +24,18 @@ físicos permaneçam custodiados no herbário de origem. A saída de
 `reflora_summary()` inclui um campo de status de repatriação para ajudar
 os usuários a identificar essas coleções digitalmente repatriadas.
 
+A coluna `Records` reporta o número de ocorrências atualmente indexadas pelo
+GBIF, que pode divergir temporariamente do número de linhas no arquivo IPT
+mais recente enquanto o GBIF está processando uma versão recém-publicada.
+
+### Detalhes
+
+A descoberta e os metadados vêm da API do Registro do GBIF. As URLs do IPT do
+Reflora são retornadas como identificadores, mas não são abertas por esta
+função. Uma falha em uma requisição individual de contagem de ocorrências no
+GBIF produz `NA` apenas para aquele conjunto de dados, em vez de interromper
+todo o resumo.
+
 ### Argumentos
 
 | Argumento | Descrição |
@@ -31,6 +43,7 @@ os usuários a identificar essas coleções digitalmente repatriadas.
 | herbarium | Vetor de siglas específicas de herbário (código de coleção) em letras maiúsculas, ou deixe como `NULL` para resumir os registros de espécimes de todos os herbários hospedados pelo Reflora. |
 | verbose | Lógico; se `FALSE`, a mensagem mostrando as etapas ao resumir os registros de espécimes não será impressa integralmente no console. |
 | save | Lógico; se `TRUE`, os resultados da busca serão salvos em disco. |
+| records | Caractere. Use `"gbif"` para solicitar as contagens de ocorrências indexadas, ou `"none"` para ignorar essas requisições e retornar `NA` em `Records`. |
 | dir | Caminho para o diretório do computador onde o resumo em formato de tabela será salvo. O padrão é criar um diretório chamado `reflora_summary`. |
 
 ### Valor
@@ -69,8 +82,13 @@ Herbário Virtual Reflora.
 ### Exemplos
 
 ```r
-reflora_summary(herbarium = c("ALCB", "HUEFS"),
-                verbose = TRUE,
-                save = TRUE,
-                dir = "reflora_summary")
+reflora_summary()
+
+reflora_summary(
+  herbarium = c("ALCB", "HUEFS"),
+  save = FALSE
+)
+
+# Resumo mais rápido, apenas com metadados
+reflora_summary(records = "none", save = FALSE)
 ```

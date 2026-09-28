@@ -18,19 +18,22 @@ The `reflora_summary()` function retrieves summary information for one or more R
 | `herbarium` | A character vector of herbarium acronyms (e.g., `"RB"`, `"K"`). Use `NULL` to summarize all collections. |
 | `verbose`   | Logical. If `TRUE`, messages describing summary progress will be shown. |
 | `save`      | Logical. If `TRUE`, the summary will be saved as a CSV file. |
+| `records`   | Character. Use `"gbif"` (the default) to request indexed occurrence counts from GBIF, or `"none"` to skip those requests and return `NA` in `Records` for a faster, metadata-only summary. |
 | `dir`       | Directory path to save the file. Default is `"reflora_summary"`. |
 
 ## Output columns
 
-`reflora_summary()` returns one row per collection and includes, among others, the following fields:
+`reflora_summary()` returns one row per collection with the following fields:
 
-- **collection_code / herbarium**: Herbarium acronym (e.g., RB, K) identifying the collection.
-- **records**: Number of specimen records currently published for the collection in the Reflora IPT.
-- **version**: The IPT resource release/version identifier for the currently published dataset (useful for reproducibility and citation).
-- **publication_date**: Date when the current version was published/updated in the IPT.
-- **ipt_link**: Direct link to the collection’s IPT resource page.
-- **repatriation_status**: Indicates whether the collection is **digitally repatriated** (Brazilian specimens digitized from a foreign herbarium and served through Reflora) versus a non-repatriated collection.
-- **contact / curator**: Contact information provided in the IPT metadata for the collection.
+- **collectionCode**: Herbarium acronym (e.g., RB, K) identifying the collection.
+- **rightsHolder**: Institution responsible for the collection, as reported in the IPT metadata.
+- **Repatriated**: Logical. Indicates whether the collection is **digitally repatriated** (Brazilian specimens digitized from a foreign herbarium and served through Reflora) versus a non-repatriated collection.
+- **contactPoint**: Name of the contact person or curator associated with the collection.
+- **hasEmail**: Contact email address for the `contactPoint`, when available.
+- **Version**: The IPT resource release/version identifier for the currently published dataset (useful for reproducibility and citation).
+- **Published.on**: Date and hour when the current version was published/updated in the IPT.
+- **Records**: Number of specimen records currently indexed by GBIF for the collection. Populated when `records = "gbif"` (the default); returned as `NA` when `records = "none"`.
+- **Reflora_URL**: Direct link to the collection's page in the Reflora Virtual Herbarium.
 
 ## Summarize All Reflora Collections
 
@@ -80,11 +83,23 @@ reflora_summary(
 )
 ```
 
+## Skip GBIF Record Counts
+
+By default, `reflora_summary()` queries GBIF for indexed occurrence counts to populate the `Records` column. Set `records = "none"` to skip these requests and get a faster, metadata-only summary (`Records` is returned as `NA`):
+
+```r
+summary_fast_df <- reflora_summary(
+  records = "none",
+  save = FALSE
+)
+```
+
 ## Additional Tips
 
 - The summary is designed as a discovery step: it helps you identify which collections are available, how many records they contain, and where they are published in the IPT.
-- Use `repatriation_status` to distinguish digitally repatriated collections (Brazilian specimens imaged/served via Reflora from foreign herbaria) from other published collections.
-- Use `version` and `publication_date` to document exactly which IPT release you used, improving reproducibility when you later download or parse records.
+- Use `Repatriated` to distinguish digitally repatriated collections (Brazilian specimens imaged/served via Reflora from foreign herbaria) from other published collections.
+- Use `Version` and `Published.on` to document exactly which IPT release you used, improving reproducibility when you later download or parse records.
+- Use `records = "none"` when you only need collection metadata (contacts, versions, IPT links) and want to avoid the extra GBIF requests.
 - If `save = TRUE`, the summary is written to disk as a CSV file for offline inspection and reporting.
 
 ## See Also

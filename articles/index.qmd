@@ -25,6 +25,12 @@ format: html
   }
 </style>
 
+These "how-to" articles walk through `refloraR`'s functions in the order you would typically reach for them. The diagram below gives the overall shape of that workflow before you dive into the individual guides.
+
+<img src="/figures/refloraR_workflow.png" alt="refloraR workflow diagram" width="100%" />
+
+It starts by querying available collections through the Reflora Integrated Publishing Toolkit (IPT) node hosted by the Global Biodiversity Information Facility (GBIF) (1). `reflora_summary()` inspects available collections and metadata (2). Users can download Darwin Core Archive (DwC‐A) files for selected herbaria using `reflora_download()`; these files are parsed and standardized locally using `reflora_parse()` (3). `reflora_records()` retrieves occurrence records based on taxonomic, geographic, and temporal criteria (4). `reflora_indets()` extracts occurrence data for indeterminate specimens (e.g., identified only to family or genus level) (5). Final outputs can be used to support floristic, taxonomic, or biogeographic research or as an indicator of taxonomic gaps within and among collections (6). The package requires an internet connection only for initial queries and downloading/updating herbarium data. All other functions can operate offline if data have been previously downloaded.
+
 ::: {layout-ncol="2"}
 ::: {style="display: block;"}
 ### Summarize Reflora collections
@@ -38,8 +44,13 @@ format: html
 
 ::: {style="display: block;"}
 :::
-### Filter Reflora records   
+### Filter Reflora records
 - [Retrieve taxon-specific specimens](/articles/filter_reflora_records.qmd)
 - [Filter indeterminate specimens](/articles/filter_indeterminate_reflora_specimens.qmd)
+
+::: {style="display: block;"}
+:::
+### Published working example
+- [Mapping indeterminate specimens](/articles/working_example_indets_map.qmd)
 :::
 :::

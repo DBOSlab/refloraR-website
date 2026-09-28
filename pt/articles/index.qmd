@@ -26,6 +26,10 @@ sidebar: pt-articles
   }
 </style>
 
+Estes artigos "como fazer" percorrem as funções do `refloraR` na ordem em que você normalmente as utilizaria. O diagrama abaixo mostra o formato geral desse fluxo de trabalho antes de você mergulhar nos guias individuais.
+
+<img src="/figures/refloraR_workflow.png" alt="Diagrama de fluxo de trabalho do refloraR" width="100%" />
+
 ::: {layout-ncol="2"}
 ::: {style="display: block;"}
 ### Resumir coleções do Reflora
@@ -42,5 +46,10 @@ sidebar: pt-articles
 ### Filtrar registros do Reflora
 - [Recuperar espécimes por táxon](/pt/articles/filter_reflora_records.qmd)
 - [Filtrar espécimes indeterminados](/pt/articles/filter_indeterminate_reflora_specimens.qmd)
+
+::: {style="display: block;"}
+:::
+### Exemplo prático publicado
+- [Mapeando espécimes indeterminados](/pt/articles/working_example_indets_map.qmd)
 :::
 :::

@@ -85,6 +85,10 @@ website:
             href: articles/filter_reflora_records.qmd
           - text: Filter indeterminate specimens
             href: articles/filter_indeterminate_reflora_specimens.qmd
+        - section: Published working example
+          contents:
+          - text: Mapping indeterminate specimens
+            href: articles/working_example_indets_map.qmd
 
     - id: pt-articles
       title: Artigos
@@ -109,6 +113,10 @@ website:
             href: pt/articles/filter_reflora_records.qmd
           - text: Filtrar espécimes indeterminados
             href: pt/articles/filter_indeterminate_reflora_specimens.qmd
+        - section: Exemplo prático publicado
+          contents:
+          - text: Mapeando espécimes indeterminados
+            href: pt/articles/working_example_indets_map.qmd
 
 format:
   html:

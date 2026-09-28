@@ -19,19 +19,22 @@ A função `reflora_summary()` recupera informações resumidas de uma ou mais c
 | `herbarium` | Vetor de siglas de herbário (ex.: `"RB"`, `"K"`). Use `NULL` para resumir todas as coleções. |
 | `verbose`   | Lógico. Se `TRUE`, mensagens sobre o progresso do resumo serão exibidas. |
 | `save`      | Lógico. Se `TRUE`, o resumo será salvo como arquivo CSV. |
+| `records`   | Caractere. Use `"gbif"` (padrão) para solicitar as contagens de ocorrências indexadas no GBIF, ou `"none"` para ignorar essas requisições e retornar `NA` em `Records`, obtendo um resumo mais rápido, apenas com metadados. |
 | `dir`       | Caminho do diretório para salvar o arquivo. Padrão: `"reflora_summary"`. |
 
 ## Colunas de Saída
 
-`reflora_summary()` retorna uma linha por coleção e inclui, entre outros, os seguintes campos:
+`reflora_summary()` retorna uma linha por coleção com os seguintes campos:
 
-- **collection_code / herbarium**: Sigla do herbário (ex.: RB, K) que identifica a coleção.
-- **records**: Número de registros de espécimes publicados atualmente para a coleção no IPT Reflora.
-- **version**: Identificador da versão/release atual do recurso IPT (útil para reprodutibilidade e citação).
-- **publication_date**: Data em que a versão atual foi publicada/atualizada no IPT.
-- **ipt_link**: Link direto para a página do recurso IPT da coleção.
-- **repatriation_status**: Indica se a coleção é **digitalmente repatriada** (espécimes brasileiros digitalizados de herbário estrangeiro e disponibilizados pelo Reflora) ou não repatriada.
-- **contact / curator**: Informações de contato fornecidas nos metadados do IPT para a coleção.
+- **collectionCode**: Sigla do herbário (ex.: RB, K) que identifica a coleção.
+- **rightsHolder**: Instituição responsável pela coleção, conforme informado nos metadados do IPT.
+- **Repatriated**: Lógico. Indica se a coleção é **digitalmente repatriada** (espécimes brasileiros digitalizados de herbário estrangeiro e disponibilizados pelo Reflora) ou não repatriada.
+- **contactPoint**: Nome da pessoa de contato ou curador associado à coleção.
+- **hasEmail**: Endereço de e-mail de contato do `contactPoint`, quando disponível.
+- **Version**: Identificador da versão/release atual do recurso IPT (útil para reprodutibilidade e citação).
+- **Published.on**: Data e hora em que a versão atual foi publicada/atualizada no IPT.
+- **Records**: Número de registros de espécimes atualmente indexados no GBIF para a coleção. Preenchido quando `records = "gbif"` (padrão); retornado como `NA` quando `records = "none"`.
+- **Reflora_URL**: Link direto para a página da coleção no Herbário Virtual Reflora.
 
 ## Resumir Todas as Coleções do Reflora
 
@@ -81,11 +84,23 @@ reflora_summary(
 )
 ```
 
+## Ignorar Contagens de Registros do GBIF
+
+Por padrão, `reflora_summary()` consulta o GBIF para obter as contagens de ocorrências indexadas e preencher a coluna `Records`. Defina `records = "none"` para ignorar essas requisições e obter um resumo mais rápido, apenas com metadados (`Records` é retornado como `NA`):
+
+```r
+summary_fast_df <- reflora_summary(
+  records = "none",
+  save = FALSE
+)
+```
+
 ## Dicas Adicionais
 
 - O resumo é projetado como uma etapa de descoberta: ajuda a identificar quais coleções estão disponíveis, quantos registros contêm e onde são publicadas no IPT.
-- Use `repatriation_status` para distinguir coleções digitalmente repatriadas (espécimes brasileiros digitalizados/disponibilizados via Reflora de herbários estrangeiros) de outras coleções publicadas.
-- Use `version` e `publication_date` para documentar exatamente qual versão do IPT você utilizou, melhorando a reprodutibilidade ao baixar ou analisar registros posteriormente.
+- Use `Repatriated` para distinguir coleções digitalmente repatriadas (espécimes brasileiros digitalizados/disponibilizados via Reflora de herbários estrangeiros) de outras coleções publicadas.
+- Use `Version` e `Published.on` para documentar exatamente qual versão do IPT você utilizou, melhorando a reprodutibilidade ao baixar ou analisar registros posteriormente.
+- Use `records = "none"` quando precisar apenas dos metadados da coleção (contatos, versões, links do IPT) e quiser evitar as requisições extras ao GBIF.
 - Se `save = TRUE`, o resumo é gravado em disco como arquivo CSV para inspeção e relatório offline.
 
 ## Veja Também
