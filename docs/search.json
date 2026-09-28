@@ -4,7 +4,7 @@
     "href": "get-started/index.html#install-the-package",
     "title": "Install",
     "section": "Install the package",
-    "text": "Install the package\nYou can install the latest development version of refloraR package from GitHub as follows:\n\n#install.packages(\"devtools\")\ndevtools::install_github(\"DBOSlab/refloraR\")\n\n\n\n\n\n\n\nCaution\n\n\n\nThe steps in this section are only needed if you need to run […]. If you already have a running […], then skip this section."
+    "text": "Install the package\nYou can install the latest development version of refloraR package from GitHub as follows:\n\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) \ninstall.packages(\"BiocManager\") \n\n# Install the development version of refloraR from GitHub, \n# together with its required dependencies \nBiocManager::install(\"DBOSlab/refloraR\", dependencies = TRUE)\n\n\n\n\n\n\n\nCaution\n\n\n\nThe steps in this section are only needed if you need to run […]. If you already have a running […], then skip this section."
   },
   {
     "objectID": "reference/reflora_summary.html",
