@@ -26,6 +26,23 @@ yaml_quote <- function(x) {
 
 rd_tag <- function(x) attr(x, "Rd_tag")
 
+# In an Rd \itemize/\enumerate an \item has no children: its content is the
+# siblings that follow it, up to the next \item.
+rd_list_items <- function(children) {
+  items <- character()
+  cur <- NULL
+  for (ch in children) {
+    if (identical(rd_tag(ch), "\\item")) {
+      if (!is.null(cur)) items <- c(items, cur)
+      cur <- ""
+    } else if (!is.null(cur)) {
+      cur <- paste0(cur, rd_render(ch))
+    }
+  }
+  if (!is.null(cur)) items <- c(items, cur)
+  trimws(gsub("\\s*\n\\s*", " ", items))
+}
+
 rd_render <- function(x) {
   if (length(x) == 0) return("")
   if (is.list(x) && is.null(rd_tag(x))) {
@@ -52,12 +69,12 @@ rd_render <- function(x) {
          },
          "\\link" = rend_children(),
          "\\itemize" = {
-           vals <- vapply(children, rd_render, character(1))
-           paste0("\n", paste(paste0("- ", vals), collapse = "\n"))
+           vals <- rd_list_items(children)
+           paste0("\n", paste(paste0("- ", vals), collapse = "\n"), "\n")
          },
          "\\enumerate" = {
-           vals <- vapply(children, rd_render, character(1))
-           paste0("\n", paste(paste0(seq_along(vals), ". ", vals), collapse = "\n"))
+           vals <- rd_list_items(children)
+           paste0("\n", paste(paste0(seq_along(vals), ". ", vals), collapse = "\n"), "\n")
          },
          "\\item" = rend_children(),
          rend_children()

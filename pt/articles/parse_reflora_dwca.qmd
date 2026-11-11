@@ -73,11 +73,33 @@ head(dwca[["ALCB"]][["data"]][["occurrence.txt"]])
 - Adiciona `taxonName` combinando `genus`, `specificEpithet` e `infraspecificEpithet`.
 - Substitui ranks taxonômicos ausentes por `"FAMILY"`.
 
+### Metadados padronizados
+
+Cada herbário preenche os campos de metadados à sua maneira, com idiomas, grafias e convenções diferentes. Em uma amostra de 40 herbários do Reflora (390.889 registros), por exemplo, o Brasil aparecia escrito de seis ou mais formas, cerca de 18% dos registros não tinham `countryCode` e os nomes de estados brasileiros apresentavam erros de digitação e acentos corrompidos. A função `reflora_parse()` padroniza esses campos, para que os registros de diferentes herbários possam ser combinados e filtrados de forma consistente:
+
+| Coluna | Exemplos de valores originais | Depois de `reflora_parse()` |
+|--------|-------------------------------|-----------------------------|
+| `country` | `Brasil`, `Brésil`, `[Brésil]`, `Brasi`, `Alemanha`, `E.U.A.`, `?`, `s.loc.` | Nomes em inglês: `Brazil`, `Germany`, `United States`; marcadores e textos que não são países viram `NA` |
+| `countryCode` | ausente em muitos registros | Código ISO 3166-1 alfa-2 (`BR`, `DE`, `US`), preenchido a partir de `country` quando ausente |
+| `stateProvince` (registros brasileiros) | `Goias`, `GO`, `Goyaz`, `Goi  s`, `Minas Gerias`, `Pernanbuco`, `Sta Catharina` | Nomes oficiais: `Goiás`, `Minas Gerais`, `Pernambuco`, `Santa Catarina` |
+| `typeStatus` | `TYPUS`, `Holotipo`, `Paratipo`, `ISOTYPUS` | Maiúsculas em inglês: `TYPE`, `HOLOTYPE`, `PARATYPE`, `ISOTYPE` |
+| `identificationQualifier` | `CF`, `cf.`, `AFF`, `aff.` | `cf.`, `aff.` |
+| `family` | `Labiatae`, `Umbelliferae`, `Compositae`, `Leguminosae` | `Lamiaceae`, `Apiaceae`, `Asteraceae`, `Fabaceae` |
+| `year`, `month`, `day`, coordenadas, elevação | valores impossíveis, p. ex. mês `1774` ou latitude `123456` | `NA` |
+
+Espaços no início, no fim e repetidos (inclusive espaços não separáveis) também são removidos de todas as colunas de texto. Cada herbário é retornado com as **mesmas colunas, na mesma ordem e com as mesmas classes**, de modo que as tabelas analisadas podem ser unidas diretamente:
+
+```r
+occ <- dplyr::bind_rows(lapply(dwca, function(x) x$data$occurrence.txt))
+
+table(occ$country, useNA = "ifany")
+```
+
 ## Dicas
 
 - Certifique-se de ter baixado os dados com `reflora_download()` antes de analisar.
 - Use `reflora_summary()` para verificar quais herbários são repatriados.
-- Você pode combinar e analisar dados parseados usando `dplyr::bind_rows()`.
+- Você pode combinar e analisar dados parseados usando `dplyr::bind_rows()`; todos os herbários compartilham as mesmas colunas e classes.
 
 ## Veja Também
 

@@ -72,11 +72,33 @@ head(dwca[["ALCB"]][["data"]][["occurrence.txt"]])
 - Adds `taxonName` combining `genus`, `specificEpithet`, `infraspecificEpithet`.
 - Replaces missing taxon ranks with `"FAMILY"`.
 
+### Standardized metadata
+
+Each herbarium fills in the metadata fields in its own way, with different languages, spellings and conventions. In a sample of 40 Reflora herbaria (390,889 records), for instance, Brazil was written in six or more ways, about 18% of the records had no `countryCode`, and Brazilian state names came with typos and corrupted accents. `reflora_parse()` standardizes these fields, so that records from different herbaria can be combined and filtered consistently:
+
+| Column | Examples of raw values | After `reflora_parse()` |
+|--------|------------------------|-------------------------|
+| `country` | `Brasil`, `Brésil`, `[Brésil]`, `Brasi`, `Alemanha`, `E.U.A.`, `?`, `s.loc.` | English names: `Brazil`, `Germany`, `United States`; placeholders and non-country text become `NA` |
+| `countryCode` | missing for many records | ISO 3166-1 alpha-2 code (`BR`, `DE`, `US`), filled in from `country` when missing |
+| `stateProvince` (Brazilian records) | `Goias`, `GO`, `Goyaz`, `Goi  s`, `Minas Gerias`, `Pernanbuco`, `Sta Catharina` | Official names: `Goiás`, `Minas Gerais`, `Pernambuco`, `Santa Catarina` |
+| `typeStatus` | `TYPUS`, `Holotipo`, `Paratipo`, `ISOTYPUS` | English upper case: `TYPE`, `HOLOTYPE`, `PARATYPE`, `ISOTYPE` |
+| `identificationQualifier` | `CF`, `cf.`, `AFF`, `aff.` | `cf.`, `aff.` |
+| `family` | `Labiatae`, `Umbelliferae`, `Compositae`, `Leguminosae` | `Lamiaceae`, `Apiaceae`, `Asteraceae`, `Fabaceae` |
+| `year`, `month`, `day`, coordinates, elevation | impossible values, e.g. month `1774` or latitude `123456` | `NA` |
+
+Leading, trailing and repeated blanks (including non-breaking spaces) are also removed from all text columns. Every herbarium is returned with the **same columns, in the same order and with the same classes**, so the parsed tables can be row-bound directly:
+
+```r
+occ <- dplyr::bind_rows(lapply(dwca, function(x) x$data$occurrence.txt))
+
+table(occ$country, useNA = "ifany")
+```
+
 ## Tips
 
 - Ensure you've downloaded data using `reflora_download()` before parsing.
 - Use `reflora_summary()` to explore which herbaria are repatriated.
-- You can combine and analyze parsed data using `dplyr::bind_rows()`.
+- You can combine and analyze parsed data using `dplyr::bind_rows()`; all herbaria share the same columns and classes.
 
 ## See Also
 

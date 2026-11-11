@@ -17,6 +17,22 @@ Lê arquivos Darwin Core Archive (DwC-A) de qualquer pasta dwca baixada do
 [Herbário Virtual Reflora](https://ipt.jbrj.gov.br/reflora/)
 hospedado pelo [Jardim Botânico do Rio de Janeiro](https://www.gov.br/jbrj/pt-br).
 
+### Detalhes
+
+Além de limpar as colunas taxonômicas, `reflora_parse()` padroniza os
+metadados que cada herbário preenche de forma diferente, para que os
+registros de diferentes coleções possam ser combinados diretamente (p. ex.,
+com `dplyr::bind_rows()`):
+
+- `country` e `countryCode`: nomes de países escritos em qualquer um dos idiomas encontrados nas coleções (p. ex., "Brasil", "Bresil", "Alemanha", "E.U.A."), incluindo erros de digitação comuns, são convertidos para nomes em inglês (p. ex., "Brazil", "Germany", "United States") e os códigos de país ISO 3166-1 alfa-2 ausentes são preenchidos. Um `countryCode` válido sempre tem precedência sobre o texto. Marcadores (p. ex., "?", "s.loc.", "Indeterminado") e textos que não são países viram `NA`.
+- `stateProvince`: para registros brasileiros, os nomes dos estados são padronizados para os nomes oficiais (p. ex., "Goias", "GO" e "Goyaz" viram "Goiás"; "Minas Gerias" vira "Minas Gerais"), incluindo valores corrompidos no herbário de origem (acentos exportados como espaços ou nomes truncados).
+- `typeStatus`: termos em inglês e em maiúsculas (p. ex., "Holotipo" e "HOLOTYPUS" viram "HOLOTYPE").
+- `identificationQualifier`: "cf." e "aff.".
+- `family`: os nomes alternativos conservados de famílias Labiatae, Umbelliferae, Compositae, Cruciferae, Gramineae, Leguminosae e Palmae são substituídos por Lamiaceae, Apiaceae, Asteraceae, Brassicaceae, Poaceae, Fabaceae e Arecaceae.
+- `year`, `month`, `day`, `decimalLatitude`, `decimalLongitude`, `minimumElevationInMeters` e `maximumElevationInMeters`: valores impossíveis (p. ex., mês 1774, latitude 123456) são convertidos em `NA`. Ambas as coordenadas são anuladas quando uma delas é impossível.
+- Todas as colunas de texto têm espaços no início, no fim e repetidos (inclusive espaços não separáveis) removidos, e textos vazios viram `NA`.
+- Cada herbário é retornado com as mesmas colunas, na mesma ordem e com as mesmas classes. Colunas que um herbário não publica são preenchidas com `NA`.
+
 ### Argumentos
 
 | Argumento | Descrição |
