@@ -4630,7 +4630,10 @@ height: 400px;
   <li><a href="#analisar-coleções-específicas" id="toc-analisar-coleções-específicas" class="nav-link" data-scroll-target="#analisar-coleções-específicas">Analisar Coleções Específicas</a></li>
   <li><a href="#ignorar-coleções-repatriadas" id="toc-ignorar-coleções-repatriadas" class="nav-link" data-scroll-target="#ignorar-coleções-repatriadas">Ignorar Coleções Repatriadas</a></li>
   <li><a href="#estrutura-da-saída-analisada" id="toc-estrutura-da-saída-analisada" class="nav-link" data-scroll-target="#estrutura-da-saída-analisada">Estrutura da Saída Analisada</a></li>
-  <li><a href="#limpeza-de-dados-e-padronização-de-colunas" id="toc-limpeza-de-dados-e-padronização-de-colunas" class="nav-link" data-scroll-target="#limpeza-de-dados-e-padronização-de-colunas">Limpeza de Dados e Padronização de Colunas</a></li>
+  <li><a href="#limpeza-de-dados-e-padronização-de-colunas" id="toc-limpeza-de-dados-e-padronização-de-colunas" class="nav-link" data-scroll-target="#limpeza-de-dados-e-padronização-de-colunas">Limpeza de Dados e Padronização de Colunas</a>
+  <ul class="collapse">
+  <li><a href="#metadados-padronizados" id="toc-metadados-padronizados" class="nav-link" data-scroll-target="#metadados-padronizados">Metadados padronizados</a></li>
+  </ul></li>
   <li><a href="#dicas" id="toc-dicas" class="nav-link" data-scroll-target="#dicas">Dicas</a></li>
   <li><a href="#veja-também" id="toc-veja-também" class="nav-link" data-scroll-target="#veja-também">Veja Também</a></li>
   </ul>
@@ -4744,13 +4747,72 @@ height: 400px;
 <li>Adiciona <code>taxonName</code> combinando <code>genus</code>, <code>specificEpithet</code> e <code>infraspecificEpithet</code>.</li>
 <li>Substitui ranks taxonômicos ausentes por <code>&quot;FAMILY&quot;</code>.</li>
 </ul>
+<section id="metadados-padronizados" class="level3">
+<h3 class="anchored" data-anchor-id="metadados-padronizados">Metadados padronizados</h3>
+<p>Cada herbário preenche os campos de metadados à sua maneira, com idiomas, grafias e convenções diferentes. Em uma amostra de 40 herbários do Reflora (390.889 registros), por exemplo, o Brasil aparecia escrito de seis ou mais formas, cerca de 18% dos registros não tinham <code>countryCode</code> e os nomes de estados brasileiros apresentavam erros de digitação e acentos corrompidos. A função <code>reflora_parse()</code> padroniza esses campos, para que os registros de diferentes herbários possam ser combinados e filtrados de forma consistente:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 45%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Coluna</th>
+<th>Exemplos de valores originais</th>
+<th>Depois de <code>reflora_parse()</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>country</code></td>
+<td><code>Brasil</code>, <code>Brésil</code>, <code>[Brésil]</code>, <code>Brasi</code>, <code>Alemanha</code>, <code>E.U.A.</code>, <code>?</code>, <code>s.loc.</code></td>
+<td>Nomes em inglês: <code>Brazil</code>, <code>Germany</code>, <code>United States</code>; marcadores e textos que não são países viram <code>NA</code></td>
+</tr>
+<tr class="even">
+<td><code>countryCode</code></td>
+<td>ausente em muitos registros</td>
+<td>Código ISO 3166-1 alfa-2 (<code>BR</code>, <code>DE</code>, <code>US</code>), preenchido a partir de <code>country</code> quando ausente</td>
+</tr>
+<tr class="odd">
+<td><code>stateProvince</code> (registros brasileiros)</td>
+<td><code>Goias</code>, <code>GO</code>, <code>Goyaz</code>, <code>Goi  s</code>, <code>Minas Gerias</code>, <code>Pernanbuco</code>, <code>Sta Catharina</code></td>
+<td>Nomes oficiais: <code>Goiás</code>, <code>Minas Gerais</code>, <code>Pernambuco</code>, <code>Santa Catarina</code></td>
+</tr>
+<tr class="even">
+<td><code>typeStatus</code></td>
+<td><code>TYPUS</code>, <code>Holotipo</code>, <code>Paratipo</code>, <code>ISOTYPUS</code></td>
+<td>Maiúsculas em inglês: <code>TYPE</code>, <code>HOLOTYPE</code>, <code>PARATYPE</code>, <code>ISOTYPE</code></td>
+</tr>
+<tr class="odd">
+<td><code>identificationQualifier</code></td>
+<td><code>CF</code>, <code>cf.</code>, <code>AFF</code>, <code>aff.</code></td>
+<td><code>cf.</code>, <code>aff.</code></td>
+</tr>
+<tr class="even">
+<td><code>family</code></td>
+<td><code>Labiatae</code>, <code>Umbelliferae</code>, <code>Compositae</code>, <code>Leguminosae</code></td>
+<td><code>Lamiaceae</code>, <code>Apiaceae</code>, <code>Asteraceae</code>, <code>Fabaceae</code></td>
+</tr>
+<tr class="odd">
+<td><code>year</code>, <code>month</code>, <code>day</code>, coordenadas, elevação</td>
+<td>valores impossíveis, p. ex. mês <code>1774</code> ou latitude <code>123456</code></td>
+<td><code>NA</code></td>
+</tr>
+</tbody>
+</table>
+<p>Espaços no início, no fim e repetidos (inclusive espaços não separáveis) também são removidos de todas as colunas de texto. Cada herbário é retornado com as <strong>mesmas colunas, na mesma ordem e com as mesmas classes</strong>, de modo que as tabelas analisadas podem ser unidas diretamente. A primeira coluna é sempre <code>id</code>, o identificador principal de cada registro no Darwin Core Archive (mantido como caractere, e <code>NA</code> se um herbário não o publica); <code>reflora_records()</code> e <code>reflora_indets()</code> também o retornam como primeira coluna:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>occ <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="fu">lapply</span>(dwca, <span class="cf">function</span>(x) x<span class="sc">$</span>data<span class="sc">$</span>occurrence.txt))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(occ<span class="sc">$</span>country, <span class="at">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 </section>
 <section id="dicas" class="level2">
 <h2 class="anchored" data-anchor-id="dicas">Dicas</h2>
 <ul>
 <li>Certifique-se de ter baixado os dados com <code>reflora_download()</code> antes de analisar.</li>
 <li>Use <code>reflora_summary()</code> para verificar quais herbários são repatriados.</li>
-<li>Você pode combinar e analisar dados parseados usando <code>dplyr::bind_rows()</code>.</li>
+<li>Você pode combinar e analisar dados parseados usando <code>dplyr::bind_rows()</code>; todos os herbários compartilham as mesmas colunas e classes.</li>
 </ul>
 </section>
 <section id="veja-também" class="level2">
@@ -5242,91 +5304,113 @@ height: 400px;
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Analisar arquivos Darwin Core do Reflora&quot;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">sidebar:</span><span class="co"> pt-articles</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Este guia demonstra como usar a função <span class="in">`reflora_parse()`</span> do pacote <span class="in">`refloraR`</span>. A função lê e analisa arquivos Darwin Core Archive (DwC-A) previamente baixados com <span class="in">`reflora_download()`</span>.</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visão Geral da Função</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>A função <span class="in">`reflora_parse()`</span> lê dados DwC-A de todas ou de coleções específicas de herbário do Reflora. Também limpa e formata os dados dos espécimes.</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Argumentos</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Argumento     <span class="pp">|</span> Descrição <span class="pp">|</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------|-----------|</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`path`</span>        <span class="pp">|</span> Diretório contendo as pastas DwC-A baixadas. <span class="pp">|</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`herbarium`</span>   <span class="pp">|</span> Vetor de siglas de herbário (ex.: <span class="in">`&quot;RB&quot;`</span>, <span class="in">`&quot;K&quot;`</span>). Use <span class="in">`NULL`</span> para analisar todos. <span class="pp">|</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`repatriated`</span> <span class="pp">|</span> Lógico. Se <span class="in">`FALSE`</span>, ignora herbários repatriados (ver <span class="in">`reflora_summary()`</span>). <span class="pp">|</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`verbose`</span>     <span class="pp">|</span> Lógico. Se <span class="in">`TRUE`</span>, exibe mensagens de progresso. <span class="pp">|</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analisar Todas as Coleções no Diretório</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>Use as configurações padrão para analisar todas as pastas DwC-A:</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analisar Coleções Específicas</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>Você pode especificar quais coleções analisar:</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">herbarium =</span> <span class="fu">c</span>(<span class="st">&quot;RB&quot;</span>, <span class="st">&quot;K&quot;</span>),</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ignorar Coleções Repatriadas</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>Para ignorar herbários repatriados:</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">repatriated =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estrutura da Saída Analisada</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>O retorno é uma **lista nomeada** onde cada elemento representa uma coleção e contém:</span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`occurrence.txt`</span>: Data frame com os registros de espécimes.</span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`eml.xml`</span>: Metadados sobre a coleção.</span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`summary_&lt;COL&gt;.csv`</span> opcional: Arquivo de resumo de metadados.</span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dwca)</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dwca[[<span class="st">&quot;ALCB&quot;</span>]][[<span class="st">&quot;data&quot;</span>]][[<span class="st">&quot;occurrence.txt&quot;</span>]])</span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limpeza de Dados e Padronização de Colunas</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Converte campos taxonômicos para formato &quot;title case&quot;.</span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Adiciona <span class="in">`taxonName`</span> combinando <span class="in">`genus`</span>, <span class="in">`specificEpithet`</span> e <span class="in">`infraspecificEpithet`</span>.</span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Substitui ranks taxonômicos ausentes por <span class="in">`&quot;FAMILY&quot;`</span>.</span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dicas</span></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Certifique-se de ter baixado os dados com <span class="in">`reflora_download()`</span> antes de analisar.</span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use <span class="in">`reflora_summary()`</span> para verificar quais herbários são repatriados.</span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Você pode combinar e analisar dados parseados usando <span class="in">`dplyr::bind_rows()`</span>.</span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## Veja Também</span></span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reflora_download()`</span><span class="co">](/pt/articles/download_reflora_collections.qmd)</span>: Baixar registros de espécimes do Reflora</span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reflora_summary()`</span><span class="co">](/pt/articles/summarize_reflora_collections.qmd)</span>: Inspecionar coleções do Reflora</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Analisar arquivos Darwin Core do Reflora&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">sidebar:</span><span class="co"> pt-articles</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Este guia demonstra como usar a função <span class="in">`reflora_parse()`</span> do pacote <span class="in">`refloraR`</span>. A função lê e analisa arquivos Darwin Core Archive (DwC-A) previamente baixados com <span class="in">`reflora_download()`</span>.</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visão Geral da Função</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>A função <span class="in">`reflora_parse()`</span> lê dados DwC-A de todas ou de coleções específicas de herbário do Reflora. Também limpa e formata os dados dos espécimes.</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Argumentos</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Argumento     <span class="pp">|</span> Descrição <span class="pp">|</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------|-----------|</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`path`</span>        <span class="pp">|</span> Diretório contendo as pastas DwC-A baixadas. <span class="pp">|</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`herbarium`</span>   <span class="pp">|</span> Vetor de siglas de herbário (ex.: <span class="in">`&quot;RB&quot;`</span>, <span class="in">`&quot;K&quot;`</span>). Use <span class="in">`NULL`</span> para analisar todos. <span class="pp">|</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`repatriated`</span> <span class="pp">|</span> Lógico. Se <span class="in">`FALSE`</span>, ignora herbários repatriados (ver <span class="in">`reflora_summary()`</span>). <span class="pp">|</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`verbose`</span>     <span class="pp">|</span> Lógico. Se <span class="in">`TRUE`</span>, exibe mensagens de progresso. <span class="pp">|</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analisar Todas as Coleções no Diretório</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>Use as configurações padrão para analisar todas as pastas DwC-A:</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analisar Coleções Específicas</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>Você pode especificar quais coleções analisar:</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">herbarium =</span> <span class="fu">c</span>(<span class="st">&quot;RB&quot;</span>, <span class="st">&quot;K&quot;</span>),</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ignorar Coleções Repatriadas</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>Para ignorar herbários repatriados:</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">repatriated =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estrutura da Saída Analisada</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>O retorno é uma **lista nomeada** onde cada elemento representa uma coleção e contém:</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`occurrence.txt`</span>: Data frame com os registros de espécimes.</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`eml.xml`</span>: Metadados sobre a coleção.</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`summary_&lt;COL&gt;.csv`</span> opcional: Arquivo de resumo de metadados.</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dwca)</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dwca[[<span class="st">&quot;ALCB&quot;</span>]][[<span class="st">&quot;data&quot;</span>]][[<span class="st">&quot;occurrence.txt&quot;</span>]])</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limpeza de Dados e Padronização de Colunas</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Converte campos taxonômicos para formato &quot;title case&quot;.</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Adiciona <span class="in">`taxonName`</span> combinando <span class="in">`genus`</span>, <span class="in">`specificEpithet`</span> e <span class="in">`infraspecificEpithet`</span>.</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Substitui ranks taxonômicos ausentes por <span class="in">`&quot;FAMILY&quot;`</span>.</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Metadados padronizados</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>Cada herbário preenche os campos de metadados à sua maneira, com idiomas, grafias e convenções diferentes. Em uma amostra de 40 herbários do Reflora (390.889 registros), por exemplo, o Brasil aparecia escrito de seis ou mais formas, cerca de 18% dos registros não tinham <span class="in">`countryCode`</span> e os nomes de estados brasileiros apresentavam erros de digitação e acentos corrompidos. A função <span class="in">`reflora_parse()`</span> padroniza esses campos, para que os registros de diferentes herbários possam ser combinados e filtrados de forma consistente:</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Coluna <span class="pp">|</span> Exemplos de valores originais <span class="pp">|</span> Depois de <span class="in">`reflora_parse()`</span> <span class="pp">|</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------------------------|-----------------------------|</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`country`</span> <span class="pp">|</span> <span class="in">`Brasil`</span>, <span class="in">`Brésil`</span>, <span class="in">`[Brésil]`</span>, <span class="in">`Brasi`</span>, <span class="in">`Alemanha`</span>, <span class="in">`E.U.A.`</span>, <span class="in">`?`</span>, <span class="in">`s.loc.`</span> <span class="pp">|</span> Nomes em inglês: <span class="in">`Brazil`</span>, <span class="in">`Germany`</span>, <span class="in">`United States`</span>; marcadores e textos que não são países viram <span class="in">`NA`</span> <span class="pp">|</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`countryCode`</span> <span class="pp">|</span> ausente em muitos registros <span class="pp">|</span> Código ISO 3166-1 alfa-2 (<span class="in">`BR`</span>, <span class="in">`DE`</span>, <span class="in">`US`</span>), preenchido a partir de <span class="in">`country`</span> quando ausente <span class="pp">|</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`stateProvince`</span> (registros brasileiros) <span class="pp">|</span> <span class="in">`Goias`</span>, <span class="in">`GO`</span>, <span class="in">`Goyaz`</span>, <span class="in">`Goi  s`</span>, <span class="in">`Minas Gerias`</span>, <span class="in">`Pernanbuco`</span>, <span class="in">`Sta Catharina`</span> <span class="pp">|</span> Nomes oficiais: <span class="in">`Goiás`</span>, <span class="in">`Minas Gerais`</span>, <span class="in">`Pernambuco`</span>, <span class="in">`Santa Catarina`</span> <span class="pp">|</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`typeStatus`</span> <span class="pp">|</span> <span class="in">`TYPUS`</span>, <span class="in">`Holotipo`</span>, <span class="in">`Paratipo`</span>, <span class="in">`ISOTYPUS`</span> <span class="pp">|</span> Maiúsculas em inglês: <span class="in">`TYPE`</span>, <span class="in">`HOLOTYPE`</span>, <span class="in">`PARATYPE`</span>, <span class="in">`ISOTYPE`</span> <span class="pp">|</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`identificationQualifier`</span> <span class="pp">|</span> <span class="in">`CF`</span>, <span class="in">`cf.`</span>, <span class="in">`AFF`</span>, <span class="in">`aff.`</span> <span class="pp">|</span> <span class="in">`cf.`</span>, <span class="in">`aff.`</span> <span class="pp">|</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`family`</span> <span class="pp">|</span> <span class="in">`Labiatae`</span>, <span class="in">`Umbelliferae`</span>, <span class="in">`Compositae`</span>, <span class="in">`Leguminosae`</span> <span class="pp">|</span> <span class="in">`Lamiaceae`</span>, <span class="in">`Apiaceae`</span>, <span class="in">`Asteraceae`</span>, <span class="in">`Fabaceae`</span> <span class="pp">|</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`year`</span>, <span class="in">`month`</span>, <span class="in">`day`</span>, coordenadas, elevação <span class="pp">|</span> valores impossíveis, p. ex. mês <span class="in">`1774`</span> ou latitude <span class="in">`123456`</span> <span class="pp">|</span> <span class="in">`NA`</span> <span class="pp">|</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>Espaços no início, no fim e repetidos (inclusive espaços não separáveis) também são removidos de todas as colunas de texto. Cada herbário é retornado com as **mesmas colunas, na mesma ordem e com as mesmas classes**, de modo que as tabelas analisadas podem ser unidas diretamente. A primeira coluna é sempre <span class="in">`id`</span>, o identificador principal de cada registro no Darwin Core Archive (mantido como caractere, e <span class="in">`NA`</span> se um herbário não o publica); <span class="in">`reflora_records()`</span> e <span class="in">`reflora_indets()`</span> também o retornam como primeira coluna:</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>occ <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="fu">lapply</span>(dwca, <span class="cf">function</span>(x) x<span class="sc">$</span>data<span class="sc">$</span>occurrence.txt))</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(occ<span class="sc">$</span>country, <span class="at">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dicas</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Certifique-se de ter baixado os dados com <span class="in">`reflora_download()`</span> antes de analisar.</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use <span class="in">`reflora_summary()`</span> para verificar quais herbários são repatriados.</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Você pode combinar e analisar dados parseados usando <span class="in">`dplyr::bind_rows()`</span>; todos os herbários compartilham as mesmas colunas e classes.</span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="fu">## Veja Também</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reflora_download()`</span><span class="co">](/pt/articles/download_reflora_collections.qmd)</span>: Baixar registros de espécimes do Reflora</span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reflora_summary()`</span><span class="co">](/pt/articles/summarize_reflora_collections.qmd)</span>: Inspecionar coleções do Reflora</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

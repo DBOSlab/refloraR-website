@@ -32,6 +32,7 @@ com `dplyr::bind_rows()`):
 - `year`, `month`, `day`, `decimalLatitude`, `decimalLongitude`, `minimumElevationInMeters` e `maximumElevationInMeters`: valores impossíveis (p. ex., mês 1774, latitude 123456) são convertidos em `NA`. Ambas as coordenadas são anuladas quando uma delas é impossível.
 - Todas as colunas de texto têm espaços no início, no fim e repetidos (inclusive espaços não separáveis) removidos, e textos vazios viram `NA`.
 - Cada herbário é retornado com as mesmas colunas, na mesma ordem e com as mesmas classes. Colunas que um herbário não publica são preenchidas com `NA`.
+- A coluna `id`, o identificador principal de cada registro no Darwin Core Archive, é mantida como a primeira coluna (como caractere).
 
 ### Argumentos
 

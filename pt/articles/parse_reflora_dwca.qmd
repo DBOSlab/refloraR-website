@@ -87,7 +87,7 @@ Cada herbário preenche os campos de metadados à sua maneira, com idiomas, graf
 | `family` | `Labiatae`, `Umbelliferae`, `Compositae`, `Leguminosae` | `Lamiaceae`, `Apiaceae`, `Asteraceae`, `Fabaceae` |
 | `year`, `month`, `day`, coordenadas, elevação | valores impossíveis, p. ex. mês `1774` ou latitude `123456` | `NA` |
 
-Espaços no início, no fim e repetidos (inclusive espaços não separáveis) também são removidos de todas as colunas de texto. Cada herbário é retornado com as **mesmas colunas, na mesma ordem e com as mesmas classes**, de modo que as tabelas analisadas podem ser unidas diretamente:
+Espaços no início, no fim e repetidos (inclusive espaços não separáveis) também são removidos de todas as colunas de texto. Cada herbário é retornado com as **mesmas colunas, na mesma ordem e com as mesmas classes**, de modo que as tabelas analisadas podem ser unidas diretamente. A primeira coluna é sempre `id`, o identificador principal de cada registro no Darwin Core Archive (mantido como caractere, e `NA` se um herbário não o publica); `reflora_records()` e `reflora_indets()` também o retornam como primeira coluna:
 
 ```r
 occ <- dplyr::bind_rows(lapply(dwca, function(x) x$data$occurrence.txt))

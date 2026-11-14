@@ -4521,6 +4521,7 @@ height: 400px;
    
   <ul>
   <li><a href="#descrição" id="toc-descrição" class="nav-link active" data-scroll-target="#descrição">Descrição</a></li>
+  <li><a href="#detalhes" id="toc-detalhes" class="nav-link" data-scroll-target="#detalhes">Detalhes</a></li>
   <li><a href="#argumentos" id="toc-argumentos" class="nav-link" data-scroll-target="#argumentos">Argumentos</a></li>
   <li><a href="#valor" id="toc-valor" class="nav-link" data-scroll-target="#valor">Valor</a></li>
   <li><a href="#exemplos" id="toc-exemplos" class="nav-link" data-scroll-target="#exemplos">Exemplos</a></li>
@@ -4564,6 +4565,21 @@ height: 400px;
 <section id="descrição" class="level3">
 <h3 class="anchored" data-anchor-id="descrição">Descrição</h3>
 <p>Lê arquivos Darwin Core Archive (DwC-A) de qualquer pasta dwca baixada do <a href="https://ipt.jbrj.gov.br/reflora/">Herbário Virtual Reflora</a> hospedado pelo <a href="https://www.gov.br/jbrj/pt-br">Jardim Botânico do Rio de Janeiro</a>.</p>
+</section>
+<section id="detalhes" class="level3">
+<h3 class="anchored" data-anchor-id="detalhes">Detalhes</h3>
+<p>Além de limpar as colunas taxonômicas, <code>reflora_parse()</code> padroniza os metadados que cada herbário preenche de forma diferente, para que os registros de diferentes coleções possam ser combinados diretamente (p. ex., com <code>dplyr::bind_rows()</code>):</p>
+<ul>
+<li><code>country</code> e <code>countryCode</code>: nomes de países escritos em qualquer um dos idiomas encontrados nas coleções (p. ex., “Brasil”, “Bresil”, “Alemanha”, “E.U.A.”), incluindo erros de digitação comuns, são convertidos para nomes em inglês (p. ex., “Brazil”, “Germany”, “United States”) e os códigos de país ISO 3166-1 alfa-2 ausentes são preenchidos. Um <code>countryCode</code> válido sempre tem precedência sobre o texto. Marcadores (p. ex., “?”, “s.loc.”, “Indeterminado”) e textos que não são países viram <code>NA</code>.</li>
+<li><code>stateProvince</code>: para registros brasileiros, os nomes dos estados são padronizados para os nomes oficiais (p. ex., “Goias”, “GO” e “Goyaz” viram “Goiás”; “Minas Gerias” vira “Minas Gerais”), incluindo valores corrompidos no herbário de origem (acentos exportados como espaços ou nomes truncados).</li>
+<li><code>typeStatus</code>: termos em inglês e em maiúsculas (p. ex., “Holotipo” e “HOLOTYPUS” viram “HOLOTYPE”).</li>
+<li><code>identificationQualifier</code>: “cf.” e “aff.”.</li>
+<li><code>family</code>: os nomes alternativos conservados de famílias Labiatae, Umbelliferae, Compositae, Cruciferae, Gramineae, Leguminosae e Palmae são substituídos por Lamiaceae, Apiaceae, Asteraceae, Brassicaceae, Poaceae, Fabaceae e Arecaceae.</li>
+<li><code>year</code>, <code>month</code>, <code>day</code>, <code>decimalLatitude</code>, <code>decimalLongitude</code>, <code>minimumElevationInMeters</code> e <code>maximumElevationInMeters</code>: valores impossíveis (p. ex., mês 1774, latitude 123456) são convertidos em <code>NA</code>. Ambas as coordenadas são anuladas quando uma delas é impossível.</li>
+<li>Todas as colunas de texto têm espaços no início, no fim e repetidos (inclusive espaços não separáveis) removidos, e textos vazios viram <code>NA</code>.</li>
+<li>Cada herbário é retornado com as mesmas colunas, na mesma ordem e com as mesmas classes. Colunas que um herbário não publica são preenchidas com <code>NA</code>.</li>
+<li>A coluna <code>id</code>, o identificador principal de cada registro no Darwin Core Archive, é mantida como a primeira coluna (como caractere).</li>
+</ul>
 </section>
 <section id="argumentos" class="level3">
 <h3 class="anchored" data-anchor-id="argumentos">Argumentos</h3>
@@ -5102,42 +5118,59 @@ height: 400px;
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Herbário Virtual Reflora</span><span class="co">](https://ipt.jbrj.gov.br/reflora/)</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>hospedado pelo <span class="co">[</span><span class="ot">Jardim Botânico do Rio de Janeiro</span><span class="co">](https://www.gov.br/jbrj/pt-br)</span>.</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### Argumentos</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### Detalhes</span></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Argumento <span class="pp">|</span> Descrição <span class="pp">|</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> path <span class="pp">|</span> Caminho para o diretório do computador onde as pastas dwca baixadas do Reflora estão. <span class="pp">|</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> herbarium <span class="pp">|</span> Vetor de siglas específicas de herbário (código de coleção) em letras maiúsculas, ou deixe como <span class="in">`NULL`</span> para analisar os registros de espécimes de todas as pastas dwca de herbário no diretório definido. <span class="pp">|</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> repatriated <span class="pp">|</span> Lógico. Se <span class="in">`FALSE`</span>, ignora o download de registros de herbários associados ao Reflora que foram repatriados. O padrão é <span class="in">`TRUE`</span>. Use <span class="in">`reflora_summary()`</span> para verificar quais coleções são repatriadas. <span class="pp">|</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> verbose <span class="pp">|</span> Lógico; se <span class="in">`FALSE`</span>, a mensagem mostrando as etapas ao resumir os registros de espécimes não será impressa integralmente no console. <span class="pp">|</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Valor</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>Uma lista nomeada de objetos Darwin Core Archive, um por coleção</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>de herbário analisada. Cada elemento corresponde à saída de</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="in">`finch::dwca_read()`</span> e contém:</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="in">`$data`</span>Uma lista de tabelas de dados incluídas no arquivo,</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>incluindo um data frame <span class="in">`occurrence.txt`</span> limpo e padronizado</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>com campos Darwin Core selecionados.</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="in">`$meta`</span>Metadados extraídos do arquivo EML do arquivo.</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="in">`$files`</span>Informações sobre a estrutura do arquivo e</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>arquivos associados.</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>A lista retornada é nomeada pelos códigos de coleção dos herbários. Quando disponíveis,</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>arquivos CSV de resumo associados (gerados por <span class="in">`reflora_download()`</span>)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>são adicionados como elementos adicionais dentro de cada objeto de herbário.</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>Além de limpar as colunas taxonômicas, <span class="in">`reflora_parse()`</span> padroniza os</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>metadados que cada herbário preenche de forma diferente, para que os</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>registros de diferentes coleções possam ser combinados diretamente (p. ex.,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>com <span class="in">`dplyr::bind_rows()`</span>):</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`country`</span> e <span class="in">`countryCode`</span>: nomes de países escritos em qualquer um dos idiomas encontrados nas coleções (p. ex., &quot;Brasil&quot;, &quot;Bresil&quot;, &quot;Alemanha&quot;, &quot;E.U.A.&quot;), incluindo erros de digitação comuns, são convertidos para nomes em inglês (p. ex., &quot;Brazil&quot;, &quot;Germany&quot;, &quot;United States&quot;) e os códigos de país ISO 3166-1 alfa-2 ausentes são preenchidos. Um <span class="in">`countryCode`</span> válido sempre tem precedência sobre o texto. Marcadores (p. ex., &quot;?&quot;, &quot;s.loc.&quot;, &quot;Indeterminado&quot;) e textos que não são países viram <span class="in">`NA`</span>.</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`stateProvince`</span>: para registros brasileiros, os nomes dos estados são padronizados para os nomes oficiais (p. ex., &quot;Goias&quot;, &quot;GO&quot; e &quot;Goyaz&quot; viram &quot;Goiás&quot;; &quot;Minas Gerias&quot; vira &quot;Minas Gerais&quot;), incluindo valores corrompidos no herbário de origem (acentos exportados como espaços ou nomes truncados).</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`typeStatus`</span>: termos em inglês e em maiúsculas (p. ex., &quot;Holotipo&quot; e &quot;HOLOTYPUS&quot; viram &quot;HOLOTYPE&quot;).</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`identificationQualifier`</span>: &quot;cf.&quot; e &quot;aff.&quot;.</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`family`</span>: os nomes alternativos conservados de famílias Labiatae, Umbelliferae, Compositae, Cruciferae, Gramineae, Leguminosae e Palmae são substituídos por Lamiaceae, Apiaceae, Asteraceae, Brassicaceae, Poaceae, Fabaceae e Arecaceae.</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`year`</span>, <span class="in">`month`</span>, <span class="in">`day`</span>, <span class="in">`decimalLatitude`</span>, <span class="in">`decimalLongitude`</span>, <span class="in">`minimumElevationInMeters`</span> e <span class="in">`maximumElevationInMeters`</span>: valores impossíveis (p. ex., mês 1774, latitude 123456) são convertidos em <span class="in">`NA`</span>. Ambas as coordenadas são anuladas quando uma delas é impossível.</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Todas as colunas de texto têm espaços no início, no fim e repetidos (inclusive espaços não separáveis) removidos, e textos vazios viram <span class="in">`NA`</span>.</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cada herbário é retornado com as mesmas colunas, na mesma ordem e com as mesmas classes. Colunas que um herbário não publica são preenchidas com <span class="in">`NA`</span>.</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A coluna <span class="in">`id`</span>, o identificador principal de cada registro no Darwin Core Archive, é mantida como a primeira coluna (como caractere).</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Argumentos</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Argumento <span class="pp">|</span> Descrição <span class="pp">|</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> path <span class="pp">|</span> Caminho para o diretório do computador onde as pastas dwca baixadas do Reflora estão. <span class="pp">|</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> herbarium <span class="pp">|</span> Vetor de siglas específicas de herbário (código de coleção) em letras maiúsculas, ou deixe como <span class="in">`NULL`</span> para analisar os registros de espécimes de todas as pastas dwca de herbário no diretório definido. <span class="pp">|</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> repatriated <span class="pp">|</span> Lógico. Se <span class="in">`FALSE`</span>, ignora o download de registros de herbários associados ao Reflora que foram repatriados. O padrão é <span class="in">`TRUE`</span>. Use <span class="in">`reflora_summary()`</span> para verificar quais coleções são repatriadas. <span class="pp">|</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> verbose <span class="pp">|</span> Lógico; se <span class="in">`FALSE`</span>, a mensagem mostrando as etapas ao resumir os registros de espécimes não será impressa integralmente no console. <span class="pp">|</span></span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exemplos</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### Valor</span></span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_download</span>(<span class="at">herbarium =</span> <span class="fu">c</span>(<span class="st">&quot;ALCB&quot;</span>, <span class="st">&quot;HUEFS&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;RB&quot;</span>),</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>                 <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dir =</span> <span class="st">&quot;reflora_download&quot;</span>)</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(<span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>                      <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>Uma lista nomeada de objetos Darwin Core Archive, um por coleção</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>de herbário analisada. Cada elemento corresponde à saída de</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="in">`finch::dwca_read()`</span> e contém:</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="in">`$data`</span>Uma lista de tabelas de dados incluídas no arquivo,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>incluindo um data frame <span class="in">`occurrence.txt`</span> limpo e padronizado</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>com campos Darwin Core selecionados.</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="in">`$meta`</span>Metadados extraídos do arquivo EML do arquivo.</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="in">`$files`</span>Informações sobre a estrutura do arquivo e</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>arquivos associados.</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>A lista retornada é nomeada pelos códigos de coleção dos herbários. Quando disponíveis,</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>arquivos CSV de resumo associados (gerados por <span class="in">`reflora_download()`</span>)</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>são adicionados como elementos adicionais dentro de cada objeto de herbário.</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exemplos</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="fu">reflora_download</span>(<span class="at">herbarium =</span> <span class="fu">c</span>(<span class="st">&quot;ALCB&quot;</span>, <span class="st">&quot;HUEFS&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;RB&quot;</span>),</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>                 <span class="at">verbose =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dir =</span> <span class="st">&quot;reflora_download&quot;</span>)</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>dwca <span class="ot">&lt;-</span> <span class="fu">reflora_parse</span>(<span class="at">path =</span> <span class="st">&quot;reflora_download&quot;</span>,</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>                      <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

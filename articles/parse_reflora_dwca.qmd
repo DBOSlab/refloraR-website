@@ -86,7 +86,7 @@ Each herbarium fills in the metadata fields in its own way, with different langu
 | `family` | `Labiatae`, `Umbelliferae`, `Compositae`, `Leguminosae` | `Lamiaceae`, `Apiaceae`, `Asteraceae`, `Fabaceae` |
 | `year`, `month`, `day`, coordinates, elevation | impossible values, e.g. month `1774` or latitude `123456` | `NA` |
 
-Leading, trailing and repeated blanks (including non-breaking spaces) are also removed from all text columns. Every herbarium is returned with the **same columns, in the same order and with the same classes**, so the parsed tables can be row-bound directly:
+Leading, trailing and repeated blanks (including non-breaking spaces) are also removed from all text columns. Every herbarium is returned with the **same columns, in the same order and with the same classes**, so the parsed tables can be row-bound directly. The first column is always `id`, the core identifier of each record in the Darwin Core Archive (kept as character, and `NA` if a herbarium does not publish it); `reflora_records()` and `reflora_indets()` also return it first:
 
 ```r
 occ <- dplyr::bind_rows(lapply(dwca, function(x) x$data$occurrence.txt))
